@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Arts - WUWU RAN Design Studio</title>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 104, 238, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-icon {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 3rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover .project-icon {
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .project-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2002;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                z-index: 2001;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 5%;
+                position: relative;
+                z-index: 1;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#logoGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#logoGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="academic.html" class="nav-item">Academic Work</a>
+                <a href="professional.html" class="nav-item">Professional Work</a>
+                <a href="digital.html" class="nav-item active">Digital Arts</a>
+                <a href="publication.html" class="nav-item">Publication</a>
+                <a href="workshop.html" class="nav-item">Workshop</a>
+                <a href="affiliation.html" class="nav-item">Affiliation</a>
+                <a href="about.html" class="nav-item">About Me</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Digital Arts Page -->
+            <div class="page-header">
+                <h1 class="page-title">Digital Arts</h1>
+                <p class="page-description">Exploring augmentation technologies, immersive media, and computational fabrication.</p>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 60 100 Q 80 60 100 100 T 140 100" stroke="#9D8DFF" stroke-width="3" fill="none"/>
+                            <circle cx="100" cy="100" r="50" stroke="#9D8DFF" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">AR Experience</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="60" y="60" width="80" height="60" stroke="#9D8DFF" stroke-width="3" fill="none" rx="5"/>
+                            <circle cx="100" cy="90" r="15" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">VR Environment</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 50 100 L 100 50 L 150 100 L 100 150 Z" stroke="#9D8DFF" stroke-width="3" fill="none"/>
+                            <circle cx="100" cy="100" r="15" fill="#9D8DFF"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Robotic Fabrication</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="60" width="30" height="30" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                            <rect x="85" y="40" width="30" height="30" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                            <rect x="130" y="55" width="30" height="30" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                            <rect x="60" y="110" width="30" height="30" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                            <rect x="110" y="120" width="30" height="30" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Parametric Design</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="60" stroke="#9D8DFF" stroke-width="3" fill="none"/>
+                            <path d="M 60 100 L 100 60 L 140 100 L 100 140 Z" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Interactive Installation</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="100,40 140,80 140,120 100,160 60,120 60,80" stroke="#9D8DFF" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">3D Printing Project</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 40 160 Q 70 100 100 140 T 160 100" stroke="#9D8DFF" stroke-width="3" fill="none"/>
+                            <circle cx="70" cy="120" r="6" fill="#9D8DFF"/>
+                            <circle cx="130" cy="120" r="6" fill="#9D8DFF"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Generative Art</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="50" width="100" height="100" stroke="#9D8DFF" stroke-width="3" fill="none" rx="15"/>
+                            <circle cx="80" cy="80" r="8" fill="#9D8DFF"/>
+                            <circle cx="120" cy="80" r="8" fill="#9D8DFF"/>
+                            <path d="M 80 120 Q 100 130 120 120" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Mixed Reality</h3>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="50" y1="100" x2="150" y2="100" stroke="#9D8DFF" stroke-width="3"/>
+                            <circle cx="50" cy="100" r="10" fill="#9D8DFF"/>
+                            <circle cx="100" cy="100" r="10" fill="#9D8DFF"/>
+                            <circle cx="150" cy="100" r="10" fill="#9D8DFF"/>
+                            <path d="M 50 100 Q 75 60 100 100" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                            <path d="M 100 100 Q 125 60 150 100" stroke="#9D8DFF" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Motion Graphics</h3>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

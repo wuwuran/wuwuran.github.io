@@ -1,745 +1,988 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
-  <title>Wuwu Ran - Urban Designer & Researcher</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WUWU RAN - Design Studio</title>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Meta -->
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional CV of Wuwu Ran - Urban Designer & Researcher">
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="./assets/plugins/bootstrap/css/bootstrap.min.css">
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
 
-  <!-- Plugins CSS -->
-  <link rel="stylesheet" href="./assets/plugins/font-awesome/css/all.css">
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
 
-  <!-- Theme CSS -->
-  <link id="theme-style" rel="stylesheet" href="./assets/css/main.css">
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 104, 238, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* CV Download Button */
+        .cv-download-section {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+        }
+
+        .cv-download-btn svg {
+            fill: currentColor;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-icon {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 3rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover .project-icon {
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .project-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Home Page Special Styling */
+        .hero-section {
+            text-align: center;
+            padding: 6rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 3rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            margin: 5%;
+        }
+
+        /* CV Content Styles */
+        .profile-section,
+        .education-section,
+        .experience-section,
+        .publications-section,
+        .skills-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-section h3,
+        .education-section h3,
+        .experience-section h3,
+        .publications-section h3,
+        .skills-section h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-purple);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .profile-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-section li {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .profile-section li:before {
+            content: "•";
+            color: var(--primary-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .education-item,
+        .experience-item,
+        .publication-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(123, 104, 238, 0.1);
+        }
+
+        .education-item:last-child,
+        .experience-item:last-child,
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h4,
+        .experience-item h4,
+        .publication-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta,
+        .experience-meta,
+        .publication-meta {
+            font-size: 0.9rem;
+            color: var(--secondary-purple);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .education-institution,
+        .experience-company {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .education-item p,
+        .experience-item p,
+        .publication-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item ul {
+            margin-top: 0.8rem;
+        }
+
+        .experience-item li {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .experience-item li:before {
+            content: "▸";
+            color: var(--primary-purple);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            color: var(--secondary-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Page Styles */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--secondary-purple));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(123, 104, 238, 0.3);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            color: var(--secondary-purple);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-purple);
+            transform: translateY(-2px);
+        }
+
+        .contact-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .contact-form-section {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.08), rgba(157, 141, 255, 0.03));
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: rgba(26, 26, 46, 0.8);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+        }
+
+        /* Publication List */
+        .publication-list {
+            max-width: 900px;
+        }
+
+        .publication-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .publication-meta {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Affiliation Grid */
+        .affiliation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .affiliation-card {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .affiliation-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .affiliation-card-link:hover .affiliation-card {
+            border-color: var(--primary-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .affiliation-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .affiliation-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .affiliation-role {
+            color: var(--text-light);
+        }
+
+        .affiliation-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            text-align: left;
+            padding: 0 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-purple);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .contact-value a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: var(--secondary-purple);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2002;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                z-index: 2001;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 5%;
+                position: relative;
+                z-index: 1;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-download-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .skills-list {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-intro h2 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .contact-form-section {
+                padding: 2rem;
+            }
+
+            .contact-form-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .affiliation-card {
+                height: auto;
+                min-height: 300px;
+                padding: 2rem 1.5rem;
+            }
+
+            .affiliation-description {
+                font-size: 0.85rem;
+                padding: 0 0.3rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrapper">
-    
-<div class="sidebar-wrapper">
-
-  <div class="profile-container">
-
-    
-    <img class="avatar" src="./assets/images/profile.png" alt="profile picture" />
-    
-
-    
-    <h1 class="name">WUWU RAN</h1>
-    
-
-    
-    <h3 class="tagline">Urban Designer & Researcher</h3>
-    
-
-  </div><!--//profile-container-->
-
-  <div class="contact-container container-block">
-  <ul class="list-unstyled contact-list">
-
-    
-    <li class="email"><i class="fas fa-envelope"></i>
-      <a href="mailto:wuwu.ran@liverpool.ac.uk">wuwu.ran@liverpool.ac.uk</a>
-    </li>
-    
-    <li class="email"><i class="fas fa-envelope"></i>
-      <a href="mailto:ranwuwu@gmail.com">ranwuwu@gmail.com</a>
-    </li>
-    
-
-    
-    <li class="phone"><i class="fas fa-phone"></i>
-      <a href="tel:+44 7412 137549">+44 7412 137549</a>
-    </li>
-    
-
-    
-    <li class="website"><i class="fas fa-globe-americas"></i>
-      <a href="http://ranwuwu.com" target="_blank">ranwuwu.com</a>
-    </li>
-    
-
-    
-    <li class="linkedin"><i class="fab fa-linkedin"></i>
-      <a href="https://linkedin.com/in/wuwu-ran-99b006173" target="_blank">wuwu-ran-99b006173</a>
-    </li>
-    
-
-    
-    <li class="github"><i class="fab fa-github"></i>
-      <a href="http://github.com/wuwuran" target="_blank">wuwuran</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
-</div><!--//contact-container-->
-
-
-  
-    
-
-
-  
-
-  
-
-<div class="languages-container container-block">
-
-  <h2 class="container-block-title">
-    Languages
-  </h2>
-
-  <ul class="list-unstyled interests-list">
-    
-    <li>
-      Mandarin
-      <span class="lang-desc">(Native)</span>
-    </li>
-    
-    <li>
-      English
-      <span class="lang-desc">(Professional)</span>
-    </li>
-    
-  </ul>
-
-</div><!--//interests-->
-
-
-  
-
-<div class="interests-container container-block">
-
-  <h2 class="container-block-title">
-    Interests
-  </h2>
-
-  <ul class="list-unstyled interests-list">
-    
-
-      
-      <li>Traveller</li>
-      
-
-    
-
-      
-      <li>Photographer</li>
-      
-
-    
-  </ul>
-
-</div><!--//interests-->
-
-
-
-  
-    <div class="remove-container container-block">
-  <!-- <h2 class="container-block-title">
-    About Theme
-  </h2>
-  <ul class="list-unstyled interests-list">
-    <li><a target="_blank" href="https://www.youtube.com/watch?v=Jnmj1dXDbNk">How to use?</a></li>
-     <li><a class="github-button" href="https://github.com/sharu725/online-cv" data-icon="octicon-star" data-show-count="true" aria-label="Star sharu725/online-cv on GitHub">Star</a>
-     <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </ul> -->
-</div><!--//About-->
-  
-
-</div><!--//sidebar-wrapper-->
-
-
-    <div class="main-wrapper">
-        
-
-<section class="section summary-section">
-
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-user fa-stack-1x fa-inverse"></i>
-    </span>
-    Profile
-  </h2>
-
-  <div class="summary">
-    <ul>
-  <li>
-    <p>Innovative Urban Designer, Researcher, and emerging academic with a robust blend of industry experience and scholarly expertise.</p>
-  </li>
-  <li>
-    <p>PhD research specialises in an AI-driven taxonomy for urban screens and augmented public spaces, employing data-driven (machine learning) clustering methodologies and creating an Augmented Public Spaces Index (APSI) to assess the quality of spaces.</p>
-  </li>
-  <li>
-    <p>Interdisciplinary approach combining urban design, digital technologies, and social sciences to address urban challenges.</p>
-  </li>
-  <li>
-    <p>An urban designer with five years of experience in China's highly competitive construction industry.</p>
-  </li>
-  <li>
-    <p>International experience through education in the UK and professional experience in China, offering diverse perspectives on urban planning.</p>
-  </li>
-  <li>
-    <p>Bilingual in Mandarin (native) and English.</p>
-  </li>
-  <li>
-    <p>Continuing involvement in voluntary activities; keen independent traveller and photographer.</p>
-  </li>
-</ul>
-
-  </div><!--//summary-->
-    
-</section><!--//section-->
-
-
-
-
-
-
-
-<section class="section experiences-section">
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
-    </span>
-    Education
-  </h2>
-
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title"><a href="http://www.cava-research.org/team-profiles/ran">PhD in Architecture</a></h3>
-        <div class="time">April 2020 - March 2025</div>
-      </div><!--//upper-row-->
-
-      <div class="company">University of Liverpool, Centre for Architecture and the Visual Arts.</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">            
-      <p>Supervisors: Prof. Richard Koeck; Dr. Francesca Piazzoni
-      <p>Research focuses on the evolution of urban screens using machine learning, empirical studies, and qualitative analysis, as well as the development of an augmented public space index for comparative typological assessments of augmented public spaces.</p>
-      <p>Specialization: Urban Screen, Augmented Public Spaces, VR-Based Data Visualisation.</p>
-      <p>This research contributes to the development of AI-driven urban design strategies, supporting interdisciplinary innovations in urban planning and smart city governance.</p>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">MA in Urban Design</h3>
-        <div class="time">September 2018 - September 2019</div>
-      </div><!--//upper-row-->
-
-      <div class="company">University of Sheffield</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      <p>Conducted fieldwork in Milan under the supervision of Beatrice de Carli as part of the Inclusive Design Group, focusing on social housing for immigrant communities to promote inclusive urban design.</p>
-      <p>Completed the thesis 'Careful Urban Regeneration' (fieldwork in Germany) under the supervision of Dr. Florian Kossak.</p>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">BA in Landscape Architecture</h3>
-        <div class="time">September 2009 - September 2013</div>
-      </div><!--//upper-row-->
-
-      <div class="company">Soochow University</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      <p>Key modules: Landscape Architecture Design, Psychology of Environment & Behaviour, Urban Landscape Ecology, Project Management, CAD, History of Chinese Landscapes.</p>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-
-<section class="section experiences-section">
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
-    </span>
-    Research experience
-  </h2>
-
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">Shanghai Urban Master Plan (2017-2035)</h3>
-        <div class="time">Sep 2014 – Oct 2015</div>
-      </div><!--//upper-row-->
-
-      <div class="company">Special Research Project on Urban Design</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      <p>Research on the System and Measures for Overall Urban Design of Shanghai</p>
-      <p>This research integrates welfare economics by applying Pareto Efficiency and Rawlsian principles to classify Shanghai's urban design policies into five types. I was responsible for the Quality Improvement Area, which targets underdeveloped suburban regions and historically constrained, aging inner-city neighborhoods, aiming to respect the city's heritage while enhancing its spatial quality.</p>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">Infrastructure research</h3>
-        <div class="time">Sep 2016 - Dec 2017</div>
-      </div><!--//upper-row-->
-
-      <div class="company"></div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      <p>Research on Demand of Industrial Community Facilities in 104 Industrial Area in Shanghai</p>
-      <p>Conducted a study on the demand for industrial community facilities in Shanghai's 104 Industrial Area. The project involved analyzing existing facility issues and developing tailored solutions by leveraging GIS technology and principles of spatial equity.</p>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-
-<section class="section publications-section">
-
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-file-alt fa-stack-1x fa-inverse"></i>
-    </span>
-    Publications
-  </h2>
-
-  
-
-  
-  <div class="item">
-    <div class="publication-title">
-        <a href="https://www.researchgate.net/publication/387740633_CHALLENGING_SURVEILLANCE_CAPITALISM_IN_URBAN_PUBLIC_SPACES_THROUGH_GAMIFIED_SPATIAL_PRACTICE_SIMULATION_WITH_VIRTUAL_REALITY_A_Case_Study_of_Piccadilly_Circus_Urban_Screen_Space"target="_blank">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</a>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#logoGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#logoGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="pages/academic.html" class="nav-item">Academic Work</a>
+                <a href="pages/professional.html" class="nav-item">Professional Work</a>
+                <a href="pages/digital.html" class="nav-item">Digital Arts</a>
+                <a href="pages/publication.html" class="nav-item">Publication</a>
+                <a href="pages/workshop.html" class="nav-item">Workshop</a>
+                <a href="pages/affiliation.html" class="nav-item">Affiliation</a>
+                <a href="pages/about.html" class="nav-item">About Me</a>
+                <a href="pages/contact.html" class="nav-item">Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div class="hero-section">
+                <div class="hero-logo">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#heroGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#heroGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#heroGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#heroGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <h1 class="hero-title">WUWU RAN</h1>
+                <p class="hero-subtitle">Design Studio</p>
+                <p class="hero-description">
+                    Exploring computational design, media architecture, AR/VR technologies, and experience design across scales.
+                </p>
+            </div>
+        </main>
     </div>
-    <div class="publication-authors">Ran, Wuwu</div>
-    <div class="publication-conference">ASCAAD 2024 Conference on Mixed Realities Session. Arab Society for Computation in Architecture, Art and Design, Barcelona, 2024, 553-564.</div>
-  </div><!--//item-->
-  
-  <div class="item">
-    <div class="publication-title">
-        <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596" target="_blank">Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</a>
-    </div>
-    <div class="publication-authors">Ran, Wuwu; Yin, Lu; Yu, Jie</div>
-    <div class="publication-conference">ACADIA 2023: Habits of the Anthropocene: Scarcity and Abundance in a Post-Material Economy [Volume 2: Proceedings of the 43rd Annual Conference for the Association for Computer Aided Design in Architecture ISBN 979-8-9891764-0-3]. Denver. 26-28 October 2023, edited by A. Crawford, N. Diniz, R. Beckett, J. Vanucchi, M. Swackhamer 596-605.</div>
-  </div><!--//item-->
-  
-  <div class="item">
-    <div class="publication-title">
-        <a href="#" target="_blank">Ecological Water Environment Planning with Lingnan Water Town Characteristics: A Case Study of the Urban Design for Foshan University Town Satellite City (Beijiao)</a>
-    </div>
-    <div class="publication-authors">Ran, Wuwu</div>
-    <div class="publication-conference">Regional Governance, 2018, 186–188.</div>
-  </div><!--//item-->
-  
-  <div class="item">
-    <div class="publication-title">
-        <a href="https://baike.baidu.com/item/%E6%A2%A6%E7%BC%98%E9%99%86%E5%AE%B6%E5%98%B4%EF%BC%881990-2015%20%E7%AC%AC2%E5%88%86%E5%86%8C%E9%87%8D%E7%82%B9%E5%8C%BA%E5%9F%9F%E8%A7%84%E5%88%92%E5%92%8C%E4%B8%93%E9%A1%B9%E8%A7%84%E5%88%92%EF%BC%89/56378859#1" target="_blank">Lujiazui: Where all Dreams Begin</a>
-    </div>
-    <div class="publication-authors">Hong He, Qi Gao, Xinwen Shen, Mengya Wang, Wuwu Ran, Hua Zhang, Yiwen Zhu, Zhihua He, Yiqian Kong</div>
-    <div class="publication-conference">Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series, China Architecture & Building Press, 2015. ISBN 978-7-112-18439-2</div>
-  </div><!--//item-->
-  
-  <div class="item">
-    <div class="publication-title">
-        <a href="http://116.236.205.132/KCMS/detail/detail.aspx?filename=ZHCG201509016001&dbcode=CPFD&dbname=CPFD2016" target="_blank">Urban Development Problems and Countermeasures in Guiyang</a>
-    </div>
-    <div class="publication-authors">Ran, Wuwu; Wang Li</div>
-    <div class="publication-conference">The Annual National Planning Conference (ANPC), China, 2015. ISBN 978-89475-444-8 (26482)</div>
-  </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-<section class="section projects-section">
-
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
-    </span>
-    Awards
-  </h2>
-
-  
-  <div class="intro">
-      <p></p>
-  </div><!--//intro-->
-  
-
-  
-    <div class="item">
-
-      <span class="project-title">
-        Second Prize of Shandong Province Excellent Urban and Rural Planning in 2017 (China)
-      </span>
-      <br/>
-
-      
-      - <span class="project-tagline">Project Name: Urban Design for Industrial Upgrading and Urban Renewal in Zhuzhou Road, Laoshan District, Qingdao</span>
-      
-
-    </div><!--//item-->
-  
-    <div class="item">
-
-      <span class="project-title">
-        Second Prize of Xinjiang Province Excellent Urban and Rural Planning in 2017<br/>
-        Third Prize of China Annual Excellent Urban and Rural Planning in 2019 (National Awards)
-      </span>
-      <br/>
-
-      
-      - <span class="project-tagline">Project Name: Preservation planning of Mountain, Water and Cultural Heritage Buildings, Urumqi</span>
-      
-
-    </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-<section class="section projects-section">
-
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
-    </span>
-    Certificate
-  </h2>
-
-  
-  <div class="intro">
-      <p></p>
-  </div><!--//intro-->
-  
-
-  
-    <div class="item">
-
-      <span class="project-title">
-        Engineering Series Intermediate Professional Technical Position Qualifications
-      </span>
-      <br/>
-
-      
-      - <span class="project-tagline">Issues by Shanghai Housing and Urban-Rural Construction Management Committee</span>
-      
-
-    </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-<section class="section experiences-section">
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
-    </span>
-    Work Experience
-  </h2>
-
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">Urban Designer/Urban Planner/Researcher</h3>
-        <div class="time">Jul 2013 – Jul 2018</div>
-      </div><!--//upper-row-->
-
-      <div class="company">Shanghai Urban Planning and Design Research Institute</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      <p>The Shanghai Urban Planning and Design Research Institute (SUPDRI) is affiliated with the Shanghai Planning and Natural Resources Bureau. Founded in 1957, it is one of China's earliest and most technically advanced Class A institutions for urban planning and design, land use planning, and engineering consulting.</p>
-      <ul>
-        <li>Develop conceptual urban plans by receiving client briefings, conducting research and site visits, analysing the site, and discussing details within the team before the initial plan.</li>
-        <li>Contributed to major urban planning and design projects focusing on industrial upgrading, urban renewal, and cultural heritage preservation.</li>
-        <li>Integrated digital design strategies by employing GIS, API-based methodologies, and other data-driven tools to enhance urban planning processes.</li>
-        <li>Collaborated with multidisciplinary teams to incorporate emerging digital technologies into planning practices and participated in research projects that informed strategic urban design decisions.</li>
-        <li>Awarded several accolades for involvement in various high-profile and prestigious projects across China.</li>
-      </ul>
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">Intern – Design Assistant</h3>
-        <div class="time">Jan – Feb 2013</div>
-      </div><!--//upper-row-->
-
-      <div class="company">Guiyang Urban and Rural Planning & Design Institute</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      
-<ul>
-  <li>Involved in the landscape design for Guiyang Huaxia District Ten-Mile River Band Wetland Park.</li>
-  <li>Compiling a plan of the population density of the Exhibition Area of Guanshanhu District to comply with government regulations.</li>
-</ul>
-
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-  <div class="item">
-
-    <div class="meta">
-
-      <div class="upper-row">
-        <h3 class="job-title">Intern</h3>
-        <div class="time">Jul – Sep 2012</div>
-      </div><!--//upper-row-->
-
-      <div class="company">Shanghai Ruyifang Engineering Design Co., Ltd</div>
-
-    </div><!--//meta-->
-
-    
-    <div class="details">
-      
-<ul>
-  <li>Producing analytical graphs, general rendering and the text and layout of the final plan for the Fushui River Ecological Tourism project.</li>
-</ul>
-
-    </div><!--//details-->
-    
-
-  </div><!--//item-->
-  
-
-</section><!--//section-->
-
-
-
-
-
-
-<section class="skills-section section">
-
-  <h2 class="section-title">
-    <span class="fa-stack fa-xs">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-wrench fa-stack-1x fa-inverse"></i>
-    </span>
-    Skills &amp; Proficiency
-  </h2>
-
-  <div class="skillset">
-
-    
-    <div class="item">
-
-      <h3 class="level-title">Adobe Creative Suite</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="90%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-    <div class="item">
-
-      <h3 class="level-title">Rhino & Grasshopper</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="70%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-    <div class="item">
-
-      <h3 class="level-title">Blender</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="80%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-    <div class="item">
-
-      <h3 class="level-title">Unity</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="70%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-    <div class="item">
-
-      <h3 class="level-title">Python</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="75%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-    <div class="item">
-
-      <h3 class="level-title">AI Tools (Stable Diffusion & MidJourney)</h3>
-
-      <div class="level-bar">
-        <div class="level-bar-inner" data-level="75%">
-        </div>
-      </div><!--//level-bar-->
-
-    </div><!--//item-->
-    
-
-  </div>
-
-</section><!--//skills-section-->
-
-
-
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="text-center">
-        <small class="copyright">Last Updated: April 2025</small>
-    </div><!--//container-->
-</footer><!--//footer-->
-
-
-<!-- Javascript -->
-<script type="text/javascript" src="./assets/plugins/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- custom js -->
-<script type="text/javascript" src="./assets/js/main.js"></script>
-
-
-  <!-- Analytics -->
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-83979019-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
 </body>
-
 </html>

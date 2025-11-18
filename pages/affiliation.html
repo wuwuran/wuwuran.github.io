@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliation - WUWU RAN Design Studio</title>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 104, 238, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Affiliation Grid */
+        .affiliation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .affiliation-card {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .affiliation-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .affiliation-card-link:hover .affiliation-card {
+            border-color: var(--primary-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .affiliation-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+        }
+
+        .affiliation-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .affiliation-role {
+            color: var(--text-light);
+        }
+
+        .affiliation-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            text-align: left;
+            padding: 0 0.5rem;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2000;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 5%;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .affiliation-card {
+                height: auto;
+                min-height: 300px;
+                padding: 2rem 1.5rem;
+            }
+
+            .affiliation-description {
+                font-size: 0.85rem;
+                padding: 0 0.3rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#logoGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#logoGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="academic.html" class="nav-item">Academic Work</a>
+                <a href="professional.html" class="nav-item">Professional Work</a>
+                <a href="digital.html" class="nav-item">Digital Arts</a>
+                <a href="publication.html" class="nav-item">Publication</a>
+                <a href="workshop.html" class="nav-item">Workshop</a>
+                <a href="affiliation.html" class="nav-item active">Affiliation</a>
+                <a href="about.html" class="nav-item">About Me</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Affiliation Page -->
+            <div id="affiliation" class="page">
+                <div class="page-header">
+                    <h1 class="page-title">Affiliation</h1>
+                    <p class="page-description">Academic and professional institutional connections.</p>
+                </div>
+                <div class="affiliation-grid">
+                    <a href="http://www.cava-research.org/team-profiles/ran" target="_blank" class="affiliation-card-link">
+                        <div class="affiliation-card">
+                            <h3 class="affiliation-name">University of Liverpool<br><span style="font-size: 0.9rem; font-weight: 400;">(Centre for Architecture and Visual Arts)</span></h3>
+                            <p class="affiliation-role">PhD Researcher</p>
+                            <p class="affiliation-description">Researching the intersection of architecture, digital media, and urban space through computational and spatial analysis methods.</p>
+                        </div>
+                    </a>
+                    <div class="affiliation-card">
+                        <h3 class="affiliation-name">Urban Pixel Lab<br><span style="font-size: 0.9rem; font-weight: 400;">(无物设计)</span></h3>
+                        <p class="affiliation-role">Founder & Lead Designer</p>
+                        <p class="affiliation-description">An independent studio and research lab exploring urban digitalisation, media architecture, and immersive spatial experiences through experimental design and visualisation projects.</p>
+                    </div>
+                    <div class="affiliation-card">
+                        <h3 class="affiliation-name">W House Consulting</h3>
+                        <p class="affiliation-role">Founder & Principal Designer</p>
+                        <p class="affiliation-description">A design and planning consultancy specialising in residential extensions, architectural applications, and adaptive design solutions for urban and suburban contexts.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

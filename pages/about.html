@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - WUWU RAN Design Studio</title>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 104, 238, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        /* CV Download Button */
+        .cv-download-section {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+        }
+
+        .cv-download-btn svg {
+            fill: currentColor;
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            margin: 5%;
+        }
+
+        /* CV Content Styles */
+        .profile-section,
+        .education-section,
+        .experience-section,
+        .publications-section,
+        .skills-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-section h3,
+        .education-section h3,
+        .experience-section h3,
+        .publications-section h3,
+        .skills-section h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-purple);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .profile-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-section li {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .profile-section li:before {
+            content: "•";
+            color: var(--primary-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .education-item,
+        .experience-item,
+        .publication-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(123, 104, 238, 0.1);
+        }
+
+        .education-item:last-child,
+        .experience-item:last-child,
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h4,
+        .experience-item h4,
+        .publication-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta,
+        .experience-meta,
+        .publication-meta {
+            font-size: 0.9rem;
+            color: var(--secondary-purple);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .education-institution,
+        .experience-company {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .education-item p,
+        .experience-item p,
+        .publication-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item ul {
+            margin-top: 0.8rem;
+        }
+
+        .experience-item li {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .experience-item li:before {
+            content: "▸";
+            color: var(--primary-purple);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            color: var(--secondary-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2000;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 5%;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-download-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .skills-list {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#logoGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#logoGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="academic.html" class="nav-item">Academic Work</a>
+                <a href="professional.html" class="nav-item">Professional Work</a>
+                <a href="digital.html" class="nav-item">Digital Arts</a>
+                <a href="publication.html" class="nav-item">Publication</a>
+                <a href="workshop.html" class="nav-item">Workshop</a>
+                <a href="affiliation.html" class="nav-item">Affiliation</a>
+                <a href="about.html" class="nav-item active">About Me</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Me Page -->
+            <div id="about" class="page">
+                <div class="page-header">
+                    <h1 class="page-title">About Me</h1>
+                    <div class="cv-download-section">
+                        <a href="../aboutme/CV-Wuwu Ran-General.pdf" download class="cv-download-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+                            </svg>
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="profile-section">
+                            <h3>Profile</h3>
+                            <ul>
+                                <li>Innovative Urban Designer, Researcher, and emerging academic with a robust blend of industry experience and scholarly expertise.</li>
+                                <li>PhD research specialises in an AI-driven taxonomy for urban screens and augmented public spaces, employing data-driven (machine learning) clustering methodologies and creating an Augmented Public Spaces Index (APSI) to assess the quality of spaces.</li>
+                                <li>Interdisciplinary approach combining urban design, digital technologies, and social sciences to address urban challenges.</li>
+                                <li>An urban designer with five years of experience in China's highly competitive construction industry.</li>
+                                <li>International experience through education in the UK and professional experience in China, offering diverse perspectives on urban planning.</li>
+                                <li>Bilingual in Mandarin (native) and English.</li>
+                                <li>Continuing involvement in voluntary activities; keen independent traveller and photographer.</li>
+                            </ul>
+                        </div>
+
+                        <div class="education-section">
+                            <h3>Education</h3>
+                            <div class="education-item">
+                                <h4>PhD in Architecture</h4>
+                                <p class="education-meta">April 2020 - March 2025</p>
+                                <p class="education-institution">University of Liverpool, Centre for Architecture and the Visual Arts.</p>
+                                <p>Supervisors: Prof. Richard Koeck; Dr. Francesca Piazzoni</p>
+                                <p>Research focuses on the evolution of urban screens using machine learning, empirical studies, and qualitative analysis, as well as the development of an augmented public space index for comparative typological assessments of augmented public spaces.</p>
+                                <p>Specialization: Urban Screen, Augmented Public Spaces, VR-Based Data Visualisation.</p>
+                            </div>
+                            <div class="education-item">
+                                <h4>MA in Urban Design</h4>
+                                <p class="education-meta">September 2018 - September 2019</p>
+                                <p class="education-institution">University of Sheffield</p>
+                                <p>Conducted fieldwork in Milan under the supervision of Beatrice de Carli as part of the Inclusive Design Group, focusing on social housing for immigrant communities to promote inclusive urban design.</p>
+                                <p>Completed the thesis 'Careful Urban Regeneration' (fieldwork in Germany) under the supervision of Dr. Florian Kossak.</p>
+                            </div>
+                            <div class="education-item">
+                                <h4>BA in Landscape Architecture</h4>
+                                <p class="education-meta">September 2009 - September 2013</p>
+                                <p class="education-institution">Soochow University</p>
+                                <p>Key modules: Landscape Architecture Design, Psychology of Environment & Behaviour, Urban Landscape Ecology, Project Management, CAD, History of Chinese Landscapes.</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-section">
+                            <h3>Work Experience</h3>
+                            <div class="experience-item">
+                                <h4>Urban Designer/Urban Planner/Researcher</h4>
+                                <p class="experience-meta">Jul 2013 – Jul 2018</p>
+                                <p class="experience-company">Shanghai Urban Planning and Design Research Institute</p>
+                                <ul>
+                                    <li>Develop conceptual urban plans by receiving client briefings, conducting research and site visits, analysing the site, and discussing details within the team before the initial plan.</li>
+                                    <li>Contributed to major urban planning and design projects focusing on industrial upgrading, urban renewal, and cultural heritage preservation.</li>
+                                    <li>Integrated digital design strategies by employing GIS, API-based methodologies, and other data-driven tools to enhance urban planning processes.</li>
+                                    <li>Collaborated with multidisciplinary teams to incorporate emerging digital technologies into planning practices and participated in research projects that informed strategic urban design decisions.</li>
+                                    <li>Awarded several accolades for involvement in various high-profile and prestigious projects across China.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="publications-section">
+                            <h3>Publications</h3>
+                            <div class="publication-item">
+                                <h4>Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</h4>
+                                <p class="publication-author">Ran, Wuwu</p>
+                                <p class="publication-meta">ASCAAD 2024 Conference on Mixed Realities Session. Arab Society for Computation in Architecture, Art and Design, Barcelona, 2024, 553-564.</p>
+                            </div>
+                            <div class="publication-item">
+                                <h4>Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</h4>
+                                <p class="publication-author">Ran, Wuwu; Yin, Lu; Yu, Jie</p>
+                                <p class="publication-meta">ACADIA 2023: Habits of the Anthropocene: Scarcity and Abundance in a Post-Material Economy [Volume 2: Proceedings of the 43rd Annual Conference for the Association for Computer Aided Design in Architecture ISBN 979-8-9891764-0-3]. Denver. 26-28 October 2023, edited by A. Crawford, N. Diniz, R. Beckett, J. Vanucchi, M. Swackhamer 596-605.</p>
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <h3>Skills & Proficiency</h3>
+                            <div class="skills-list">
+                                <span class="skill-tag">Adobe Creative Suite</span>
+                                <span class="skill-tag">Rhino & Grasshopper</span>
+                                <span class="skill-tag">Blender</span>
+                                <span class="skill-tag">Unity</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">AI Tools (Stable Diffusion & MidJourney)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="../aboutme/me.png" alt="Wuwu Ran">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

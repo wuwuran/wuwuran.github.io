@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - WUWU RAN Design Studio</title>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 104, 238, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Contact Page Styles */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--secondary-purple));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(123, 104, 238, 0.3);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            color: var(--secondary-purple);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-purple);
+            transform: translateY(-2px);
+        }
+
+        .contact-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .contact-form-section {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.08), rgba(157, 141, 255, 0.03));
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: rgba(26, 26, 46, 0.8);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2000;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 5%;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .contact-intro h2 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .contact-form-section {
+                padding: 2rem;
+            }
+
+            .contact-form-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7B68EE;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#9D8DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 150 150 L 250 50 L 350 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 250 150 L 350 50 L 450 150" stroke="url(#logoGradient)" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="150" y="170" width="300" height="180" stroke="url(#logoGradient)" stroke-width="12" fill="none" rx="5"/>
+                        <rect x="255" y="280" width="90" height="70" stroke="url(#logoGradient)" stroke-width="10" fill="none"/>
+                    </svg>
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="academic.html" class="nav-item">Academic Work</a>
+                <a href="professional.html" class="nav-item">Professional Work</a>
+                <a href="digital.html" class="nav-item">Digital Arts</a>
+                <a href="publication.html" class="nav-item">Publication</a>
+                <a href="workshop.html" class="nav-item">Workshop</a>
+                <a href="affiliation.html" class="nav-item">Affiliation</a>
+                <a href="about.html" class="nav-item">About Me</a>
+                <a href="contact.html" class="nav-item active">Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <div class="page-header">
+                    <h1 class="page-title">Contact</h1>
+                    <p class="page-description">Let's connect and discuss opportunities for collaboration.</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-intro">
+                        <h2>Get In Touch</h2>
+                        <p>I'm always interested in new opportunities, collaborations, and exciting projects. Feel free to reach out if you'd like to discuss architecture, urban design, digital technologies, or potential partnerships.</p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Email</h3>
+                            <a href="mailto:ranwuwu@gmail.com" class="contact-link">ranwuwu@gmail.com</a>
+                            <p class="contact-description">Send me an email for inquiries, collaborations, or opportunities.</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.62,10.79c1.44,2.83 3.76,5.15 6.59,6.59l2.2-2.2c0.27-0.27 0.67-0.36 1.02-0.24 c1.12,0.37 2.33,0.57 3.57,0.57c0.55,0 1,0.45 1,1V20c0,0.55-0.45,1-1,1c-9.39,0-17-7.61-17-17c0-0.55 0.45-1 1-1h3.5 c0.55,0 1,0.45 1,1c0,1.25 0.2,2.45 0.57,3.57c0.11,0.35 0.03,0.74-0.25,1.02L6.62,10.79z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Phone</h3>
+                            <a href="tel:+447421137549" class="contact-link">+44 7421 137549</a>
+                            <p class="contact-description">Available for calls and urgent matters.</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Location</h3>
+                            <p class="contact-link">Liverpool, UK</p>
+                            <p class="contact-description">Based in Liverpool, available for remote collaboration worldwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-section">
+                        <h2>Send a Message</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" fill="currentColor"/>
+                                </svg>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+
+            // Create mailto link
+            const mailtoLink = `mailto:ranwuwu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
