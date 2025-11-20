@@ -232,6 +232,35 @@
             font-size: 1rem;
         }
 
+        /* Coming Soon */
+        .coming-soon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+        }
+
+        .coming-soon-content {
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .coming-soon-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -262,6 +291,14 @@
 
             .page-description {
                 font-size: 1rem;
+            }
+
+            .coming-soon-title {
+                font-size: 2.5rem;
+            }
+
+            .coming-soon-text {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -312,93 +349,10 @@
                     <h1 class="page-title">Workshop</h1>
                     <p class="page-description">Teaching sessions, design workshops, and educational programs.</p>
                 </div>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M 40 120 L 80 60 L 120 100 L 160 40" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <circle cx="80" cy="60" r="8" fill="#9D8DFF"/>
-                                <circle cx="120" cy="100" r="8" fill="#9D8DFF"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Computational Design Workshop</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="60" y="60" width="80" height="60" stroke="#9D8DFF" stroke-width="3" fill="none" rx="5"/>
-                                <circle cx="100" cy="90" r="15" stroke="#9D8DFF" stroke-width="2" fill="none"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">XR Design Session</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="100,50 130,90 130,130 70,130 70,90" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <line x1="70" y1="110" x2="130" y2="110" stroke="#9D8DFF" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Robotic Fabrication Lab</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="100" cy="100" r="50" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <polygon points="100,70 120,110 80,110" fill="#9D8DFF"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Grasshopper Training</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="50" y="70" width="100" height="60" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <line x1="70" y1="85" x2="130" y2="85" stroke="#9D8DFF" stroke-width="2"/>
-                                <line x1="70" y1="100" x2="130" y2="100" stroke="#9D8DFF" stroke-width="2"/>
-                                <line x1="70" y1="115" x2="130" y2="115" stroke="#9D8DFF" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Digital Fabrication</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M 50 100 L 80 70 L 120 90 L 150 60" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <line x1="50" y1="140" x2="150" y2="140" stroke="#9D8DFF" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Python for Design</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="70" cy="100" r="25" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <circle cx="130" cy="100" r="25" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <line x1="95" y1="100" x2="105" y2="100" stroke="#9D8DFF" stroke-width="3"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Unity Workshop</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="60" y="60" width="80" height="80" stroke="#9D8DFF" stroke-width="3" fill="none" rx="10"/>
-                                <circle cx="85" cy="90" r="6" fill="#9D8DFF"/>
-                                <circle cx="115" cy="90" r="6" fill="#9D8DFF"/>
-                                <path d="M 85 115 Q 100 125 115 115" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Unreal Engine Course</h3>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <polygon points="100,50 140,80 130,130 70,130 60,80" stroke="#9D8DFF" stroke-width="3" fill="none"/>
-                                <circle cx="100" cy="100" r="20" stroke="#9D8DFF" stroke-width="2" fill="none"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-title">Media Architecture</h3>
+                <div class="coming-soon">
+                    <div class="coming-soon-content">
+                        <h2 class="coming-soon-title">Coming Soon</h2>
+                        <p class="coming-soon-text">Workshop sessions and educational programs are currently being prepared. Stay tuned for upcoming workshops and courses!</p>
                     </div>
                 </div>
             </div>
