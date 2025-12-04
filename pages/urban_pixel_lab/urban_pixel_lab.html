@@ -84,9 +84,11 @@
         }
 
         .project-meta {
-            font-size: 0.95rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
+            font-size: 1rem;
+            color: var(--text-light);
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+            font-weight: 400;
         }
 
         .project-video {
@@ -122,6 +124,13 @@
 
         .project-image:hover img {
             transform: scale(1.02);
+            animation-play-state: running; /* Ensure animation continues on hover */
+        }
+
+        /* Ensure GIFs always animate */
+        .project-image img {
+            animation-play-state: running !important;
+            image-rendering: -webkit-optimize-contrast; /* Better GIF rendering */
         }
 
         .project-content {
@@ -133,8 +142,8 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: #fff;
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 0.8rem;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--border-color);
             letter-spacing: 0.05em;
         }
@@ -254,6 +263,44 @@
             }
         }
     </style>
+    <script>
+        // Ensure GIFs loop continuously
+        document.addEventListener('DOMContentLoaded', function() {
+            const gifs = document.querySelectorAll('.project-image img[src$=".GIF"], .project-image img[src$=".gif"]');
+
+            gifs.forEach(function(gif) {
+                // Force GIF to reload and ensure it loops
+                const originalSrc = gif.src;
+                gif.src = '';
+                gif.src = originalSrc;
+
+                // Add cache-busting parameter to ensure fresh load
+                if (!gif.src.includes('?')) {
+                    gif.src = originalSrc + '?loop=' + Date.now();
+                }
+            });
+
+            // Periodic check to ensure GIFs keep animating
+            setInterval(function() {
+                gifs.forEach(function(gif) {
+                    // If GIF appears to have stopped (height becomes 0), reload it
+                    if (gif.complete && gif.naturalHeight === 0) {
+                        const src = gif.src.split('?')[0];
+                        gif.src = src + '?reload=' + Date.now();
+                    }
+                });
+            }, 10000); // Check every 10 seconds
+        });
+
+        // Additional function to restart GIFs if needed
+        function restartGifs() {
+            const gifs = document.querySelectorAll('.project-image img[src$=".GIF"], .project-image img[src$=".gif"]');
+            gifs.forEach(function(gif) {
+                const src = gif.src.split('?')[0];
+                gif.src = src + '?restart=' + Date.now();
+            });
+        }
+    </script>
 </head>
 <body>
     <a href="../digital.html#digital" class="back-button">← Back to Digital Arts</a>
@@ -261,27 +308,7 @@
     <div class="project-container">
         <div class="project-header">
             <h1 class="project-title">URBAN PIXEL LAB</h1>
-            <p class="project-subtitle">Generative Video / Code (Processing)</p>
-            <p class="project-meta">Project Title: Urban Pixel Lab | Year: 2025.01 | Medium: Generative Video / Code (Processing)</p>
-        </div>
-
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Medium</div>
-                <div class="info-value">Generative Video / Code (Processing)</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Language</div>
-                <div class="info-value">Processing (Java)</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Role</div>
-                <div class="info-value">Creative Director & Developer</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Year</div>
-                <div class="info-value">2025.01</div>
-            </div>
+            <p class="project-meta">Generative Video / Code (Processing) · 2025.01</p>
         </div>
 
         <div class="project-content">
@@ -294,7 +321,6 @@
                 The generative system utilises custom algorithms to control over 1,800 autonomous pixel particles. These elements simulate data transmission, vertical scanning, and matrix-style convergence without the use of keyframes. The visual language draws inspiration from retro-futurism and media architecture, employing a high-contrast palette of neon green and deep charcoal to represent the pulse of a living digital city.
             </p>
 
-            <h2 class="section-title">Video</h2>
             <!-- Project Logo Video -->
             <div class="project-video" style="margin: 2rem 0;">
                 <video controls poster="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF">
