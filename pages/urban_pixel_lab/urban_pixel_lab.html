@@ -178,10 +178,16 @@
         }
 
         .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
             margin: 3rem 0;
+            flex-wrap: nowrap;
+        }
+
+        .project-image {
+            flex: 1;
+            min-width: 0;
         }
 
         .download-section {
@@ -243,7 +249,8 @@
             }
 
             .screenshots-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -254,18 +261,18 @@
     <div class="project-container">
         <div class="project-header">
             <h1 class="project-title">URBAN PIXEL LAB</h1>
-            <p class="project-subtitle">Digital Art Installation & Interactive Experience</p>
-            <p class="project-meta">Digital Arts & Interactive Design | Personal Project | Virtual Space</p>
+            <p class="project-subtitle">Generative Video / Code (Processing)</p>
+            <p class="project-meta">Project Title: Urban Pixel Lab | Year: 2025.01 | Medium: Generative Video / Code (Processing)</p>
         </div>
 
         <div class="info-grid">
             <div class="info-item">
                 <div class="info-label">Medium</div>
-                <div class="info-value">Digital Installation</div>
+                <div class="info-value">Generative Video / Code (Processing)</div>
             </div>
             <div class="info-item">
-                <div class="info-label">Tools</div>
-                <div class="info-value">Processing, Unity, After Effects</div>
+                <div class="info-label">Language</div>
+                <div class="info-value">Processing (Java)</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Role</div>
@@ -273,72 +280,55 @@
             </div>
             <div class="info-item">
                 <div class="info-label">Year</div>
-                <div class="info-value">2024</div>
+                <div class="info-value">2025.01</div>
             </div>
-        </div>
-
-        <!-- Project Logo Video -->
-        <div class="project-video">
-            <video controls poster="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF">
-                <source src="../../assets/digital/Urban_Pixel_Lab/urban_logo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
         </div>
 
         <div class="project-content">
-            <h2 class="section-title">Project Overview</h2>
+            <h2 class="section-title">Description</h2>
             <p class="project-description">
-                Urban Pixel Lab is an immersive digital art installation that explores the intersection of urban architecture and pixel art. This interactive experience transforms traditional architectural visualization into a dynamic, pixel-based environment where users can navigate through virtual cityscapes composed entirely of digital pixels.
+                A computational study on order emerging from chaos. This project treats the brand identity not as a static image, but as a destination for drifting data. Through a sequence of six algorithmic 'shots,' the piece narrates the solidification of information into form, reflecting the invisible digital layers that coat our modern urban environments.
             </p>
 
             <p class="project-description">
-                The project investigates how digital representation can reinterpret physical urban spaces, creating a dialogue between traditional architectural forms and contemporary digital aesthetics. Through interactive elements and real-time pixel manipulation, visitors experience the evolution of urban landscapes in a completely new visual paradigm.
+                The generative system utilises custom algorithms to control over 1,800 autonomous pixel particles. These elements simulate data transmission, vertical scanning, and matrix-style convergence without the use of keyframes. The visual language draws inspiration from retro-futurism and media architecture, employing a high-contrast palette of neon green and deep charcoal to represent the pulse of a living digital city.
             </p>
 
-            <h2 class="section-title">Interactive Features</h2>
-            <p class="project-description">
-                The installation features multiple interactive zones where visitors can influence the pixel environment:
-            </p>
-            <ul style="color: var(--text-light); line-height: 1.9; margin-bottom: 2rem; padding-left: 2rem;">
-                <li>Real-time pixel manipulation through gesture recognition</li>
-                <li>Dynamic urban landscape generation based on user input</li>
-                <li>Multi-user collaborative pixel art creation</li>
-                <li>Sound-reactive pixel animations synchronized with ambient audio</li>
-            </ul>
+            <h2 class="section-title">Video</h2>
+            <!-- Project Logo Video -->
+            <div class="project-video" style="margin: 2rem 0;">
+                <video controls poster="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF">
+                    <source src="../../assets/digital/Urban_Pixel_Lab/urban_logo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
 
-            <h2 class="section-title">Technical Implementation</h2>
-            <p class="project-description">
-                Built using a combination of creative coding frameworks and game development engines, Urban Pixel Lab leverages advanced algorithms for pixel manipulation and real-time rendering. The system processes live data inputs to create responsive, ever-changing urban pixelscapes that reflect both the physical world and digital imagination.
-            </p>
-        </div>
-
-        <!-- Screenshots Gallery -->
-        <h2 class="section-title" style="text-align: center; margin-top: 4rem;">Project Screenshots</h2>
+            <!-- Shots Gallery -->
         <div class="screenshots-grid">
             <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF" alt="Urban Pixel Lab - Screenshot 1">
+                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF" alt="Urban Pixel Lab - Shot 1: The 'Data Rain'">
+                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 1: The 'Data Rain'</p>
             </div>
             <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%204.GIF" alt="Urban Pixel Lab - Screenshot 4">
+                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%204.GIF" alt="Urban Pixel Lab - Shot 4: The Snap">
+                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 4: The Snap</p>
             </div>
             <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%206.GIF" alt="Urban Pixel Lab - Screenshot 6">
+                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%206.GIF" alt="Urban Pixel Lab - Shot 6: The Convergence">
+                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 6: The Convergence</p>
             </div>
         </div>
 
-        <!-- Download Section -->
-        <div class="download-section">
-            <h2 class="section-title" style="margin-top: 0; text-align: center;">Project Documentation</h2>
-            <p style="color: var(--text-light); margin-bottom: 2rem;">
-                Download the complete project documentation including technical specifications, design process, and implementation details.
-            </p>
-            <a href="../../assets/digital/Urban_Pixel_Lab/Urban%20Picel%20Lab.docx" download class="download-btn">
-                <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-                </svg>
-                Download Project Document
-            </a>
+            <h2 class="section-title">Technical Stack</h2>
+            <ul style="color: var(--text-light); line-height: 1.9; margin-bottom: 2rem; padding-left: 2rem;">
+                <li><strong>Language:</strong> Processing (Java)</li>
+                <li><strong>Core Concepts:</strong> Object-Oriented Programming (OOP), Particle Systems, Noise Functions, Easing Algorithms</li>
+                <li><strong>Implementation:</strong> Custom classes for DataStreams and PixelBlocks featuring autonomous behaviours (drifting, pulsing, aligning)</li>
+            </ul>
         </div>
+
+        
+
     </div>
 </body>
 </html>
