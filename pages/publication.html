@@ -40,20 +40,20 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 4px;
+            width: 6px;
         }
 
         ::-webkit-scrollbar-track {
-            background: rgba(123, 104, 238, 0.05);
+            background: rgba(0, 0, 0, 0.05);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(123, 104, 238, 0.2);
-            border-radius: 2px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 3px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(123, 104, 238, 0.3);
+            background: rgba(0, 0, 0, 0.25);
         }
 
         /* Layout Container */
@@ -144,17 +144,6 @@
             background: var(--dark-bg);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Page Header */
         .page-header {
             margin-bottom: 4rem;
@@ -178,30 +167,125 @@
             max-width: 800px;
         }
 
-        /* Publication List */
-        .publication-list {
+        /* Publication Grid */
+        .publication-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
             max-width: 900px;
+            margin-left: 0;
+            margin-right: auto;
         }
 
-        .publication-item {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border-color);
+        /* Publication Card */
+        .publication-card {
+            display: flex;
+            flex-direction: column;
         }
 
-        .publication-item:last-child {
-            border-bottom: none;
+        .publication-cover {
+            width: 100%;
+            aspect-ratio: 5/4;
+            background: #2a2a40;
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
         }
 
-        .publication-title {
-            font-size: 1.3rem;
+        .publication-cover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(123, 104, 238, 0.15);
+            border-color: var(--primary-purple);
+        }
+
+        .publication-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.9;
+        }
+
+        .publication-cover:hover img {
+            transform: scale(1.03);
+            opacity: 1;
+        }
+
+        .publication-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .publication-venue {
+            font-size: 1.2rem;
             font-weight: 600;
             color: #fff;
             margin-bottom: 0.8rem;
+            line-height: 1.3;
         }
 
-        .publication-meta {
+        .publication-subtitle {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--secondary-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-title-text {
+            font-size: 0.95rem;
+            font-weight: 400;
             color: var(--text-light);
             line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-links {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            width: fit-content;
+            border: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(123, 104, 238, 0.4);
+        }
+
+        .external-link {
+            display: inline-block;
+            color: var(--secondary-purple);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            word-break: break-all;
+        }
+
+        .external-link:hover {
+            color: var(--primary-purple);
         }
 
         /* Mobile Menu Toggle */
@@ -221,6 +305,24 @@
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .publication-grid {
+                gap: 2.5rem 1.5rem;
+                max-width: 800px;
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .publication-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -241,6 +343,35 @@
 
             .mobile-toggle {
                 display: block;
+            }
+
+            .publication-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation on scroll */
+        .publication-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .publication-card:nth-child(1) { animation-delay: 0.1s; }
+        .publication-card:nth-child(2) { animation-delay: 0.2s; }
+        .publication-card:nth-child(3) { animation-delay: 0.3s; }
+        .publication-card:nth-child(4) { animation-delay: 0.4s; }
+        .publication-card:nth-child(5) { animation-delay: 0.5s; }
+        .publication-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -274,41 +405,103 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Publication Page -->
+            <!-- Page Header -->
             <div class="page-header">
                 <h1 class="page-title">Publication</h1>
-                <p class="page-description">Research papers, conference proceedings, and academic contributions.</p>
+                <p class="page-description">Research publications exploring media architecture, computational design, urban screens, and innovative spatial practices.</p>
             </div>
-            <div class="publication-list">
-                <div class="publication-item">
-                    <h3 class="publication-title">The Evolution and 'Chineseness' of Urban Screens in China.</h3>
-                    <p class="publication-meta">(Accepted) Conference of Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. 2025.</p>
-                </div>
-                <div class="publication-item">
-                    <h3 class="publication-title"><a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" style="color: inherit; text-decoration: none;">Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</a></h3>
-                    <p class="publication-meta">Association for Computer Aided Design in Architecture (ACADIA) Conference, 2023. ACADIA 2023 Conference Proceedings, Denver, pp. 596-605.</p>
+
+            <!-- Publication Grid -->
+            <div class="publication-grid">
+                <!-- MAB 2025 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/MAB/IMG_3224.JPG" alt="MAB 2025 - Urban Screens in China">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">Media Architecture Biennale 2025</h2>
+                        <p class="publication-subtitle">MAB25 · Bangkok, Thailand</p>
+                        <p class="publication-title-text">The Evolution and 'Chineseness' of Urban Screens in China</p>
+                        <div class="publication-links">
+                            <a href="https://www.researchgate.net/publication/398117614_The_Evolution_and_'Chineseness'_of_Urban_Screens_in_China" target="_blank" class="download-btn">download</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="publication-item">
-                    <h3 class="publication-title">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus.</h3>
-                    <p class="publication-meta">ASCAAD 2024 Conference Proceedings, Barcelona, Spain, pp. 553-564.</p>
+                <!-- ACADIA 2023 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/Acadia/1.png" alt="ACADIA 2023 - Machine Learning Morphological Taxonomy">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">ACADIA 2023</h2>
+                        <p class="publication-subtitle">Association for Computer Aided Design in Architecture · Denver</p>
+                        <p class="publication-title-text">Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</p>
+                        <div class="publication-links">
+                            <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" class="download-btn">download</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="publication-item">
-                    <h3 class="publication-title">Ran, W., & Wang, L. (2015). "Urban Development Problems and Countermeasures in Guiyang." Proceedings of the Annual National Planning Conference (ANPC) China. ISBN 978-89475-444-8.</h3>
-                    <p class="publication-meta">In Chinese: 冉无吾，王理. 浅谈贵阳市的城市发展问题及对策，2015 中国城市规划年会论文集.</p>
+                <!-- ASCAAD 2024 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/ASCADD/ScreenShot_2025-12-23_174555_609.png" alt="ASCAAD 2024 - Surveillance Capitalism VR">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">ASCAAD 2024</h2>
+                        <p class="publication-subtitle">Arab Society for Computation in Architecture, Art, and Design · Barcelona</p>
+                        <p class="publication-title-text">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</p>
+                        <div class="publication-links">
+                            <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" class="download-btn">download</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="publication-item">
-                    <h3 class="publication-title">Ran, W. (2018). "Ecological Water Environment Planning with Lingnan Water Town Characteristics: A Case Study of Foshan University Town Satellite City (Beijiao)." Regional Governance, Vol. 16, pp. 186–188. DOI: 10.3969/j.issn.2096-4595.2018.16.172.</h3>
-                    <p class="publication-meta">In Chinese: 冉无吾. 岭南水乡特色下的生态水环境规划——以佛山大学城卫星城(北滘)城市设计为例，《区域治理》，2018.</p>
+                <!-- ANPC 2015 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/2015/IMG_1131.jpg" alt="ANPC 2015 - Guiyang Urban Development">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">Annual National Planning Conference 2015</h2>
+                        <p class="publication-subtitle">中国城市规划年会 · China</p>
+                        <p class="publication-title-text">Urban Development Problems and Countermeasures in Guiyang<br><em style="font-size: 0.85rem; color: #b0b0b0;">浅谈贵阳市的城市发展问题及对策</em></p>
+                        <div class="publication-links">
+                            <a href="https://www.planning.org.cn/solicity/view?id=649" target="_blank" class="download-btn">download</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="publication-item">
-                    <h3 class="publication-title">He, H., Gao, Q., Shen, X., Wang, M., Ran, W., Xu, D., Dong, N., & Lu, J. (2015). Lujiazui: Where all Dreams Begin: Volume II – Key Area Planning and Specialised Plans. In Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series. China Architecture & Building Press. ISBN 978-7-112-18439-2.</h3>
-                    <p class="publication-meta">In Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华, 朱怡文, 何志华，孔艺倩（2015）. 梦缘陆家嘴（1990-2015重点区域规划和专项规划（卷二）），中国建筑工业出版社.</p>
+                <!-- Regional Governance 2018 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/IMG_1129.JPG" alt="Regional Governance 2018 - Ecological Water Environment">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">Regional Governance 2018</h2>
+                        <p class="publication-subtitle">区域治理 · Vol. 16</p>
+                        <p class="publication-title-text">Ecological Water Environment Planning with Lingnan Water Town Characteristics: A Case Study of Foshan University Town Satellite City (Beijiao)<br><em style="font-size: 0.85rem; color: #b0b0b0;">岭南水乡特色下的生态水环境规划——以佛山大学城卫星城(北滘)城市设计为例</em></p>
+                        <div class="publication-links">
+                            <span style="font-size: 0.85rem; color: #b0b0b0;">DOI: 10.3969/j.issn.2096-4595.2018.16.172</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Lujiazui Book 2015 -->
+                <div class="publication-card">
+                    <div class="publication-cover">
+                        <img src="../assets/publication/Lujiazui/IMG_2847.jpg" alt="Lujiazui Planning Book 2015">
+                    </div>
+                    <div class="publication-info">
+                        <h2 class="publication-venue">Lujiazui: Where All Dreams Begin</h2>
+                        <p class="publication-subtitle">China Architecture & Building Press · 2015</p>
+                        <p class="publication-title-text">Volume II – Key Area Planning and Specialised Plans. In Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series.<br><em style="font-size: 0.85rem; color: #b0b0b0;">梦缘陆家嘴（1990-2015）重点区域规划和专项规划（卷二）</em></p>
+                        <div class="publication-links">
+                            <a href="https://m.thepaper.cn/newsDetail_forward_1458243" target="_blank" class="external-link">点击查看</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
