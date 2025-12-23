@@ -169,12 +169,12 @@
         /* Affiliation Grid */
         .affiliation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .affiliation-card {
-            padding: 2.5rem 2rem;
+            padding: 1.5rem;
             background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
             border-radius: 15px;
             border: 2px solid var(--border-color);
@@ -183,7 +183,7 @@
             height: 320px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -206,25 +206,52 @@
             box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
         }
 
+        .affiliation-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            background: transparent;
+            padding: 0;
+            transition: all 0.3s;
+        }
+
+        .affiliation-logo:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .first-logo {
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem;
+        }
+
         .affiliation-name {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .affiliation-role {
-            color: var(--text-light);
+            color: var(--secondary-purple);
+            font-weight: 500;
+            font-size: 0.85rem;
         }
 
         .affiliation-description {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-top: 0.8rem;
-            line-height: 1.6;
+            line-height: 1.5;
             opacity: 0.9;
-            text-align: left;
+            text-align: center;
             padding: 0 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
         }
 
         /* Mobile Menu Toggle */
@@ -244,6 +271,13 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .affiliation-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -266,11 +300,25 @@
             .affiliation-card {
                 height: auto;
                 min-height: 300px;
-                padding: 2rem 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .affiliation-logo {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0.8rem;
+            }
+
+            .affiliation-name {
+                font-size: 1rem;
+            }
+
+            .affiliation-role {
+                font-size: 0.8rem;
             }
 
             .affiliation-description {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
                 padding: 0 0.3rem;
             }
 
@@ -333,20 +381,23 @@
                 <div class="affiliation-grid">
                     <a href="http://www.cava-research.org/team-profiles/ran" target="_blank" class="affiliation-card-link">
                         <div class="affiliation-card">
+                            <img src="../assets/affiliation/cava.png" alt="Centre for Architecture and Visual Arts" class="affiliation-logo first-logo">
                             <h3 class="affiliation-name">University of Liverpool<br><span style="font-size: 0.9rem; font-weight: 400;">(Centre for Architecture and Visual Arts)</span></h3>
                             <p class="affiliation-role">PhD Researcher</p>
                             <p class="affiliation-description">Researching the intersection of architecture, digital media, and urban space through computational and spatial analysis methods.</p>
                         </div>
                     </a>
                     <div class="affiliation-card">
-                        <h3 class="affiliation-name">Urban Pixel Lab<br><span style="font-size: 0.9rem; font-weight: 400;">(无物设计)</span></h3>
+                        <img src="../assets/affiliation/urban_pixel_lab.png" alt="Urban Pixel Lab Logo" class="affiliation-logo">
+                        <h3 class="affiliation-name">Urban Pixel Lab</h3>
                         <p class="affiliation-role">Founder & Lead Designer</p>
                         <p class="affiliation-description">An independent studio and research lab exploring urban digitalisation, media architecture, and immersive spatial experiences through experimental design and visualisation projects.</p>
                     </div>
                     <div class="affiliation-card">
+                        <img src="../assets/affiliation/w_house_consulting.png" alt="W House Consulting Logo" class="affiliation-logo">
                         <h3 class="affiliation-name">W House Consulting</h3>
                         <p class="affiliation-role">Founder & Principal Designer</p>
-                        <p class="affiliation-description">A design and planning consultancy specialising in residential extensions, architectural applications, and adaptive design solutions for urban and suburban contexts.</p>
+                        <p class="affiliation-description">A design and planning consultancy specialising in residential extensions, architectural applications, and adaptive design solutions for built environment.</p>
                     </div>
                 </div>
             </div>
