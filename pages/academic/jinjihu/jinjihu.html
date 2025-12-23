@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinji Lake Waterfront - WUWU RAN Design Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #ffffff;
+            --darker-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--primary-purple);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            z-index: 1000;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-purple);
+            border-color: var(--primary-purple);
+            transform: translateX(-5px);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .project-meta {
+            font-size: 0.95rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333333;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color);
+            letter-spacing: 0.05em;
+        }
+
+        .project-description {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.15), rgba(157, 141, 255, 0.1));
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(123, 104, 238, 0.1);
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-container {
+                padding: 2rem 5%;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../academic.html" class="back-button">← Back to Projects</a>
+
+    <div class="project-container">
+        <div class="project-header">
+            <h1 class="project-title">IMPRESSION OF SUZHOU</h1>
+            <p class="project-subtitle">JINJI LAKE WATERFRONT REVITALIZATION</p>
+            <p class="project-meta">Waterfront Landscape Architecture Design | Individual Work | 2012/09</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Type</div>
+                <div class="info-value">Landscape Architecture</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Role</div>
+                <div class="info-value">Individual Work</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Duration</div>
+                <div class="info-value">2012</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Suzhou, China</div>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="project-description">
+                Located at the critical northeast corner of Jinji Lake in the Suzhou Industrial Park (SIP), this project seeks to bridge the gap between Suzhou's rich 2,500-year historical identity and its modern urban evolution. The design thesis, "Impression of Suzhou," transforms a generic modern waterfront into a culturally resonant and multi-functional public realm that serves visitors, consumers, and local residents.
+            </p>
+
+            <div class="project-image">
+                <img src="../../../assets/academic/jinjihu/77.png" alt="Jinji Lake Waterfront Design Process">
+            </div>
+
+            <h2 class="section-title">Cultural & Conceptual Framework</h2>
+            <p class="project-description">
+                The design is rooted in extensive cultural analysis, which identified a strong public affinity for Suzhou's quintessential elements: Water Lanes (95% favorability), Classical Gardens, Kunqu Opera, Silk, and Taihu Stone. To integrate these historical foundations with modern vitality, the project proposes a conceptual 'Internal River'. This thematic artery runs parallel to the main lake edge, acting as a narrative pathway that strings together cultural nodes and connects the historic 'City Axis' directly to the Jinji Lake waterfront.
+            </p>
+
+            <div class="project-image">
+                <img src="../../../assets/academic/jinjihu/analysis-01.png" alt="Cultural Framework Analysis">
+            </div>
+
+            <h2 class="section-title">Design Strategy & Structure</h2>
+            <p class="project-description">
+                The master plan is organised into three distinct functional zones, responding to adjacent land uses and user demographics:
+            </p>
+            <ul class="project-description" style="margin-left: 2rem;">
+                <li><strong>City Image Section (North):</strong> Catering to visitors, this section features grand atmospheric gestures, varying hard paved terraces, and an overhanging platform to create a formal urban interface and viewing corridor.</li>
+                <li><strong>Commercial Vitality Section (Central):</strong> Designed for consumers, this active zone incorporates sunken steps, interactive art exhibition spaces, and dry fountains to foster a vibrant, energetic commercial atmosphere.</li>
+                <li><strong>Eco-Recreation Section (South):</strong> Focused on resident needs, this section utilizes natural revetments, wooden trestles, aquatic vegetation, and ecological islands to improve water purification and provide a serene, natural environment.</li>
+            </ul>
+
+            <div class="project-image">
+                <img src="../../../assets/academic/jinjihu/analysis-02.png" alt="Design Strategy Implementation">
+            </div>
+
+            <h2 class="section-title">Implementation & Key Nodes</h2>
+            <p class="project-description">
+                The strategy is realised through a series of 'Theme Entrances' along the street boundary—such as the Taihu Lake Stone, Kunqu Opera, and Suzhou Embroidery entrances—which draw people into the site. The waterfront edge itself is defined by diverse typologies, moving gradually from hardscape terraces in the north to soft, ecological banks in the south. The result is a cohesive, integrated design that celebrates local culture while providing high-quality, accessible public space.
+            </p>
+            <div class="project-image">
+                <img src="../../../assets/academic/jinjihu/xxiaoguotu_.jpg" alt="Design Strategy Implementation">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

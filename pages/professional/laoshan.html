@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laoshan Innovation Valley - WUWU RAN Design Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #ffffff;
+            --darker-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: rgba(123, 104, 238, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--primary-purple);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            z-index: 1000;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-purple);
+            border-color: var(--primary-purple);
+            transform: translateX(-5px);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .project-meta {
+            font-size: 0.95rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color);
+            letter-spacing: 0.05em;
+        }
+
+        .project-description {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.15), rgba(157, 141, 255, 0.1));
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(123, 104, 238, 0.1);
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-container {
+                padding: 2rem 5%;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../professional.html#professional" class="back-button">← Back to Projects</a>
+
+    <div class="project-container">
+        <div class="project-header">
+            <h1 class="project-title">LAOSHAN INNOVATION VALLEY</h1>
+            <p class="project-subtitle">Technology Finance District</p>
+            <p class="project-meta">Urban Planning & Urban Renewal | Professional Project | 07.2015-10.2015</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Achievement</div>
+                <div class="info-value">Second Prize of Shandong Province Excellent Urban and Rural Planning in 2017</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Role</div>
+                <div class="info-value">Lead Designer, Technology Finance District</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Company</div>
+                <div class="info-value">Shanghai Urban Planning and Design Research Institute (SUPDRI)</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Qingdao, China</div>
+            </div>
+        </div>
+
+        <div class="project-image">
+            <img src="../../assets/professional/Qingdao/master_plan.jpg" alt="Laoshan Innovation Valley Master Plan">
+        </div>
+        <div class="project-image">
+            <img src="../../assets/professional/Qingdao/modelling.jpg" alt="Laoshan Innovation Valley Master Plan">
+        </div>
+
+        <div class="project-content">
+            <h2 class="section-title">Laoshan Innovation Valley – Technology Finance District</h2>
+            <p class="project-description">
+                Laoshan Innovation Valley is a flagship urban redevelopment initiative in Qingdao's Laoshan District, transforming a 14.2 km² industrial corridor into a next-generation ecosystem for finance, technology, and creative industries. Anchored in the Zhuzhou Road Area, the project integrates three synergistic clusters—the Technology Finance Center, Cultural Creative Headquarters, and Science & Education Hub—to establish a new engine for industrial upgrading and urban renewal.
+            </p>
+
+            <p class="project-description">
+                At the heart of the development is the Technology Finance Center, envisioned as the "Financial Blue Harbor." Leveraging the Zhangcun River's ecological corridor, the district creates a 24-hour waterfront financial zone where fintech innovation, high-end services, and headquarters economies converge. The strategic positioning builds on the existing Zhuzhou Road Industrial Corridor and Jiajia Ling Financial District, evolving them into a modern financial center with strong back-office operations, corporate headquarters, and technology exhibition functions.
+            </p>
+
+            <p class="project-description">
+                The spatial design follows the concept of "Two Banks + Green Infiltration + Vertical City." The north bank concentrates headquarters towers and R&D offices. The south bank offers commercial, entertainment, and mixed-use living environments. A continuous green network links the river to surrounding mountains, while a 250-meter landmark tower forms the district's vertical core.
+            </p>
+
+            <p class="project-description">
+                Thirteen key functional zones—including the Central Plaza Park, Financial Headquarters Tower, Green Technology Town, Industrial Tech Exhibition Center, and Pedestrian Commercial Waterfront—create a diversified urban experience blending finance, innovation, business services, and leisure.
+            </p>
+
+            <p class="project-description">
+                In the core "Financial Blue Harbor" area, ecological restoration, industrial heritage, and technology-driven placemaking come together to establish a dynamic waterfront destination. Diverse building interfaces, multi-level public spaces, and a 360° pedestrian network shape a vibrant environment where finance, innovation, and lifestyle intersect—positioning Laoshan Innovation Valley as a leading model for future-oriented urban development in China.
+            </p>
+        </div>
+
+        <div class="project-image">
+            <img src="../../assets/professional/Qingdao/JinRong.jpg" alt="Financial District Design">
+        </div>
+
+    </div>
+</body>
+</html>
