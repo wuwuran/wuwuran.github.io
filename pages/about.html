@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -222,50 +223,6 @@
             fill: currentColor;
         }
 
-        .scholar-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1.1rem;
-            background: linear-gradient(135deg, #4285F4, #1a73e8);
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            margin-left: 0.8rem;
-            vertical-align: middle;
-        }
-
-        .scholar-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
-        }
-
-        .scholar-btn svg {
-            fill: currentColor;
-        }
-
-        .paper-link {
-            display: inline-block;
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
-            color: var(--secondary-purple);
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(157, 141, 255, 0.4);
-            transition: all 0.3s;
-        }
-
-        .paper-link:hover {
-            color: #fff;
-            border-bottom-color: #fff;
-        }
-
         /* About Page */
         .about-content {
             display: grid;
@@ -317,12 +274,18 @@
             text-transform: uppercase;
         }
 
-        .profile-section ul {
+        .profile-section ul,
+        .education-item ul,
+        .experience-item ul,
+        .publication-list {
             list-style: none;
             padding: 0;
         }
 
-        .profile-section li {
+        .profile-section li,
+        .education-item li,
+        .experience-item li,
+        .publication-list li {
             font-size: 1rem;
             color: var(--text-light);
             margin-bottom: 0.8rem;
@@ -331,7 +294,10 @@
             padding-left: 1.5rem;
         }
 
-        .profile-section li:before {
+        .profile-section li:before,
+        .education-item li:before,
+        .experience-item li:before,
+        .publication-list li:before {
             content: "•";
             color: var(--primary-purple);
             font-weight: bold;
@@ -395,24 +361,26 @@
             margin-bottom: 0.3rem;
         }
 
-        .experience-item ul {
-            margin-top: 0.8rem;
+        .publication-link,
+        .scholar-link,
+        .company-link {
+            color: var(--secondary-purple);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .experience-item li {
+        .publication-link:hover,
+        .scholar-link:hover,
+        .company-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .scholar-link {
+            display: inline-block;
+            margin-bottom: 1.2rem;
             font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-            position: relative;
-            padding-left: 1.2rem;
-        }
-
-        .experience-item li:before {
-            content: "▸";
-            color: var(--primary-purple);
-            position: absolute;
-            left: 0;
+            font-weight: 600;
         }
 
         .skills-list {
@@ -491,11 +459,6 @@
                 margin-top: 0.5rem;
             }
 
-            .scholar-btn {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-
             .skills-list {
                 gap: 0.5rem;
             }
@@ -545,13 +508,13 @@
                 <div class="page-header">
                     <h1 class="page-title">About Me</h1>
                     <div class="cv-download-section">
-                        <a href="../assets/aboutme/CV-Wuwu Ran General.pdf" download class="cv-download-btn">
+                        <a href="../assets/aboutme/CV-Wuwu%20Ran%20General.pdf" download="CV-Wuwu Ran General.pdf" class="cv-download-btn">
                             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
                             </svg>
                             Download CV
                         </a>
-                        <a href="https://www.linkedin.com/in/wuwu-ran-99b006173/" target="_blank" class="linkedin-btn">
+                        <a href="https://www.linkedin.com/in/wuwu-ran-99b006173/" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
                             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
@@ -563,15 +526,7 @@
                     <div class="about-text">
                         <div class="profile-section">
                             <h3>Profile</h3>
-                            <ul>
-                                <li>Innovative Urban Designer, Researcher, and emerging academic with a robust blend of industry experience and scholarly expertise.</li>
-                                <li>PhD research specialises in an AI-driven taxonomy for urban screens and augmented public spaces, employing data-driven (machine learning) clustering methodologies and creating an Augmented Public Spaces Index (APSI) to assess the quality of spaces.</li>
-                                <li>Interdisciplinary approach combining urban design, digital technologies, and social sciences to address urban challenges.</li>
-                                <li>An urban designer with five years of experience in China's highly competitive construction industry.</li>
-                                <li>International experience through education in the UK and professional experience in China, offering diverse perspectives on urban planning.</li>
-                                <li>Bilingual in Mandarin (native) and English.</li>
-                                <li>Continuing involvement in voluntary activities; keen independent traveller and photographer.</li>
-                            </ul>
+                            <p>Urban designer and researcher specialising in media architecture, urban screens and augmented public spaces. My PhD research developed an AI-driven taxonomy of urban screen clusters and the Augmented Public Space Index (APSI), combining machine learning, spatial analysis and empirical urban research to evaluate digitally enhanced public spaces. My work bridges urban design, digital technologies and social science approaches to examine how public spaces are transformed by media, data and technological systems. I bring five years of professional experience in China's urban planning and design sector, alongside international academic training in the UK and professional practice in China. I am bilingual in Mandarin Chinese and English, with ongoing interests in public culture, digital urbanism, photography and independent travel.</p>
                         </div>
 
                         <div class="education-section">
@@ -579,11 +534,13 @@
                             <div class="education-item">
                                 <h4>PhD in Architecture</h4>
                                 <p class="education-meta">Apr 2020 – Jun 2025</p>
-                                <p class="education-institution">University of Liverpool, Centre for Architecture and Visual Arts (CAVA), Liverpool, UK</p>
-                                <p>Supervisors: Prof. Richard Koeck, Dr Francesca Piazzoni</p>
-                                <p>Specialisation: Urban Screens, Media Architecture, Augmented Public Spaces, VR-Based Data Visualisation</p>
-                                <p><strong>Thesis:</strong> Chinese Urban Screens Evolution — A Historical and Comparative Study of Screen Clusters in Shanghai and Chongqing. Examined the evolution of urban screens in Chinese cities as socio-technical urban interfaces shaped by state planning, market development and everyday public culture. Moving beyond single-case and qualitative studies, the research combined historical analysis, machine learning-assisted spatial taxonomy and the Augmented Public Space Index to analyse 104 urban screen clusters in Shanghai and Chongqing. It showed how Chinese urban screens have shifted from propaganda-oriented communication tools to clustered forms of augmented public space, reflecting China's compressed modernisation, collective viewing practices and state-market forms of urban governance.</p>
-                                <p><strong>Research methodologies:</strong> Mixed-methods urban research, including historical and policy analysis, interviews, fieldwork, morphology-based spatial analysis, computer vision-assisted classification, clustering analysis, and VR-based visualisation. Developed the Augmented Public Space Index (APSI) for comparative assessment of digitally enhanced public spaces.</p>
+                                <p class="education-institution">University of Liverpool, Centre for Architecture and Visual Arts (CAVA) · Liverpool, UK</p>
+                                <ul>
+                                    <li>Supervisors: Prof. Richard Koeck, Dr Francesca Piazzoni</li>
+                                    <li>Specialisation: Urban Screens, Media Architecture, Augmented Public Spaces, VR-Based Data Visualisation</li>
+                                    <li>Thesis: Chinese Urban Screens Evolution — A Historical and Comparative Study of Screen Clusters in Shanghai and Chongqing. Examined the evolution of urban screens in Chinese cities as socio-technical urban interfaces shaped by state planning, market development and everyday public culture. Moving beyond single-case and qualitative studies, the research combined historical analysis, machine learning-assisted spatial taxonomy and the Augmented Public Space Index to analyse 104 urban screen clusters in Shanghai and Chongqing. It showed how Chinese urban screens have shifted from propaganda-oriented communication tools to clustered forms of augmented public space, reflecting China's compressed modernisation, collective viewing practices and state-market forms of urban governance.</li>
+                                    <li>Research methodologies: Mixed-methods urban research, including historical and policy analysis, interviews, fieldwork, morphology-based spatial analysis, computer vision-assisted classification, clustering analysis, and VR-based visualisation. Developed the Augmented Public Space Index (APSI) for comparative assessment of digitally enhanced public spaces.</li>
+                                </ul>
                             </div>
                             <div class="education-item">
                                 <h4>MA in Urban Design</h4>
@@ -604,8 +561,8 @@
                             <h3>Work Experience</h3>
                             <div class="experience-item">
                                 <h4>Urban Planner & Designer & Researcher</h4>
-                                <p class="experience-meta">2013 – 2018</p>
-                                <p class="experience-company">Shanghai Urban Planning and Design Research Institute (SUPDRI), Shanghai, China</p>
+                                <p class="experience-meta">2013-2018</p>
+                                <p class="experience-company"><a href="https://www.supdri.com/" target="_blank" rel="noopener noreferrer" class="company-link">Shanghai Urban Planning and Design Research Institute (SUPDRI)</a>, Shanghai, China</p>
                                 <p>The Shanghai Urban Planning and Design Research Institute (SUPDRI) is affiliated with the Shanghai Planning and Natural Resources Bureau. Founded in 1957, it is one of China's earliest and most technically advanced Class A institutions for urban planning and design, land use planning, and engineering consulting.</p>
                                 <ul>
                                     <li>Developed conceptual urban/architectural plans by receiving client briefings, conducting research and site visits, analysing sites, and facilitating team discussions before creating initial designs.</li>
@@ -619,62 +576,26 @@
                                 <h4>Planning Designer Assistant (Winter Intern)</h4>
                                 <p class="experience-meta">Jan – Feb 2013</p>
                                 <p class="experience-company">Guiyang Urban and Rural Planning & Design Institute, Guiyang, China</p>
-                                <ul>
-                                    <li>Participated in landscape design for the Huaxia District Ten-Mile River Band Wetland Park.</li>
-                                    <li>Compiled the regulatory plan for the Exhibition Area of Guanshanhu District.</li>
-                                    <li>Gained foundational experience in urban planning within a government-affiliated institute.</li>
-                                </ul>
+                                <p>Participated in landscape design for the Huaxia District Ten-Mile River Band Wetland Park and compiled the regulatory plan for the Exhibition Area of Guanshanhu District. Gained foundational experience in urban planning within a government-affiliated institute.</p>
                             </div>
                             <div class="experience-item">
                                 <h4>Landscape Designer Assistant (Summer Intern)</h4>
                                 <p class="experience-meta">Jul – Sep 2012</p>
                                 <p class="experience-company">Shanghai Ruyifang Engineering Design Co., Ltd, Shanghai, China</p>
-                                <ul>
-                                    <li>Contributed to the Fushui River Ecological Tourism project, producing analytical graphics, site renderings, text, and layout documentation.</li>
-                                    <li>First professional practice experience, developing efficient working methods under intensive project deadlines.</li>
-                                </ul>
+                                <p>Contributed to the Fushui River Ecological Tourism project, producing analytical graphics, site renderings, text, and layout documentation. First professional practice experience, developing efficient working methods under intensive project deadlines.</p>
                             </div>
                         </div>
 
                         <div class="publications-section">
-                            <h3>Publications
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="scholar-btn">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5.242 13.769L0.5 9.5 12 1l11.5 8.5-4.742 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="currentColor"/>
-                                    </svg>
-                                    Google Scholar
-                                </a>
-                            </h3>
-                            <div class="publication-item">
-                                <h4>The Evolution and 'Chineseness' of Urban Screens in China</h4>
-                                <p class="publication-author">Ran, W.</p>
-                                <p class="publication-meta">Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand, November 2025. ACM publication forthcoming, September 2026.</p>
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="paper-link">View on Google Scholar →</a>
-                            </div>
-                            <div class="publication-item">
-                                <h4>Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</h4>
-                                <p class="publication-author">Ran, W. (2024)</p>
-                                <p class="publication-meta">ASCAAD 2024 Conference Proceedings, Barcelona, pp. 553–564.</p>
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="paper-link">View on Google Scholar →</a>
-                            </div>
-                            <div class="publication-item">
-                                <h4>Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</h4>
-                                <p class="publication-author">Ran, W., Yin, L., & Yu, J. (2023)</p>
-                                <p class="publication-meta">ACADIA 2023 Conference Proceedings, Denver, pp. 596–605.</p>
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="paper-link">View on Google Scholar →</a>
-                            </div>
-                            <div class="publication-item">
-                                <h4>Lujiazui: Where All Dreams Begin – Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series (Volume 2: Key Area Planning and Special Planning)</h4>
-                                <p class="publication-author">He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al. (2015)</p>
-                                <p class="publication-meta">China Architecture &amp; Building Press. ISBN 978-7-112-18439-2. (in Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华，朱怡文，何志华，孔艺倩《梦缘陆家嘴 (1990–2015 重点区域规划和专项规划・卷二)》中国建筑工业出版社)</p>
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="paper-link">View on Google Scholar →</a>
-                            </div>
-                            <div class="publication-item">
-                                <h4>Urban Development Problems and Countermeasures in Guiyang</h4>
-                                <p class="publication-author">Ran, W., &amp; Wang, L. (2015)</p>
-                                <p class="publication-meta">Proceedings of the Annual National Planning Conference (ANPC) China. ISBN 978-89475-444-8. (in Chinese: 冉无吾，王理《浅谈贵阳市的城市发展问题及对策》2015 中国城市规划年会论文集)</p>
-                                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" class="paper-link">View on Google Scholar →</a>
-                            </div>
+                            <h3>Publications</h3>
+                            <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link">Google Scholar Profile</a>
+                            <ul class="publication-list">
+                                <li>Ran, W. (2025, November). <a href="https://www.researchgate.net/publication/398117614_The_Evolution_and_%27Chineseness%27_of_Urban_Screens_in_China" target="_blank" rel="noopener noreferrer" class="publication-link">The Evolution and 'Chineseness' of Urban Screens in China</a>. Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. ACM publication forthcoming, September 2026.</li>
+                                <li>Ran, W. (2024). <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" rel="noopener noreferrer" class="publication-link">'Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus'</a>, ASCAAD 2024 Conference Proceedings, Barcelona, pp. 553-564.</li>
+                                <li>Ran, W., Yin, L., & Yu, J. (2023). <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" rel="noopener noreferrer" class="publication-link">'Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters'</a>, ACADIA 2023 Conference Proceedings, Denver, pp. 596-605.</li>
+                                <li>He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al. (2015). <a href="https://m.thepaper.cn/newsDetail_forward_1458243" target="_blank" rel="noopener noreferrer" class="publication-link">Lujiazui: Where All Dreams Begin – Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series, Volume 2: Key Area Planning and Special Planning</a>. China Architecture & Building Press. ISBN 978-7-112-18439-2.<br>In Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华, 朱怡文, 何志华，孔艺倩（2015）. 梦缘陆家嘴（1990-2015重点区域规划和专项规划（卷二）），中国建筑工业出版社.</li>
+                                <li>Ran, W., & Wang, L. (2015). <a href="https://www.planning.org.cn/solicity/view?id=649" target="_blank" rel="noopener noreferrer" class="publication-link">'Urban Development Problems and Countermeasures in Guiyang'</a>. Proceedings of the Annual National Planning Conference (ANPC) China. ISBN 978-89475-444-8.<br>In Chinese: 冉无吾，王理. 浅谈贵阳市的城市发展问题及对策，2015 中国城市规划年会论文集.</li>
+                            </ul>
                         </div>
 
                         <div class="skills-section">
