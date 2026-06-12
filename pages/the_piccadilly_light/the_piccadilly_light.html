@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Piccadilly Light - WUWU RAN Design Studio</title>
+    <link rel="icon" type="image/png" href="../../logo.png">
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --secondary-purple: #9D8DFF;
+            --dark-bg: #1a1a2e;
+            --sidebar-bg: rgba(26, 26, 46, 0.95);
+            --text-dark: #e0e0e0;
+            --text-light: #b0b0b0;
+            --border-color: rgba(123, 104, 238, 0.2);
+            --mint: #58f2d2;
+            --amber: #f2bd55;
+            --paper: #f2e7cf;
+            --blue: #0b2b75;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(123, 104, 238, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(123, 104, 238, 0.2);
+            border-radius: 2px;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            padding: 3rem 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--secondary-purple);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .nav-menu {
+            padding: 2rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--secondary-purple);
+            background: rgba(123, 104, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            background: #07101d;
+        }
+
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2002;
+            background: var(--primary-purple);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .hero {
+            min-height: 92vh;
+            display: grid;
+            grid-template-columns: minmax(320px, 0.8fr) minmax(420px, 1.2fr);
+            gap: 3.5rem;
+            align-items: center;
+            padding: 4rem 6% 3rem;
+            background: linear-gradient(135deg, #061123, #0b1730 45%, #08101f);
+            border-bottom: 1px solid rgba(88, 242, 210, 0.18);
+        }
+
+        .hero-kicker {
+            color: var(--amber);
+            font-size: 0.95rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            color: var(--paper);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(3rem, 6vw, 6.2rem);
+            line-height: 0.92;
+            letter-spacing: 0;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-subtitle {
+            color: var(--mint);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 1.25;
+            margin-bottom: 2rem;
+        }
+
+        .hero-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .summary-block h3 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .summary-block p {
+            color: #d9e5f5;
+            font-size: 0.95rem;
+        }
+
+        .tool-line {
+            color: var(--mint);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .hero-media {
+            overflow: hidden;
+            border-radius: 22px;
+            border: 1px solid rgba(88, 242, 210, 0.26);
+            background: var(--blue);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+        }
+
+        .hero-media img {
+            width: 100%;
+            display: block;
+        }
+
+        .section {
+            padding: 5rem 6%;
+            border-bottom: 1px solid rgba(123, 104, 238, 0.18);
+        }
+
+        .section-label {
+            color: var(--amber);
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.08;
+            letter-spacing: 0;
+            max-width: 1000px;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            color: var(--text-light);
+            max-width: 980px;
+            font-size: 1.05rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item,
+        .step-card {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.045);
+            padding: 1.1rem;
+        }
+
+        .meta-item h3,
+        .step-card h3 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .meta-item p,
+        .step-card p {
+            color: var(--text-light);
+            font-size: 0.94rem;
+        }
+
+        .wide-image {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .wide-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .flow-image {
+            padding: 1rem;
+            background: #f7f7f5;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .paper-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            color: var(--mint);
+            text-decoration: none;
+            border: 1px solid rgba(88, 242, 210, 0.35);
+            padding: 0.75rem 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.85rem;
+        }
+
+        .paper-link:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--mint);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 1050px) {
+            .hero,
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-grid,
+            .step-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                z-index: 2001;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero,
+            .section {
+                padding: 5rem 5% 3rem;
+            }
+
+            .hero-summary,
+            .meta-grid,
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">Menu</button>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <img src="../../logo.png" alt="WUWU RAN Logo" style="width: 100%; height: auto;">
+                </div>
+                <div class="brand-name">WUWU RAN</div>
+                <div class="brand-subtitle">Design Studio</div>
+                <div class="brand-tagline">Architecture | Design | Innovation</div>
+            </div>
+            <nav class="nav-menu">
+                <a href="../../index.html" class="nav-item">Home</a>
+                <a href="../academic.html" class="nav-item">Academic Work</a>
+                <a href="../professional.html" class="nav-item">Professional Work</a>
+                <a href="../digital.html" class="nav-item active">Digital Arts</a>
+                <a href="../publication.html" class="nav-item">Publication</a>
+                <a href="../workshop.html" class="nav-item">Workshop</a>
+                <a href="../affiliation.html" class="nav-item">Affiliation</a>
+                <a href="../about.html" class="nav-item">About Me</a>
+                <a href="../contact.html" class="nav-item">Contact</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero">
+                <div>
+                    <div class="hero-kicker">ASCAAD 2024 · Barcelona</div>
+                    <h1 class="hero-title">The Piccadilly Light</h1>
+                    <p class="hero-subtitle">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality</p>
+                    <div class="hero-summary">
+                        <div class="summary-block">
+                            <h3>Problem</h3>
+                            <p>Hidden audience-sensing systems turn a public square into a targeted advertising interface.</p>
+                        </div>
+                        <div class="summary-block">
+                            <h3>Design Response</h3>
+                            <p>A Unity-based VR simulation where the player's avatar triggers targeted screen content.</p>
+                        </div>
+                    </div>
+                    <p class="tool-line">Tools: Unity, VR workflow, 3D modelling, spatial scenario design, critical media-architecture research.</p>
+                </div>
+                <div class="hero-media">
+                    <img src="../../assets/digital/The_Piccadilly_Light/concept.png" alt="The Piccadilly Light VR simulation concept">
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">01 Research Context</div>
+                <h2 class="section-title">Piccadilly Circus as a case study in urban screen surveillance.</h2>
+                <p class="section-text">The Piccadilly Light examines the iconic Piccadilly Lights screen in London as a public urban interface shaped by advertising, hidden camera sensors, and data-driven audience classification. The project responds to the quiet expansion of surveillance capitalism from online platforms into physical public space.</p>
+                <p class="section-text">Rather than presenting surveillance as an abstract policy concern, the work translates it into an embodied VR experience. Players move through a simulated Piccadilly Circus, create avatars, choose travel methods, and encounter screen content that changes in response to their demographic and mobility choices.</p>
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <h3>Conference</h3>
+                        <p>ASCAAD 2024, Barcelona</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>Case Study</h3>
+                        <p>Piccadilly Circus, London</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>Medium</h3>
+                        <p>Critical VR simulation</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>Theme</h3>
+                        <p>Urban screens and data rights</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section two-column">
+                <div>
+                    <div class="section-label">02 Simulation Loop</div>
+                    <h2 class="section-title">A playable model of targeted urban media.</h2>
+                    <p class="section-text">The VR prototype turns surveillance capitalism into a spatial practice simulation. The player builds an avatar, chooses a mobility mode, moves through the site, and triggers media content on urban screens. Each route and identity profile produces a different exposure scenario, making the politics of targeted media tangible.</p>
+                    <p class="section-text">Repeated play shifts the experience from simulation to critique: screen content changes from commercial targeting toward knowledge prompts and critical reflection, helping players compare how public space, advertising, mobility, and data collection interact.</p>
+                </div>
+                <div class="wide-image">
+                    <img src="../../assets/digital/The_Piccadilly_Light/concept.png" alt="The Piccadilly Light simulation interface">
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">03 Gameplay Structure</div>
+                <h2 class="section-title">The four-step flow: avatar, mobility, urban screen trigger, repeat game.</h2>
+                <p class="section-text">The game flow is designed as a compact learning sequence. Each step exposes a different layer of the surveillance system, from identity construction and mobility tracking to screen response and reflective replay.</p>
+                <div class="wide-image flow-image">
+                    <img src="../../assets/digital/The_Piccadilly_Light/four_step_flow.png" alt="The 4-step flow to play Piccadilly Circus game">
+                </div>
+                <div class="step-grid">
+                    <div class="step-card">
+                        <h3>1. Create Avatar</h3>
+                        <p>Players select gender, age, and mood to test how identity categories shape targeted content.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>2. Choose Travel</h3>
+                        <p>Walking, cycling, car, and luxury car options create different exposure routes.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>3. Move Through Site</h3>
+                        <p>The avatar traverses the digital twin of Piccadilly Circus and triggers the screen system.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>4. Repeat & Reflect</h3>
+                        <p>Replay reveals how media content changes, inviting comparison and critical awareness.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section two-column">
+                <div>
+                    <div class="section-label">04 Critical Design</div>
+                    <h2 class="section-title">A digital twin that reveals invisible public-space data practices.</h2>
+                    <p class="section-text">The simulation uses a 3D model of Piccadilly Circus to stage interactions that are normally hidden within the built environment. By making data collection, targeting logic, and screen response visible, the project reframes VR as a civic literacy tool.</p>
+                    <p class="section-text">The work positions gamified spatial practice as a method for discussing urban rights, privacy, commercial media systems, and the publicness of smart-city infrastructure.</p>
+                    <a href="../../assets/digital/The_Piccadilly_Light/ASCAAD2024-WuwuRan.pdf" class="paper-link" target="_blank" rel="noopener noreferrer">Read ASCAAD Paper</a>
+                </div>
+                <div class="wide-image">
+                    <img src="../../assets/digital/The_Piccadilly_Light/site_model_view.jpg" alt="Piccadilly Circus digital twin model view">
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-label">05 Contribution</div>
+                <h2 class="section-title">From passive audience to informed participant.</h2>
+                <p class="section-text">The Piccadilly Light proposes a design method for translating complex socio-technical systems into immersive, playable experience. In doing so, it helps users understand how urban screen surveillance operates and how public spaces can be reimagined as sites of agency, critique, and informed participation.</p>
+                <a href="../digital.html" class="back-link">Back to Digital Arts</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
