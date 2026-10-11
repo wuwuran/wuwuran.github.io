@@ -170,7 +170,7 @@
         /* Affiliation Grid */
         .affiliation-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 2rem;
         }
 
@@ -181,7 +181,9 @@
             border: 2px solid var(--border-color);
             text-align: center;
             transition: all 0.3s;
-            height: 320px;
+            min-height: 360px;
+            height: 100%;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -192,6 +194,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            min-width: 0;
             transition: all 0.3s;
         }
 
@@ -210,6 +213,7 @@
         .affiliation-logo {
             width: 80px;
             height: 80px;
+            flex-shrink: 0;
             object-fit: cover;
             margin-bottom: 1rem;
             border-radius: 8px;
@@ -227,6 +231,19 @@
             object-fit: contain;
             background: rgba(255, 255, 255, 0.05);
             padding: 0.3rem;
+        }
+
+        .york-logo {
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .affiliation-centre {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-top: 0.4rem;
         }
 
         .affiliation-name {
@@ -274,7 +291,6 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .affiliation-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                 gap: 1.5rem;
             }
         }
@@ -291,7 +307,7 @@
 
             .main-content {
                 margin-left: 0;
-                padding: 2rem 5%;
+                padding: 5rem 5% 2rem;
             }
 
             .mobile-toggle {
@@ -302,6 +318,10 @@
                 height: auto;
                 min-height: 300px;
                 padding: 1.5rem;
+            }
+
+            .affiliation-grid {
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .affiliation-logo {
@@ -369,6 +389,14 @@
                     <p class="page-description">Academic and professional institutional connections.</p>
                 </div>
                 <div class="affiliation-grid">
+                    <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="affiliation-card-link">
+                        <div class="affiliation-card">
+                            <img src="../assets/affiliation/university_of_york.png" alt="University of York" class="affiliation-logo york-logo" width="80" height="80">
+                            <h3 class="affiliation-name">University of York<span class="affiliation-centre">Centre for Architecture, Urbanism, and Global Heritage (CAUGH)</span></h3>
+                            <p class="affiliation-role">Postdoctoral Research Associate</p>
+                            <p class="affiliation-description">Contributing to the Nubian Chronicles project through spatial research and digital heritage reconstruction, connecting architectural histories with immersive digital experiences.</p>
+                        </div>
+                    </a>
                     <a href="http://www.cava-research.org/team-profiles/ran" target="_blank" class="affiliation-card-link">
                         <div class="affiliation-card">
                             <img src="../assets/affiliation/cava.png" alt="Centre for Architecture and Visual Arts" class="affiliation-logo first-logo">
