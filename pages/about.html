@@ -223,6 +223,36 @@
             fill: currentColor;
         }
 
+        .york-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: var(--secondary-purple);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: 1px solid var(--secondary-purple);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        .york-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(123, 104, 238, 0.15);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.3);
+        }
+
+        .york-btn svg {
+            fill: currentColor;
+        }
+
         /* About Page */
         .about-content {
             display: grid;
@@ -452,7 +482,8 @@
                 font-size: 0.8rem;
             }
 
-            .linkedin-btn {
+            .linkedin-btn,
+            .york-btn {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.8rem;
                 margin-left: 0.5rem;
@@ -508,7 +539,7 @@
                 <div class="page-header">
                     <h1 class="page-title">About Me</h1>
                     <div class="cv-download-section">
-                        <a href="../assets/aboutme/CV-Wuwu%20Ran%20General.pdf" download="CV-Wuwu Ran General.pdf" class="cv-download-btn">
+                        <a href="../assets/aboutme/CV-Wuwu-Ran.pdf" download="CV-Wuwu-Ran.pdf" class="cv-download-btn">
                             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
                             </svg>
@@ -520,6 +551,12 @@
                             </svg>
                             LinkedIn Profile
                         </a>
+                        <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="york-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                            </svg>
+                            University of York Profile
+                        </a>
                     </div>
                 </div>
                 <div class="about-content">
@@ -527,13 +564,30 @@
                         <div class="profile-section">
                             <h3>Profile</h3>
                             <ul>
-                                <li>Architectural and urban researcher, designer, and educator working across architecture, urbanism, digital media, and public space.</li>
+                                <li>Postdoctoral Research Associate at the Centre for Architecture, Urbanism and Global Heritage (CAUGH), <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="publication-link">University of York</a>, working on the British Academy Global Professorship project "Nubian Chronicles".</li>
+                                <li>Architectural and urban researcher and designer working across architecture, urbanism, digital heritage, digital media, and public space.</li>
                                 <li>PhD in Architecture from the University of Liverpool, with research on urban screens, augmented public spaces, and state-led urban transformation in Chinese cities.</li>
                                 <li>Experienced in mixed-methods urban research, including field observation, interviews, morphology-based spatial analysis, policy and archival research, machine learning-assisted classification, and VR-based visualisation.</li>
                                 <li>Over five years of professional experience in urban planning, ecological design, heritage-sensitive regeneration, and policy-facing spatial research.</li>
-                                <li>Current interests include media architecture, urban governance, digital public space, environmental adaptation, spatial justice, and emerging technologies in the built environment.</li>
+                                <li>Current interests include digital heritage and 3D reconstruction, media architecture and urban screens, mixed reality and immersive environments, AI-assisted archival interpretation, and digitally augmented public space.</li>
+                                <li>Recipient of a 2026 research visit grant from the Society of Architectural Historians of Great Britain (SAHGB; Stevenson Trust Fund and Wakeling Bequest) for archival research on the precursors of Chinese urban screens in Shanghai and at the M+ archives, Hong Kong.</li>
                                 <li>Holds a UK Global Talent Visa (endorsed by the British Academy), permitting full-time work without restriction.</li>
                             </ul>
+                        </div>
+
+                        <div class="experience-section">
+                            <h3>Academic Appointment</h3>
+                            <div class="experience-item">
+                                <h4>Postdoctoral Research Associate – Nubian Chronicles</h4>
+                                <p class="experience-meta">Sep 2026 – Present</p>
+                                <p class="experience-company"><a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="company-link">Centre for Architecture, Urbanism and Global Heritage (CAUGH), York School of Architecture, University of York</a> · York, UK</p>
+                                <p>"Nubian Chronicles: Amplifying Marginalised Voices and Contested Histories through Digital Heritage Reconstruction" is a British Academy Global Professorship project led by Professor Ahmed El Antably. It brings together oral histories, archival materials and immersive technologies to reconstruct the villages of Lower Nubia submerged after the construction of the Aswan High Dam.</p>
+                                <ul>
+                                    <li>Build 3D models and immersive scenes of Lower Nubian villages in Blender and Unity, integrated into a persistent multi-user online virtual environment.</li>
+                                    <li>Lead the design and development of the project's interactive digital map.</li>
+                                    <li>Develop retrieval-augmented generation (RAG) pipelines for voice-enabled AI conversational agents grounded in oral-history transcripts.</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="education-section">
@@ -568,7 +622,7 @@
                             <h3>Work Experience</h3>
                             <div class="experience-item">
                                 <h4>Urban Planner & Designer & Researcher</h4>
-                                <p class="experience-meta">2013-2018</p>
+                                <p class="experience-meta">Jul 2013 – Jul 2018</p>
                                 <p class="experience-company"><a href="https://www.supdri.com/" target="_blank" rel="noopener noreferrer" class="company-link">Shanghai Urban Planning and Design Research Institute (SUPDRI)</a>, Shanghai, China</p>
                                 <p>The Shanghai Urban Planning and Design Research Institute (SUPDRI) is affiliated with the Shanghai Planning and Natural Resources Bureau. Founded in 1957, it is one of China's earliest and most technically advanced Class A institutions for urban planning and design, land use planning, and engineering consulting.</p>
                                 <ul>
@@ -576,6 +630,7 @@
                                     <li>Produced sketches and presentation documents from conception through project completion, providing recommendations to management regarding contract requirements and work specifications.</li>
                                     <li>Reviewed drawings and documentation, identifying and reporting issues to departmental managers, iterating through revisions until final approval was achieved.</li>
                                     <li>Contributed to 20+ urban planning and design projects ranging from 5 to 180 sq km across ecological planning, urban renewal, heritage preservation, industrial transformation, and public-space strategy.</li>
+                                    <li>Coordinated interdisciplinary teams across architecture, landscape, transport, and infrastructure, and liaised with municipal authorities and review committees through project development, revision, and approval.</li>
                                     <li>Received multiple awards for involvement in high-profile projects.</li>
                                 </ul>
                             </div>
@@ -597,7 +652,8 @@
                             <h3>Publications</h3>
                             <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link">Google Scholar Profile</a>
                             <ul class="publication-list">
-                                <li>Ran, W. (2025, November). <a href="https://www.researchgate.net/publication/398117614_The_Evolution_and_%27Chineseness%27_of_Urban_Screens_in_China" target="_blank" rel="noopener noreferrer" class="publication-link">The Evolution and 'Chineseness' of Urban Screens in China</a>. Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. ACM publication forthcoming, September 2026.</li>
+                                <li>Ran, W., & Al-Suwaidi, M. F. (2026). 'Immersive Commons: Designing Ephemeral Spatial Dialogue for Co-Located Mixed Reality', SIGraDi 2026 Conference Proceedings, Santiago, Chile. Accepted for publication.</li>
+                                <li>Ran, W. (2026). <a href="https://arxiv.org/abs/2610.35762" target="_blank" rel="noopener noreferrer" class="publication-link">'The Evolution and 'Chineseness' of Urban Screens in China: From Propaganda Posters to Smart City Interfaces'</a>. Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. arXiv:2610.35762. ACM publication forthcoming.</li>
                                 <li>Ran, W. (2024). <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" rel="noopener noreferrer" class="publication-link">'Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus'</a>, ASCAAD 2024 Conference Proceedings, Barcelona, pp. 553-564.</li>
                                 <li>Ran, W., Yin, L., & Yu, J. (2023). <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" rel="noopener noreferrer" class="publication-link">'Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters'</a>, ACADIA 2023 Conference Proceedings, Denver, pp. 596-605.</li>
                                 <li>He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al. (2015). <a href="https://m.thepaper.cn/newsDetail_forward_1458243" target="_blank" rel="noopener noreferrer" class="publication-link">Lujiazui: Where All Dreams Begin – Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series, Volume 2: Key Area Planning and Special Planning</a>. China Architecture & Building Press. ISBN 978-7-112-18439-2.<br>In Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华, 朱怡文, 何志华，孔艺倩（2015）. 梦缘陆家嘴（1990-2015重点区域规划和专项规划（卷二）），中国建筑工业出版社.</li>
@@ -612,6 +668,8 @@
                                 <span class="skill-tag">Rhino & Grasshopper</span>
                                 <span class="skill-tag">Blender</span>
                                 <span class="skill-tag">Unity</span>
+                                <span class="skill-tag">TouchDesigner</span>
+                                <span class="skill-tag">SketchUp</span>
                                 <span class="skill-tag">Python</span>
                                 <span class="skill-tag">AI Tools (Stable Diffusion & MidJourney)</span>
                             </div>
