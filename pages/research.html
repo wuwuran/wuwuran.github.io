@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo/wu_avatar_navy.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #111114;
+            --muted: #6c6c78;
+            --faint: #b9b9c2;
+            --accent: #5a47d6;
+            --line: rgba(17, 17, 20, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        .site-head nav a:hover {
+            color: var(--ink);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 6rem;
+        }
+
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+        }
+
+        /* The field, drawn: questions in italics, papers as numbered points, a line wherever they meet */
+        .field {
+            position: relative;
+            height: 520px;
+            margin: 1.5rem 0 1.5rem;
+        }
+
+        .field svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .field path {
+            fill: none;
+            stroke: var(--faint);
+            stroke-width: 1;
+            stroke-linecap: round;
+            transition: stroke 0.25s, opacity 0.25s;
+        }
+
+        .theme,
+        .node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            cursor: default;
+            transition: opacity 0.25s, color 0.25s;
+        }
+
+        .theme {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.45rem;
+            color: var(--ink);
+            background: #ffffff;
+            padding: 0 0.5rem;
+        }
+
+        .node {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+            background: #ffffff;
+            padding: 0.15rem 0.3rem;
+            cursor: pointer;
+        }
+
+        .node i {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid var(--ink);
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .node.research i { border-style: dashed; }
+        .node.book i { border-radius: 0; }
+
+        .field.has-active .theme,
+        .field.has-active .node { opacity: 0.22; }
+        .field.has-active path { opacity: 0.25; }
+        .field.has-active .on { opacity: 1; }
+        .field.has-active .theme.on { color: var(--accent); }
+        .field.has-active .node.on i { background: var(--accent); border-color: var(--accent); }
+        .field.has-active path.on { opacity: 1; stroke: var(--accent); }
+
+        .k {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1.5px solid var(--ink);
+            margin-right: 0.6rem;
+            vertical-align: -1px;
+        }
+
+        .k.sq { border-radius: 0; }
+        .k.dash { border-style: dashed; }
+
+        /* Caption under the graph: one sentence of context, and the key to the three marks */
+        .caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--line);
+            margin-bottom: 6.5rem;
+        }
+
+        .caption p {
+            max-width: 34rem;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--ink);
+        }
+
+        .caption ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+
+        .section {
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--ink);
+            margin-top: 2.5rem;
+            color: var(--ink);
+        }
+
+        .papers {
+            list-style: none;
+        }
+
+        .papers li {
+            display: grid;
+            grid-template-columns: 3rem 1fr 15rem;
+            gap: 1.5rem;
+            padding: 1.7rem 0;
+            border-bottom: 1px solid var(--line);
+            scroll-margin-top: 2rem;
+            transition: background 0.3s;
+        }
+
+        .papers li.on {
+            background: linear-gradient(90deg, rgba(90, 71, 214, 0.07), transparent 70%);
+        }
+
+        .papers .num {
+            padding-top: 0.2rem;
+            color: var(--ink);
+        }
+
+        .papers h3 a:hover { color: var(--accent); }
+
+        .papers h3 {
+            font-size: 1.12rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0.35rem 0 0.4rem;
+        }
+
+        .papers .zh {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--muted);
+            margin-top: 0.25rem;
+        }
+
+        .papers .au {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--muted);
+        }
+
+        .papers .tags {
+            margin-top: 0.6rem;
+            color: var(--accent);
+        }
+
+        .papers .side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.45rem;
+            text-align: right;
+            padding-top: 0.2rem;
+        }
+
+        .papers .side a {
+            color: var(--accent);
+        }
+
+        .papers .side a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 820px) {
+            .field { display: none; }
+            .caption { margin-bottom: 2.5rem; }
+            .caption ul { display: none; }
+            .intro { flex-direction: column; gap: 0.3rem; padding-bottom: 1rem; }
+            .papers li { grid-template-columns: 2.2rem 1fr; gap: 0.6rem 1rem; }
+            .papers .side { grid-column: 2; align-items: flex-start; text-align: left; }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .brand span { display: none; }
+            main { padding: 1rem 1.25rem 4rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-head">
+        <a class="brand" href="../index.html" aria-label="Wu Studio, home">
+            <img src="../assets/logo/wu_mark_black.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../index.html">Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="affiliation.html">Affiliation</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1 class="mono">Research</h1>
+            <span class="mono">6 papers · 1 book · 2 institutional reports</span>
+        </div>
+
+        <div class="field" id="field" aria-hidden="true">
+            <svg id="links"></svg>
+        </div>
+        <div class="caption">
+            <p>Five years planning cities in Shanghai, then a turn to screens, sensors and mixed reality. The lines show which themes carried over.</p>
+            <ul class="mono">
+                <li><i class="k"></i>Paper</li>
+                <li><i class="k sq"></i>Book</li>
+                <li><i class="k dash"></i>Institutional research report</li>
+            </ul>
+        </div>
+
+        <h2 class="section mono"><i class="k"></i>Papers</h2>
+        <ol class="papers">
+                <li id="p01" data-n="01">
+                    <span class="mono num">01</span>
+                    <div>
+                        <p class="mono venue">SIGraDi 2026 · Santiago, Chile</p>
+                        <h3><a href="research/sigradi-2026.html">Immersive Commons: Designing Ephemeral Spatial Dialogue for Co-Located Mixed Reality Environments</a></h3>
+                        <p class="au">Wuwu Ran, Mohammed Faraj Al-Suwaidi</p>
+                        <p class="mono tags">mixed reality · public space</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2026</span>
+                        <a href="research/sigradi-2026.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p02" data-n="02">
+                    <span class="mono num">02</span>
+                    <div>
+                        <p class="mono venue">Media Architecture Biennale 2025 (MAB25) · Bangkok</p>
+                        <h3><a href="research/mab-2025.html">The Evolution and ‘Chineseness’ of Urban Screens in China: From Propaganda Posters to Smart City Interfaces</a></h3>
+                        <p class="au">Wuwu Ran</p>
+                        <p class="mono tags">media architecture · history & heritage</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2025</span>
+                        <a href="research/mab-2025.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p03" data-n="03">
+                    <span class="mono num">03</span>
+                    <div>
+                        <p class="mono venue">ASCAAD 2024 · Barcelona</p>
+                        <h3><a href="research/ascaad-2024.html">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</a></h3>
+                        <p class="au">Wuwu Ran</p>
+                        <p class="mono tags">mixed reality · media architecture · public space</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2024</span>
+                        <a href="research/ascaad-2024.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p04" data-n="04">
+                    <span class="mono num">04</span>
+                    <div>
+                        <p class="mono venue">ACADIA 2023 · Denver</p>
+                        <h3><a href="research/acadia-2023.html">Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters</a></h3>
+                        <p class="au">Wuwu Ran, Lu Yin, Jie Yu</p>
+                        <p class="mono tags">media architecture · spatial analysis</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2023</span>
+                        <a href="research/acadia-2023.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p05" data-n="05">
+                    <span class="mono num">05</span>
+                    <div>
+                        <p class="mono venue">Regional Governance (区域治理) · 2018, vol. 16</p>
+                        <h3><a href="research/regional-governance-2018.html">Ecological Water Environment Planning with Lingnan Water Town Characteristics: A Case Study of Foshan University Town Satellite City (Beijiao)</a><span class="zh" lang="zh">岭南水乡特色下的生态水环境规划——以佛山大学城卫星城(北滘)城市设计为例</span></h3>
+                        
+                        <p class="mono tags">urban planning in China</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2018</span>
+                        <a href="research/regional-governance-2018.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p06" data-n="06">
+                    <span class="mono num">06</span>
+                    <div>
+                        <p class="mono venue">Annual National Planning Conference (中国城市规划年会) · Guiyang, 2015</p>
+                        <h3><a href="research/anpc-2015.html">Urban Development Problems and Countermeasures in Guiyang</a><span class="zh" lang="zh">浅谈贵阳市的城市发展问题及对策</span></h3>
+                        <p class="au">Wuwu Ran, Li Wang</p>
+                        <p class="mono tags">urban planning in China</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2015</span>
+                        <a href="research/anpc-2015.html">Abstract →</a>
+                    </div>
+                </li>
+        </ol>
+
+        <h2 class="section mono"><i class="k sq"></i>Book</h2>
+        <ol class="papers">
+                <li id="p07" data-n="07">
+                    <span class="mono num">07</span>
+                    <div>
+                        <p class="mono venue">China Architecture & Building Press · 2015</p>
+                        <h3><a href="research/lujiazui-2015.html">Lujiazui: Where All Dreams Begin. Volume 2: Key Area Planning and Special Planning</a><span class="zh" lang="zh">梦缘陆家嘴（1990-2015）重点区域规划和专项规划（卷二）</span></h3>
+                        <p class="au">He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al.</p>
+                        <p class="mono tags">urban planning in China · history & heritage</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2015</span>
+                        <a href="research/lujiazui-2015.html">Abstract →</a>
+                    </div>
+                </li>
+        </ol>
+
+        <h2 class="section mono"><i class="k dash"></i>Institutional research reports</h2>
+        <ol class="papers">
+                <li id="p08" data-n="08">
+                    <span class="mono num">08</span>
+                    <div>
+                        <p class="mono venue">Shanghai Urban Planning and Design Research Institute (SUPDRI) · September 2014 – October 2015</p>
+                        <h3><a href="research/shanghai-urban-design-system.html">The System and Measures for Overall Urban Design of Shanghai</a></h3>
+                        <p class="au">Special research project for the Shanghai Urban Master Plan (2017–2035)</p>
+                        <p class="mono tags">urban planning in China · spatial equity</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2014–15</span>
+                        <a href="research/shanghai-urban-design-system.html">Abstract →</a>
+                    </div>
+                </li>
+                <li id="p09" data-n="09">
+                    <span class="mono num">09</span>
+                    <div>
+                        <p class="mono venue">Shanghai Urban Planning and Design Research Institute (SUPDRI) · September 2016 – December 2017</p>
+                        <h3><a href="research/shanghai-104-industrial-facilities.html">Community Facility Equity in Shanghai’s 104 Industrial Blocks</a></h3>
+                        <p class="au">Infrastructure research</p>
+                        <p class="mono tags">urban planning in China · spatial equity · spatial analysis</p>
+                    </div>
+                    <div class="side mono">
+                        <span>2016–17</span>
+                        <a href="research/shanghai-104-industrial-facilities.html">Abstract →</a>
+                    </div>
+                </li>
+        </ol>
+    </main>
+
+    <script>
+    (function () {
+        var G = {"themes": [{"id": "mr", "t": "mixed reality", "x": 24, "y": 10}, {"id": "ps", "t": "public space", "x": 9, "y": 50}, {"id": "ma", "t": "media architecture", "x": 53, "y": 22}, {"id": "sa", "t": "spatial analysis", "x": 87, "y": 12}, {"id": "hh", "t": "history & heritage", "x": 71, "y": 58}, {"id": "up", "t": "urban planning in China", "x": 34, "y": 86}, {"id": "se", "t": "spatial equity", "x": 76, "y": 90}], "papers": [{"n": "01", "x": 11, "y": 27, "th": ["mr", "ps"], "kind": "paper", "href": "research/sigradi-2026.html"}, {"n": "02", "x": 63, "y": 41, "th": ["ma", "hh"], "kind": "paper", "href": "research/mab-2025.html"}, {"n": "03", "x": 33, "y": 38, "th": ["mr", "ma", "ps"], "kind": "paper", "href": "research/ascaad-2024.html"}, {"n": "04", "x": 70, "y": 15, "th": ["ma", "sa"], "kind": "paper", "href": "research/acadia-2023.html"}, {"n": "05", "x": 10, "y": 76, "th": ["up"], "kind": "paper", "href": "research/regional-governance-2018.html"}, {"n": "06", "x": 19, "y": 64, "th": ["up"], "kind": "paper", "href": "research/anpc-2015.html"}, {"n": "07", "x": 54, "y": 72, "th": ["up", "hh"], "kind": "book", "href": "research/lujiazui-2015.html"}, {"n": "08", "x": 55, "y": 93, "th": ["up", "se"], "kind": "research", "href": "research/shanghai-urban-design-system.html"}, {"n": "09", "x": 88, "y": 68, "th": ["up", "se", "sa"], "kind": "research", "href": "research/shanghai-104-industrial-facilities.html"}]};
+        var field = document.getElementById('field'), svg = document.getElementById('links');
+        var T = {}, edges = [];
+
+        G.themes.forEach(function (t) {
+            var e = document.createElement('span');
+            e.className = 'theme'; e.textContent = t.t;
+            e.style.left = t.x + '%'; e.style.top = t.y + '%';
+            field.appendChild(e); t.el = e; T[t.id] = t;
+        });
+        G.papers.forEach(function (p) {
+            var e = document.createElement('a');
+            e.className = 'node ' + p.kind; e.href = p.href;
+            e.innerHTML = '<i></i>' + p.n;
+            e.style.left = p.x + '%'; e.style.top = p.y + '%';
+            field.appendChild(e); p.el = e;
+            p.row = document.getElementById('p' + p.n);
+            p.th.forEach(function (id) { edges.push({ p: p, t: T[id] }); });
+        });
+
+        // slightly unsteady lines from a fixed seed, like the map on the home page
+        var seed = 5;
+        function rnd() {
+            seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+            var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+        }
+        function wobble(x1, y1, x2, y2) {
+            var len = Math.hypot(x2 - x1, y2 - y1), n = Math.max(2, Math.round(len / 80));
+            var nx = -(y2 - y1) / len, ny = (x2 - x1) / len, d = '';
+            for (var i = 0; i <= n; i++) {
+                var k = i / n, o = (i === 0 || i === n) ? 0 : (rnd() - 0.5) * 5;
+                var x = x1 + (x2 - x1) * k + nx * o, y = y1 + (y2 - y1) * k + ny * o;
+                d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+            }
+            return d;
+        }
+        function draw() {
+            seed = 5;
+            var W = field.clientWidth, H = field.clientHeight;
+            if (!W || !H) { return; }            // hidden on narrow screens
+            svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+            svg.innerHTML = '';
+            edges.forEach(function (e) {
+                var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', wobble(e.p.x / 100 * W, e.p.y / 100 * H, e.t.x / 100 * W, e.t.y / 100 * H));
+                svg.appendChild(path); e.el = path;
+            });
+        }
+        draw();
+        window.addEventListener('resize', draw);
+
+        function light(test) {
+            field.classList.add('has-active');
+            edges.forEach(function (e) {
+                if (test(e)) { e.el.classList.add('on'); e.p.el.classList.add('on'); e.t.el.classList.add('on'); if (e.p.row) e.p.row.classList.add('on'); }
+            });
+        }
+        function clear() {
+            field.classList.remove('has-active');
+            document.querySelectorAll('.on').forEach(function (n) { n.classList.remove('on'); });
+        }
+        G.papers.forEach(function (p) {
+            p.el.addEventListener('mouseenter', function () { light(function (e) { return e.p === p; }); });
+            p.el.addEventListener('mouseleave', clear);
+            p.el.addEventListener('focus', function () { light(function (e) { return e.p === p; }); });
+            p.el.addEventListener('blur', clear);
+            if (p.row) {
+                p.row.addEventListener('mouseenter', function () { light(function (e) { return e.p === p; }); });
+                p.row.addEventListener('mouseleave', clear);
+            }
+        });
+        G.themes.forEach(function (t) {
+            t.el.addEventListener('mouseenter', function () { light(function (e) { return e.t === t; }); });
+            t.el.addEventListener('mouseleave', clear);
+        });
+    })();
+    </script>
+</body>
+</html>

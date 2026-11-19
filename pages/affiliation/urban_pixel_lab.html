@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Pixel Lab - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Code green: one hue at four strengths on the logo's own near-black */
+        :root {
+            --bg: #010d04;
+            --g1: #00ff43;
+            --g2: #3ecf6e;
+            --g3: #2a9a52;
+            --g4: #0f4a26;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--g2);
+            line-height: 1.6;
+        }
+
+        .mono,
+        .num,
+        .role,
+        .go,
+        .centre {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--g1);
+        }
+
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            color: var(--g1);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+            color: var(--g3);
+        }
+
+        main {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 1rem 2rem 6rem;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--g3);
+            margin: 1.5rem 0 3rem;
+        }
+
+        .emblem {
+            display: block;
+            width: min(100%, 760px);
+            margin: 0 0 3rem;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--g1);
+            margin: 0.6rem 0 0.8rem;
+        }
+
+        .kicker { color: var(--g3); }
+        .role-line { color: var(--g2); }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--g2);
+            max-width: 720px;
+            margin: 2rem 0 3rem;
+        }
+
+        .label {
+            color: var(--g3);
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--g4);
+        }
+
+        .rows {
+            list-style: none;
+        }
+
+        .rows li {
+            display: grid;
+            grid-template-columns: 3rem 1fr auto;
+            gap: 1.5rem;
+            align-items: baseline;
+            padding: 1.3rem 0;
+            border-bottom: 1px solid var(--g4);
+        }
+
+        .rows .num { padding-top: 0; }
+
+        .rows h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--g1);
+        }
+
+        .rows p {
+            font-size: 0.92rem;
+            color: var(--g3);
+            margin-top: 0.2rem;
+        }
+
+        .rows .go { margin-top: 0; }
+
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            color: var(--g3);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .brand span { display: none; }
+            main { padding: 0.5rem 1.25rem 4rem; }
+            .rows li { grid-template-columns: 2.2rem 1fr; }
+            .rows .go { grid-column: 2; }
+        }
+        </style>
+</head>
+<body>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_green.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../research.html">Research</a>
+            <a href="../about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="top-row mono">
+            <a href="../affiliation.html">← Affiliation</a>
+            <span>03 / 04</span>
+        </div>
+
+        <img class="emblem" src="../../assets/affiliation/urban_pixel_lab_code.png" alt="Urban Pixel Lab logo drawn in binary code">
+
+        <div class="kicker mono">Independent studio · Research lab</div>
+        <h1>Urban Pixel Lab</h1>
+        <p class="role-line mono">Founder and Lead Designer</p>
+
+        <p class="lede">An independent studio and research lab exploring urban digitalisation, media architecture and immersive spatial experiences through experimental design and visualisation projects.</p>
+
+        <div class="label mono">Projects</div>
+        <ol class="rows">
+            <li>
+                <span class="num">01</span>
+                <div>
+                    <h2>Immersive Commons</h2>
+                    <p>Co-located mixed reality, SIGraDi 2026</p>
+                </div>
+                <a class="go" href="../immersive_commons/immersive_commons.html">open →</a>
+            </li>
+            <li>
+                <span class="num">02</span>
+                <div>
+                    <h2>The Piccadilly Light</h2>
+                    <p>VR simulation of a sensing urban screen, ASCAAD 2024</p>
+                </div>
+                <a class="go" href="../the_piccadilly_light/the_piccadilly_light.html">open →</a>
+            </li>
+            <li>
+                <span class="num">03</span>
+                <div>
+                    <h2>Urban Pixel Lab identity</h2>
+                    <p>Generative video, written in Processing</p>
+                </div>
+                <a class="go" href="../urban_pixel_lab/urban_pixel_lab.html">open →</a>
+            </li>
+        </ol>
+
+        <div class="pager mono">
+            <a href="../affiliation.html">← Affiliation</a>
+            <a href="w_house_consulting.html">W House Consulting →</a>
+        </div>
+    </main>
+</body>
+</html>

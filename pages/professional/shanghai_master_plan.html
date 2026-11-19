@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shanghai Urban Master Plan Research - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../../logo.png">
+    <title>Shanghai Master Plan 2035 - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -13,342 +13,225 @@
         }
 
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #ffffff;
-            --darker-bg: #f8f9fa;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --border-color: rgba(123, 104, 238, 0.2);
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
+            background: #ffffff;
+            color: var(--ink);
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
         }
 
-        .back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: var(--primary-purple);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            z-index: 1000;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .back-button:hover {
-            background: var(--secondary-purple);
-            border-color: var(--primary-purple);
-            transform: translateX(-5px);
-        }
-
-        .project-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 5%;
-        }
-
-        .project-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
-        }
-
-        .project-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--muted);
+        }
+
+        .mono a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mono a:hover {
+            color: var(--purple-text);
+        }
+
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
             line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
         }
 
-        .project-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-            font-weight: 500;
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
         }
 
-        .project-meta {
-            font-size: 0.95rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
         }
 
-        .project-image {
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
             width: 100%;
-            max-width: 900px;
-            margin: 3rem auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 0 0 3.5rem;
         }
 
-        .project-image img {
+        figure img,
+        figure > video {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
         }
 
-        .project-content {
-            max-width: 900px;
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
             margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
         }
 
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 0.8rem;
-            letter-spacing: 0.05em;
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
         }
 
-        .project-description {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-        
-        .project-description b {
-            color: var(--text-dark);
-        }
-
-        .list-item {
-            margin-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            font-size: 1.05rem;
-        }
-        
-        .list-title {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 2rem auto;
-            padding: 2rem;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(157, 141, 255, 0.05));
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        .info-item {
+        .circle + figcaption {
             text-align: center;
         }
 
-        .info-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--secondary-purple);
-            margin-bottom: 0.5rem;
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
         }
 
-        .info-value {
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .project-container {
-                padding: 2rem 5%;
-            }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
+        }
+    
+        /* Text-only brief: two labelled paragraphs, no figures */
+        .brief-label {
+            margin: 2.6rem 0 0.7rem;
+        }
 
-            .project-title {
-                font-size: 1.8rem;
-            }
-
-            .back-button {
-                top: 1rem;
-                left: 1rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+        .brief {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            max-width: 720px;
         }
     </style>
 </head>
 <body>
-    <a href="../professional.html" class="back-button">← Back to Projects</a>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_color.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../../pages/research.html">Research</a>
+            <a href="../../pages/about.html">About</a>
+        </nav>
+    </header>
 
-    <div class="project-container">
-        <div class="project-header">
-            <h1 class="project-title">Special Research Project on Urban Design for the Shanghai Urban Master Plan (2017-2035)</h1>
-            <p class="project-subtitle">The System and Measures for Overall Urban Design of Shanghai</p>
-            <p class="project-meta">Urban Design Research | Professional Project | 2015 – 2016 | Shanghai, China</p>
-        </div>
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../../index.html">← Work</a>
+                    <span>X −0.28 · Y +0.86</span>
+                </div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Role</div>
-                <div class="info-value">Core Researcher (Lead for Quality Improvement Areas)</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Affiliation</div>
-                <div class="info-value">Shanghai Urban Planning and Design Research Institute (SUPDRI)</div>
-            </div>
-             <div class="info-item">
-                <div class="info-label">Impact</div>
-                <div class="info-value">Integrated into Shanghai Master Plan (2017-2035)</div>
-            </div>
-        </div>
+                <div class="mono">Industry · Urban design research</div>
+                <h1>Shanghai Master Plan 2035</h1>
+                <p class="meta">
+                    Special research project on urban design for the Shanghai Urban Master Plan (2017–2035)<br>
+                    Shanghai Urban Planning and Design Research Institute (SUPDRI)<br>
+                    Shanghai, 2015–2016
+                </p>
 
+                <div class="brief-label mono">Overview</div>
+                <p class="brief">A special research project supporting the Shanghai Urban Master Plan (2017–2035). It treats the urban environment as a public good and urban design as a tool of public welfare governance, moving away from an approach centred on city image. Drawing on welfare economics, the study linked spatial diagnosis, economic reasoning and policy zoning, and classified Shanghai’s whole administrative area into four governance zones: quality improvement, key construction, potential elevation and development restriction. The research was integrated into the adopted master plan.</p>
 
-        <div class="project-content">
-            <h2 class="section-title">01. Project Overview: Redefining Urban Design</h2>
-            <p class="project-description">
-                As a pivotal special research project supporting the Shanghai Urban Master Plan (2017-2035), this study represented a paradigm shift in Chinese master-scale urban design. Moving beyond the conventional 'engineering' or 'aesthetic' approach, this research redefined the urban environment as a Public Good, positioning urban design as a strategic tool for Public Welfare Governance.
-            </p>
-            <p class="project-description">
-                Drawing on Welfare Economics, the study established a rigorous top-level methodological framework that links spatial diagnosis, economic reasoning, and policy zoning. It aimed to correct the structural bias of traditional master plans—which often prioritise 'city image' and aggregate growth—by shifting focus to the distribution of spatial quality, accessibility, and environmental security. This resolved the tension between rapid urbanisation and quality of life by categorising the city into policy zones based on principles of allocative efficiency and distributive justice.
-            </p>
+                <div class="brief-label mono">My role</div>
+                <p class="brief">Core researcher, and lead for the Quality Improvement Areas: the zones defined by the equity logic of the study, where the aim is to raise baseline spatial quality for the least advantaged parts of the city.</p>
 
-            <h2 class="section-title">02. Theoretical Framework: The Economics of Space & The Dual-Logic Approach</h2>
-            <p class="project-description">
-                The core innovation of this research was the application of Welfare Economics to urban design governance. We posited that the urban environment functions as a "Welfare Triangle" (State, Market, Individual), where spatial quality is a redistributable asset. The methodology was bifurcated into two economic principles:
-            </p>
-
-            <div class="project-image">
-                <img src="../../assets/professional/Shanghai/framework.jpg" alt="Theoretical Framework: The Welfare Triangle">
-            </div>
-
-            <ul style="list-style: none; margin-bottom: 1.5rem;">
-                <li class="list-item">
-                    <span class="list-title">Logic A: The Optimised Provision Route (Efficiency)</span><br>
-                    <b>Pareto Efficiency & Marginal Utility:</b> Used to identify 'Key Construction Areas' (e.g., CBDs, Hubs). Investing here yields the highest marginal utility for the city's global competitiveness.
-                </li>
-                <li class="list-item">
-                    <span class="list-title">Logic B: The Equitable Provision Route (Justice)</span><br>
-                    <b>Rawlsian Justice (Distributive Justice):</b> Used to identify "Quality Improvement Areas." Based on John Rawls' Maximin Principle, this argues that social welfare is only truly maximized when the conditions of the "least advantaged" members of society are improved. This formed the theoretical basis for my specific research focus.
-                </li>
-            </ul>
-
-            <h2 class="section-title">03. Technical Route & Spatial Zoning</h2>
-
-            <ul style="list-style: none; margin-bottom: 1.5rem;">
-                <li class="list-item">
-                    <b>Welfare Definition:</b> Deconstruct 'Urban Spatial Quality' into measurable welfare indicators (environment, accessibility, vulnerability).
-                </li>
-                <li class="list-item">
-                    <b>Diagnostic Analysis:</b> Mapped citywide disparities to identify 'Spatial Deprivation' versus 'High Potential.'
-                </li>
-                <li class="list-item">
-                    <b>Economic Application:</b> Apply Rawlsian Justice (Equity) and Marginal Utility (Efficiency) to categorise the territory.
-                </li>
-            </ul>
-
-            <p class="project-description" style="text-align: center; font-weight: 600; margin: 2rem 0 1rem;">
-                Shanghai Urban Master Plan Policy Framework<br>
-                Spatial Policy Zoning & Construction Control Guidance System
-            </p>
-
-             <div class="project-image">
-                <img src="../../assets/professional/Shanghai/zoning_system.jpg" alt="Spatial Policy Zoning System">
-            </div>
-
-            <p class="project-description">
-                <b>Spatial Zoning:</b> Instead of a static physical blueprint, the research proposed a dynamic <i>policy zoning</i> system. We classified the entire administrative area of Shanghai (approx. 3,000 km²) into four distinct governance zones:
-            </p>
-            <ol style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">
-                <li style="margin-bottom: 0.5rem;"><b>Quality Improvement Area:</b> Focused on equity and baseline guarantees (my focus).</li>
-                <li style="margin-bottom: 0.5rem;"><b>Key Construction Area:</b> Focused on efficiency and global image.</li>
-                <li style="margin-bottom: 0.5rem;"><b>Potential Elevation Area:</b> Focused on stock regeneration and endogenous growth.</li>
-                <li style="margin-bottom: 0.5rem;"><b>Development Restriction Area:</b> Focused on ecological protection and negative externalities control.</li>
-            </ol>
-             <p class="project-description">
-                <b>Policy Formulation:</b> Developed differentiated guidelines, shifting from rigid morphological controls to performance-based urban design criteria.
-            </p>
-
-            <h2 class="section-title">04. Focal Research: Quality Improvement Area (My Responsibility)</h2>
-            <p class="project-description" style=" font-weight: 600; margin: 1rem 0 1.5rem;">
-                Lead Researcher for 'Equity-Oriented' Spatial Policy: Operationalising Distributive Justice in Spatial Planning
-            </p>
-            <p class="project-description">
-                My primary responsibility was to translate the abstract principle of 'Social Equity' into actionable spatial policies for Shanghai's most vulnerable regions. This involved diagnostic research, typology classification, and policy formulation—specifically, defining and developing strategies for Quality Improvement Areas. This category encompassed regions where the 'Happiness Index' and spatial quality lagged behind economic growth, particularly underdeveloped suburbs and aging inner-city neighbourhoods.
-            </p>
-
-            <p class="project-description" style="text-align: center; font-weight: 600; margin: 2rem 0 1rem;">
-                Spatial Diagnosis: Identifying Structural Deprivation<br>
-                Defining 'Quality Improvement Areas' not by aesthetic value, but by deficit in spatial welfare—translating social equity into actionable spatial policy
-            </p>
-
-            <div class="project-image">
-                <img src="../../assets/professional/Shanghai/spatial_diagnosis.jpg" alt="Spatial Diagnosis and Deprivation Analysis">
-            </div>
-
-            <p class="project-description">
-                <b>A. Spatial Diagnosis: Identifying Structural Deprivation</b><br>
-                Through quantitative and qualitative analysis, I identified "Quality Improvement Areas" not by their aesthetic value, but by their deficit in spatial welfare. This analysis revealed two critical typologies of spatial deprivation:
-            </p>
-            <ul style="list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem; color: var(--text-light);">
-                <li style="margin-bottom: 0.5rem;"><b>The 'Hollow' Centre (Aging Inner City):</b> High-density neighbourhoods (e.g., Zhabei, Huangpu) suffering from green deficits, oversized blocks, and monofunctional commercial zones that exclude local residents, thereby risking gentrification and loss of community fabric.</li>
-                <li style="margin-bottom: 0.5rem;"><b>The Urban-Rural Fracture (Underdeveloped Fringe):</b> Chaotic 'rapid change' zones (e.g., 'Sleeping Towns' like Sijing) characterised by oversized blocks, a lack of public amenities, and disjointed interfaces between industrial and residential land. These areas face a mismatch between housing supply and public services, resulting in limited employment opportunities and inadequate social spaces.</li>
-            </ul>
-
-
-
-            <p class="project-description">
-                <b>B. Strategic Interventions: A Policy Toolkit for Equity</b><br>
-                To address these disparities, I developed a 'Fair Supply' strategy to bridge the spatial welfare gap, extending beyond physical design into governance and fiscal policy:
-            </p>
-            <div class="project-image">
-                <img src="../../assets/professional/Shanghai/governance.png" alt="Governance Innovation and Policy Toolkit">
-            </div>
-             <ul style="list-style: none; margin-bottom: 1.5rem;">
-                <li class="list-item">
-                    <span class="list-title">Governance Innovation: The 'Community Planner' System</span><br>
-                    Critiquing the limits of top-down master planning for micro-regeneration, I proposed the institutionalisation of a 'Community Planner' role (referencing the Taipei model). This mechanism empowers local professionals to act as intermediaries between government and residents, facilitating bottom-up regeneration. It creates a localised governance layer that supports participation and ensures design interventions respond to actual resident needs.
-                </li>
-                <li class="list-item">
-                    <span class="list-title">Public Goods Equalisation & Transit Welfare</span><br>
-                    I advocated a 'transit-as-welfare' approach, prioritising the development of 'last-mile' slow-traffic systems (walking and cycling networks) in suburban areas to connect isolated low-income communities with the rail network, thereby improving their access to the city's economic opportunities.
-                </li>
-                <li class="list-item">
-                    <span class="list-title">Morphological Repair: From 'Super-blocks' to Human Scale</span><br>
-                    For the oversized grids of the urban fringe, I developed guidelines for block fragmentation. This strategy enforces functional mixing to prevent social segregation and breaks down large, hostile scales into walkable, human-centred neighbourhoods.
-                </li>
-                 <li class="list-item">
-                    <span class="list-title">Fiscal Policy Recommendations</span><br>
-                    Acknowledging that these areas lack market appeal for private capital, the research argued for targeted fiscal transfers. We proposed that government investment should not only pursue efficiency (ROI) but must also be directed to these 'low-yield' areas to guarantee the baseline dignity of the living environment as a fundamental right.
-                </li>
-            </ul>
-
-            <h2 class="section-title">05. Contribution & Impact</h2>
-            <p class="project-description">
-                The findings of this research were directly integrated into the <b>Shanghai Master Plan (2017–2035)</b>. The project successfully argued that for a global city, the <i>'floor'</i> of spatial quality (the condition of its most vulnerable areas) is just as critical as its 'ceiling' (its skyline and landmarks). The 'Quality Improvement' concept helped elevate urban design from a purely technical tool to a public policy instrument, ensuring that Shanghai's ambition to become a 'Global City' is grounded in inclusivity, equity, and human-centric development.
-            </p>
-        </div>
-    </div>
+                <div class="pager mono">
+                    <a href="../../index.html">← Work</a>
+                    <a href="duoba.html">Duoba New City →</a>
+                </div>
+            </article>
+    </main>
 </body>
 </html>

@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliation - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../logo.png">
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('active');
-            }
-        }
-    </script>
+    <title>Affiliation - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -21,411 +13,357 @@
         }
 
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #1a1a2e;
-            --darker-bg: #16213e;
-            --sidebar-bg: rgba(26, 26, 46, 0.95);
-            --text-dark: #e0e0e0;
-            --text-light: #b0b0b0;
-            --border-color: rgba(123, 104, 238, 0.2);
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
+            background: #ffffff;
+            color: var(--ink);
             line-height: 1.6;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(123, 104, 238, 0.05);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(123, 104, 238, 0.2);
-            border-radius: 2px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(123, 104, 238, 0.3);
-        }
-
-        /* Layout Container */
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100vh;
-            background: var(--sidebar-bg);
-            padding: 3rem 0;
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-            z-index: 1000;
-        }
-
-        .logo-section {
-            padding: 0 2rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-        }
-
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.3rem;
-        }
-
-        .brand-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.1em;
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
+            color: var(--muted);
         }
 
-        .brand-tagline {
-            font-size: 0.7rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
-            margin-top: 0.5rem;
-        }
-
-        .nav-menu {
-            padding: 2rem 0;
-        }
-
-        .nav-item {
-            padding: 0.8rem 2rem;
-            color: var(--text-light);
+        .mono a {
+            color: inherit;
             text-decoration: none;
-            display: block;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
+            transition: color 0.2s;
         }
 
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--secondary-purple);
-            background: rgba(123, 104, 238, 0.1);
-            border-left-color: var(--primary-purple);
+        .mono a:hover {
+            color: var(--purple-text);
         }
 
-        /* Main Content Area */
-        .main-content {
-            margin-left: 250px;
-            flex: 1;
-            padding: 3rem 5%;
-            background: var(--dark-bg);
-        }
-
-        /* Page Header */
-        .page-header {
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .page-description {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            max-width: 800px;
-        }
-
-        /* Affiliation Grid */
-        .affiliation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2rem;
-        }
-
-        .affiliation-card {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
-            border-radius: 15px;
-            border: 2px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s;
-            min-height: 360px;
-            height: 100%;
-            min-width: 0;
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
         }
 
-        .affiliation-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            min-width: 0;
-            transition: all 0.3s;
-        }
-
-        .affiliation-card-link:hover .affiliation-card {
-            border-color: var(--primary-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
-        }
-
-        .affiliation-card:hover {
-            border-color: var(--primary-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
-        }
-
-        .affiliation-logo {
-            width: 80px;
-            height: 80px;
-            flex-shrink: 0;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            background: transparent;
-            padding: 0;
-            transition: all 0.3s;
-        }
-
-        .affiliation-logo:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .first-logo {
-            object-fit: contain;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.3rem;
-        }
-
-        .york-logo {
-            object-fit: contain;
-            border-radius: 50%;
-        }
-
-        .affiliation-centre {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 400;
-            line-height: 1.5;
-            margin-top: 0.4rem;
-        }
-
-        .affiliation-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.6rem;
-        }
-
-        .affiliation-role {
-            color: var(--secondary-purple);
-            font-weight: 500;
-            font-size: 0.85rem;
-        }
-
-        .affiliation-description {
-            color: var(--text-light);
-            font-size: 0.8rem;
-            margin-top: 0.8rem;
-            line-height: 1.5;
-            opacity: 0.9;
-            text-align: center;
-            padding: 0 0.5rem;
-            flex-grow: 1;
+        .site-head .brand {
             display: flex;
             align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
         }
 
-        /* Mobile Menu Toggle */
-        .mobile-toggle {
-            display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 2000;
-            background: var(--primary-purple);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
+        }
+
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
+            width: 100%;
+            margin: 0 0 3.5rem;
+        }
+
+        figure img,
+        figure > video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
+        }
+
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             cursor: pointer;
-            font-size: 1rem;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .affiliation-grid {
-                gap: 1.5rem;
-            }
+        .circle + figcaption {
+            text-align: center;
+        }
+
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
         }
 
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
+        }
+    
+        /* This page runs on black: the same tokens as the light pages, inverted */
+        :root {
+            --ink: #f3f3f6;
+            --muted: #8f8fa0;
+            --purple-text: #9D8DFF;
+            --line: rgba(255, 255, 255, 0.14);
+        }
 
-            .sidebar.active {
-                transform: translateX(0);
-            }
+        body {
+            background: #000000;
+        }
 
-            .main-content {
-                margin-left: 0;
-                padding: 5rem 5% 2rem;
-            }
+        /* Affiliation: a numbered list; logos sit directly on the page, no tiles */
+        .aff-title {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
 
-            .mobile-toggle {
-                display: block;
-            }
+        .aff {
+            list-style: none;
+        }
 
-            .affiliation-card {
-                height: auto;
-                min-height: 300px;
-                padding: 1.5rem;
-            }
+        .aff li {
+            display: grid;
+            grid-template-columns: 112px 1fr 1.25fr;
+            gap: 2rem;
+            padding: 2.4rem 0;
+            border-bottom: 1px solid var(--line);
+        }
 
-            .affiliation-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
+        .tile {
+            width: 112px;
+            height: 112px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
 
-            .affiliation-logo {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 0.8rem;
-            }
+        .tile img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
 
-            .affiliation-name {
-                font-size: 1rem;
-            }
+        .tile.wide { align-self: start; height: auto; padding-top: 0.35rem; }
 
-            .affiliation-role {
-                font-size: 0.8rem;
-            }
+        .aff h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--ink);
+        }
 
-            .affiliation-description {
-                font-size: 0.75rem;
-                padding: 0 0.3rem;
-            }
+        .aff h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-            .page-title {
-                font-size: 2rem;
-            }
+        .aff h2 a:hover {
+            color: var(--purple-text);
+        }
 
-            .page-description {
-                font-size: 1rem;
-            }
+        .aff .centre {
+            display: block;
+            margin-top: 0.6rem;
+            line-height: 1.7;
+        }
+
+        .aff .role {
+            color: var(--purple-text);
+            padding-top: 0.45rem;
+        }
+
+        .aff .desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--ink);
+            margin-top: 0.7rem;
+        }
+
+        .aff .go {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-top: 1rem;
+        }
+
+        .aff .go a {
+            color: var(--purple-text);
+        }
+
+        .aff .go a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 768px) {
+            .aff li { grid-template-columns: 72px 1fr; gap: 1rem 1.2rem; }
+            .tile { width: 72px; height: 72px; }
+            .aff .what { grid-column: 1 / -1; }
         }
     </style>
 </head>
 <body>
-    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+    <header class="site-head">
+        <a class="brand" href="../index.html" aria-label="Wu Studio, home">
+            <img src="../assets/logo/wu_mark_multi.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../index.html">Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="research.html">Research</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
 
-    <div class="container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="logo-section">
-                <div class="logo-icon">
-                    <img src="../logo.png" alt="WUWU RAN Logo" style="width: 100%; height: auto;">
+    <main>
+            <article class="project">
+                <div class="aff-title mono">
+                    <h1 style="font: inherit; margin: 0; color: inherit;">Affiliation</h1>
+                    <span>04 entries</span>
                 </div>
-                <div class="brand-name">WUWU RAN</div>
-                <div class="brand-subtitle">Design Studio</div>
-                <div class="brand-tagline">Architecture | Design | Innovation</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="../index.html" class="nav-item">Home</a>
-                <a href="academic.html" class="nav-item">Academic Work</a>
-                <a href="professional.html" class="nav-item">Professional Work</a>
-                <a href="digital.html" class="nav-item">Digital Arts</a>
-                <a href="publication.html" class="nav-item">Publication</a>
-                <a href="workshop.html" class="nav-item">Workshop</a>
-                <a href="affiliation.html" class="nav-item active">Affiliation</a>
-                <a href="about.html" class="nav-item">About Me</a>
-                <a href="contact.html" class="nav-item">Contact</a>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Affiliation Page -->
-            <div id="affiliation" class="page">
-                <div class="page-header">
-                    <h1 class="page-title">Affiliation</h1>
-                    <p class="page-description">Academic and professional institutional connections.</p>
-                </div>
-                <div class="affiliation-grid">
-                    <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="affiliation-card-link">
-                        <div class="affiliation-card">
-                            <img src="../assets/affiliation/university_of_york.png" alt="University of York" class="affiliation-logo york-logo" width="80" height="80">
-                            <h3 class="affiliation-name">University of York<span class="affiliation-centre">Centre for Architecture, Urbanism, and Global Heritage (CAUGH)</span></h3>
-                            <p class="affiliation-role">Postdoctoral Research Associate</p>
-                            <p class="affiliation-description">Contributing to the Nubian Chronicles project through spatial research and digital heritage reconstruction, connecting architectural histories with immersive digital experiences.</p>
+                <ol class="aff">
+                    <li>
+                        <div class="tile wide"><img src="../assets/affiliation/university_of_york_white.png" alt="University of York"></div>
+                        <div class="who">
+                            <h2>University of York</h2>
+                            <span class="centre mono">Centre for Architecture, Urbanism and Global Heritage (CAUGH)</span>
                         </div>
-                    </a>
-                    <a href="http://www.cava-research.org/team-profiles/ran" target="_blank" class="affiliation-card-link">
-                        <div class="affiliation-card">
-                            <img src="../assets/affiliation/cava.png" alt="Centre for Architecture and Visual Arts" class="affiliation-logo first-logo">
-                            <h3 class="affiliation-name">University of Liverpool<br><span style="font-size: 0.9rem; font-weight: 400;">(Centre for Architecture and Visual Arts)</span></h3>
-                            <p class="affiliation-role">PhD Researcher</p>
-                            <p class="affiliation-description">Researching the intersection of architecture, digital media, and urban space through computational and spatial analysis methods.</p>
+                        <div class="what">
+                            <p class="role mono">Postdoctoral Research Associate</p>
+                            <p class="desc">Contributing to the Nubian Chronicles project through spatial research and digital heritage reconstruction, connecting architectural histories with immersive digital experiences. I lead the project’s interactive map.</p>
+                            <div class="go mono">
+                                <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer">Staff profile →</a>
+                                <a href="https://caugh.org/" target="_blank" rel="noopener noreferrer">CAUGH →</a>
+                                <a href="https://sites.google.com/york.ac.uk/nubian-chronicles/home" target="_blank" rel="noopener noreferrer">Nubian Chronicles →</a>
+                                <a href="https://nubian-chronicles-map.web.app/" target="_blank" rel="noopener noreferrer">Interactive map · project lead →</a>
+                            </div>
                         </div>
-                    </a>
-                    <div class="affiliation-card">
-                        <img src="../assets/affiliation/urban_pixel_lab.png" alt="Urban Pixel Lab Logo" class="affiliation-logo">
-                        <h3 class="affiliation-name">Urban Pixel Lab</h3>
-                        <p class="affiliation-role">Founder & Lead Designer</p>
-                        <p class="affiliation-description">An independent studio and research lab exploring urban digitalisation, media architecture, and immersive spatial experiences through experimental design and visualisation projects.</p>
-                    </div>
-                    <div class="affiliation-card">
-                        <img src="../assets/affiliation/w_house_consulting.png" alt="W House Consulting Logo" class="affiliation-logo">
-                        <h3 class="affiliation-name">W House Consulting</h3>
-                        <p class="affiliation-role">Founder & Principal Designer</p>
-                        <p class="affiliation-description">A design and planning consultancy specialising in residential extensions, architectural applications, and adaptive design solutions for built environment.</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-<!-- Visitor tracking - hidden -->
-<div style="display:none;">
-  <script type="text/javascript" id="mapmyvisitors"
-    src="//mapmyvisitors.com/map.js?d=Du_OzwQtYMZ4fEnYSpK1L99-rfiyDuI5qU5iViBPnj0&cl=ffffff&w=a">
-  </script>
-</div>
+                    </li>
+                    <li>
+                        <div class="tile wide"><img src="../assets/affiliation/cava.png" alt="Centre for Architecture and Visual Arts"></div>
+                        <div class="who">
+                            <h2>University of Liverpool</h2>
+                            <span class="centre mono">Centre for Architecture and Visual Arts (CAVA)</span>
+                        </div>
+                        <div class="what">
+                            <p class="role mono">PhD Researcher</p>
+                            <p class="desc">Researching the intersection of architecture, digital media and urban space through computational and spatial analysis methods.</p>
+                            <div class="go mono">
+                                <a href="http://www.cava-research.org/team-profiles/ran" target="_blank" rel="noopener noreferrer">CAVA profile →</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="tile" href="affiliation/urban_pixel_lab.html"><img src="../assets/affiliation/urban_pixel_lab_green.png" alt="Urban Pixel Lab"></a>
+                        <div class="who">
+                            <h2><a href="affiliation/urban_pixel_lab.html">Urban Pixel Lab</a></h2>
+                        </div>
+                        <div class="what">
+                            <p class="role mono">Founder and Lead Designer</p>
+                            <p class="desc">An independent studio and research lab exploring urban digitalisation, media architecture and immersive spatial experiences through experimental design and visualisation projects.</p>
+                            <div class="go mono">
+                                <a href="affiliation/urban_pixel_lab.html">Open →</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="tile" href="affiliation/w_house_consulting.html"><img src="../assets/affiliation/w_house_consulting.png" alt="W House Consulting"></a>
+                        <div class="who">
+                            <h2><a href="affiliation/w_house_consulting.html">W House Consulting</a></h2>
+                        </div>
+                        <div class="what">
+                            <p class="role mono">Founder and Principal Designer</p>
+                            <p class="desc">An independent planning and design consultancy: house extensions from design to planning application, CGI for commercial architecture, and interior design schemes.</p>
+                            <div class="go mono">
+                                <a href="affiliation/w_house_consulting.html">Open →</a>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </article>
+    </main>
 </body>
 </html>

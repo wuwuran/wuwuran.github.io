@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duoba New City - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../../logo.png">
+    <title>Duoba New City - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -13,254 +13,224 @@
         }
 
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #ffffff;
-            --darker-bg: #f8f9fa;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --border-color: rgba(123, 104, 238, 0.2);
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
+            background: #ffffff;
+            color: var(--ink);
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
         }
 
-        .back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: var(--primary-purple);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            z-index: 1000;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .back-button:hover {
-            background: var(--secondary-purple);
-            border-color: var(--primary-purple);
-            transform: translateX(-5px);
-        }
-
-        .project-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 5%;
-        }
-
-        .project-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
-        }
-
-        .project-title {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--muted);
         }
 
-        .project-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
+        .mono a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .project-meta {
-            font-size: 0.95rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
+        .mono a:hover {
+            color: var(--purple-text);
         }
 
-        .project-image {
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
+        }
+
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
             width: 100%;
-            max-width: 900px;
-            margin: 3rem auto;
-            border-radius: 10px;
-            overflow: hidden;
+            margin: 0 0 3.5rem;
         }
 
-        .project-image img {
+        figure img,
+        figure > video {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
         }
 
-        .project-content {
-            max-width: 900px;
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
             margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
         }
 
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #fff;
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 0.8rem;
-            letter-spacing: 0.05em;
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
         }
 
-        .project-description {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            text-align: justify;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 2rem auto;
-            padding: 2rem;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.15), rgba(157, 141, 255, 0.1));
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(123, 104, 238, 0.1);
-        }
-
-        .info-item {
+        .circle + figcaption {
             text-align: center;
         }
 
-        .info-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--secondary-purple);
-            margin-bottom: 0.5rem;
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
         }
 
-        .info-value {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .project-container {
-                padding: 2rem 5%;
-            }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
+        }
+    
+        /* Text-only brief: two labelled paragraphs, no figures */
+        .brief-label {
+            margin: 2.6rem 0 0.7rem;
+        }
 
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .back-button {
-                top: 1rem;
-                left: 1rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+        .brief {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            max-width: 720px;
         }
     </style>
 </head>
 <body>
-    <a href="../professional.html#professional" class="back-button">← Back to Projects</a>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_color.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../../pages/research.html">Research</a>
+            <a href="../../pages/about.html">About</a>
+        </nav>
+    </header>
 
-    <div class="project-container">
-        <div class="project-header">
-            <h1 class="project-title">DUOBA NEW CITY</h1>
-            <p class="project-subtitle">Master Plan and Urban Development Project</p>
-            <p class="project-meta">Urban Planning & Architectural Design | Professional Project | Xining, Qinghai Province</p>
-        </div>
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../../index.html">← Work</a>
+                    <span>X −0.84 · Y +0.82</span>
+                </div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Scale</div>
-                <div class="info-value">165 km² Planning Area</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">New City Area</div>
-                <div class="info-value">50 km²</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Role</div>
-                <div class="info-value">Lead Urban Planner & Designer</div>
-            </div>
-        </div>
+                <div class="mono">Industry · Master plan</div>
+                <h1>Duoba New City</h1>
+                <p class="meta">
+                    Master plan and urban development project<br>
+                    Xining, Qinghai Province, March–July 2016
+                </p>
 
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/masterplan.jpg" alt="Duoba New City Master Plan">
-        </div>
+                <div class="brief-label mono">Overview</div>
+                <p class="brief">A master plan for a new city 25 km west of downtown Xining, covering a planning area of 165 km², of which about 50 km² is new construction. Duoba is positioned as the city’s western gateway and sub-centre. The plan turns the linear Huangshui River into a meandering ecological corridor and builds a garden city into mountainous terrain, with a 320-hectare culture and wetland leisure zone at its core that combines water purification, folk-culture tourism, education facilities and waterfront living.</p>
 
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/planning_steps_english.jpg" alt="Planning Concept">
-        </div>
+                <div class="brief-label mono">My role</div>
+                <p class="brief">Lead urban planner and designer.</p>
 
-        <div class="project-content">
-            <h2 class="section-title">Project Introduction: Duoba New City Master Plan</h2>
-            <p class="project-description">
-                Duoba New City Master Plan is a comprehensive urban development project in Xining, Qinghai Province, spanning a planning area of 165 square kilometers with approximately 50 square kilometers designated for new city construction. Strategically positioned 25km from downtown Xining, the project serves as the city's western gateway and sub-center, responding to national and regional development strategies.
-            </p>
-
-            <p class="project-description">
-                The master plan employs four key design strategies: creating an organic urban body integrating ecology, living, and leisure; establishing a multi-dimensional garden city within mountainous terrain; fostering mixed-use diversity; and developing a distinctive "thousand changes" character.
-            </p>
-
-            <div class="project-image">
-                <img src="../../assets/professional/Duoba/function.jpg" alt="Functional Layout">
-            </div>
-
-            <!-- <div class="project-image">
-                <img src="../../assets/professional/Duoba/Design.jpg" alt="Design Concept">
-            </div> -->
-
-            <h2 class="section-title">Node Design——Culture Wetland Leisure Zone</h2>
-            <p class="project-description">
-                At its node is the Culture Wetland Leisure Zone, featuring 320 hectares of ecological wetland that purifies 40,000 cubic meters of water annually, complemented by 108,000 square meters of research and education facilities. The development integrates natural wetland ecosystems with folk culture tourism, vocational training centers, and waterfront living, anchored by two major nodes: the Huangshui Window - a large-scale cultural and tourism complex offering comprehensive amenities, and the Ecological Science Exhibition Area for environmental education. The project transforms the existing linear Huangshui River into a meandering ecological corridor system, establishing Duoba as an innovative ecological demonstration zone that balances environmental preservation with sustainable urban growth.
-            </p>
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/duoba.jpg" alt="Overall Development View">
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/section1.jpg" alt="Section 1">
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/section2.jpg" alt="Section 2">
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/plan.jpg" alt="Master Plan">
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/node2.png" alt="Node Design Detail">
-        </div>
-
-        <div class="project-image">
-            <img src="../../assets/professional/Duoba/shidi.jpg" alt="Site Analysis">
-        </div>
-    </div>
+                <div class="pager mono">
+                    <a href="shanghai_master_plan.html">← Shanghai Master Plan 2035</a>
+                    <a href="urumqi.html">Urumqi Mountain, Water and Heritage →</a>
+                </div>
+            </article>
+    </main>
 </body>
 </html>

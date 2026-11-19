@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piccadilly Circus in VR - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .mono a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mono a:hover {
+            color: var(--purple-text);
+        }
+
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
+        }
+
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
+            width: 100%;
+            margin: 0 0 3.5rem;
+        }
+
+        figure img,
+        figure > video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
+        }
+
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .circle + figcaption {
+            text-align: center;
+        }
+
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 768px) {
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
+        }
+    
+        /* Research item: abstract first, then the key figures */
+        .label {
+            margin: 2.6rem 0 0.8rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .abstract p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin-bottom: 1.1rem;
+        }
+
+        .abs-note {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.98rem;
+            color: var(--muted);
+        }
+
+        .zh {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.6rem;
+            margin: 2rem 0 3.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_black.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../research.html">Research</a>
+            <a href="../about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../research.html">← Research</a>
+                    <span>Paper · 03</span>
+                </div>
+
+                <div class="mono">ASCAAD 2024 · Barcelona</div>
+                <h1>Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus</h1>
+                <p class="meta">
+                    Wuwu Ran<br>
+                    Conference proceedings, pp. 553–564
+                </p>
+
+                <div class="label mono">Abstract</div>
+                <div class="abstract">
+                    <p>The proliferation of urban screens in public spaces has not only given rise to the phenomenon of digitally augmented architectural and city interfaces but has also enabled the quiet expansion of surveillance capitalism through some urban screens’ exploitation of digital smart, where personal data becomes a commodity without the explicit consent of individuals. This paper examines the use of large digital advertising screens at Piccadilly Circus, London, which employ hidden camera sensors to monitor the area and collect passengers’ data to generate automated reports on the audience, allowing for more targeted advertising. Since their implementation in 2017, these systems have operated without public awareness, creating significant power imbalances. This study proposes the use of Virtual Reality (VR) and gamification to educate and empower the public, mitigating the invasive aspects of urban screen surveillance. We discuss the development of a VR simulation that mimics real-life interactions within Piccadilly Circus, aiming to raise awareness and foster resistance against surveillance capitalism.</p>
+                </div>
+                <div class="label mono">Keywords</div>
+                <p class="abs-note" style="font-style: normal; font-family: inherit;">Urban screen, virtual reality (VR), immersive gamified spatial experience, surveillance capitalism</p>
+
+                <div class="links mono">
+                    <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" rel="noopener noreferrer">Paper on CumInCAD →</a>
+                    <a href="../../assets/digital/The_Piccadilly_Light/ASCAAD2024-WuwuRan.pdf" target="_blank" rel="noopener noreferrer">PDF →</a>
+                    <a href="../the_piccadilly_light/the_piccadilly_light.html">Project page →</a>
+                </div>
+
+                <figure>
+                    <img src="../../assets/digital/The_Piccadilly_Light/site_model_crop.jpg" alt="Open-source 3D model of Piccadilly Circus, with the screen outlined" loading="lazy">
+                    <figcaption class="mono">Fig. 01 · Open-source 3D model of Piccadilly Circus, with the screen outlined</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="../../assets/digital/The_Piccadilly_Light/four_step_flow.jpg" alt="The four-step game flow" loading="lazy">
+                    <figcaption class="mono">Fig. 02 · The four-step game flow</figcaption>
+                </figure>
+
+                <div class="pager mono">
+                    <a href="mab-2025.html">← Urban Screens in China</a>
+                    <a href="acadia-2023.html">Morphological Taxonomy →</a>
+                </div>
+            </article>
+    </main>
+</body>
+</html>

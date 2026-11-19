@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanghai urban design system - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .mono a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mono a:hover {
+            color: var(--purple-text);
+        }
+
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
+        }
+
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+        }
+
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
+        }
+
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
+        }
+
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
+            width: 100%;
+            margin: 0 0 3.5rem;
+        }
+
+        figure img,
+        figure > video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
+        }
+
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .circle + figcaption {
+            text-align: center;
+        }
+
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 768px) {
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
+        }
+    
+        /* Research item: abstract first, then the key figures */
+        .label {
+            margin: 2.6rem 0 0.8rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .abstract p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin-bottom: 1.1rem;
+        }
+
+        .abs-note {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.98rem;
+            color: var(--muted);
+        }
+
+        .zh {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.6rem;
+            margin: 2rem 0 3.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_black.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../research.html">Research</a>
+            <a href="../about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../research.html">← Research</a>
+                    <span>Institutional research report · 08</span>
+                </div>
+
+                <div class="mono">Shanghai Urban Planning and Design Research Institute (SUPDRI) · September 2014 – October 2015</div>
+                <h1>The System and Measures for Overall Urban Design of Shanghai</h1>
+                <p class="meta">
+                    Special research project for the Shanghai Urban Master Plan (2017–2035)<br>
+                    Institutional research report · core researcher, lead for the Quality Improvement Area · integrated into the adopted master plan
+                </p>
+
+                <div class="label mono">Summary</div>
+                <div class="abstract">
+                    <p>A special research project supporting the Shanghai Urban Master Plan (2017–2035). It moves master-scale urban design away from an engineering or aesthetic exercise, treats the urban environment as a public good, and positions urban design as a tool of public welfare governance. Drawing on welfare economics, the study builds a method that links spatial diagnosis, economic reasoning and policy zoning, in order to correct the bias of conventional master plans toward city image and aggregate growth and to look instead at how spatial quality, accessibility and environmental security are distributed.</p>
+                    <p>Two principles organise the work. Pareto efficiency and marginal utility identify Key Construction Areas, such as central business districts and hubs, where investment yields the most for the city’s competitiveness. Rawlsian distributive justice identifies Quality Improvement Areas, on the argument that welfare is only maximised when conditions improve for the least advantaged. The study classifies Shanghai’s whole administrative area into policy zones on this basis and develops differentiated guidance for each.</p>
+                    <p>I was responsible for the Quality Improvement Area, which covers underdeveloped suburban districts and historically constrained, ageing inner-city neighbourhoods, with the aim of respecting the city’s heritage while raising its spatial quality.</p>
+                </div>
+
+                <div class="links mono">
+                    <a href="../professional/shanghai_master_plan.html">Project brief →</a>
+                </div>
+
+                <figure>
+                    <img src="../../assets/research/shanghai_framework.jpg" alt="The two logics: efficiency and equity" loading="lazy">
+                    <figcaption class="mono">Fig. 01 · The two logics: efficiency and equity</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="../../assets/research/shanghai_zoning.jpg" alt="Policy zones and construction control guidance" loading="lazy">
+                    <figcaption class="mono">Fig. 02 · Policy zones and construction control guidance</figcaption>
+                </figure>
+
+                <div class="pager mono">
+                    <a href="lujiazui-2015.html">← Lujiazui, volume 2</a>
+                    <a href="shanghai-104-industrial-facilities.html">Facility equity, 104 industrial blocks →</a>
+                </div>
+            </article>
+    </main>
+</body>
+</html>

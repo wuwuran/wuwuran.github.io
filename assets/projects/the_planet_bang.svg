@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- The Planet Bang: two thrown planets meet, and the collision goes public -->
+  <path d="M30 356 Q52 290 104 262" stroke="#F5F5F5" stroke-width="5" stroke-dasharray="16 13"/>
+  <path d="M372 40 Q356 92 314 124" stroke="#F5F5F5" stroke-width="5" stroke-dasharray="16 13"/>
+  <circle cx="140" cy="240" r="72" fill="#47207A"/>
+  <circle cx="118" cy="252" r="22" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="162" cy="208" r="8" fill="#F5F5F5"/>
+  <circle cx="272" cy="150" r="58" fill="#47207A"/>
+  <ellipse cx="272" cy="150" rx="88" ry="22" transform="rotate(-24 272 150)" stroke="#F5F5F5" stroke-width="5"/>
+  <path d="M207 193 L218 148 L233 181 L276 196 L236 212 L230 256 L212 219 L170 214 Z" fill="#F5F5F5"/>
+  <path d="M206 120 L198 84 M150 150 L118 128 M262 252 L282 286 M300 222 L338 236 M196 286 L190 322" stroke="#F5F5F5" stroke-width="5"/>
+</svg>

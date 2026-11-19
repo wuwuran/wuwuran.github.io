@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Pixel Lab - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../../logo.png">
+    <title>Urban Pixel Lab - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -13,349 +13,230 @@
         }
 
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #ffffff;
-            --darker-bg: #f8f9fa;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --border-color: rgba(123, 104, 238, 0.2);
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
+            background: #ffffff;
+            color: var(--ink);
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
         }
 
-        .back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: var(--primary-purple);
-            color: white;
-            padding: 0.8rem 1.5rem;
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .mono a {
+            color: inherit;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            z-index: 1000;
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            transition: color 0.2s;
         }
 
-        .back-button:hover {
-            background: var(--secondary-purple);
-            border-color: var(--primary-purple);
-            transform: translateX(-5px);
+        .mono a:hover {
+            color: var(--purple-text);
         }
 
-        .project-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 5%;
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
         }
 
-        .project-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-top: 2rem;
-        }
-
-        .project-title {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .project-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .project-meta {
-            font-size: 1rem;
-            color: var(--text-light);
-            letter-spacing: 0.02em;
-            margin-top: 0.5rem;
-            font-weight: 400;
-        }
-
-        .project-video {
-            width: 100%;
-            max-width: 900px;
-            margin: 3rem auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(123, 104, 238, 0.2);
-        }
-
-        .project-video video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .project-image {
-            width: 100%;
-            max-width: 900px;
-            margin: 3rem auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(123, 104, 238, 0.15);
-        }
-
-        .project-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .project-image:hover img {
-            transform: scale(1.02);
-            animation-play-state: running; /* Ensure animation continues on hover */
-        }
-
-        /* Ensure GIFs always animate */
-        .project-image img {
-            animation-play-state: running !important;
-            image-rendering: -webkit-optimize-contrast; /* Better GIF rendering */
-        }
-
-        .project-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 1.4rem;
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
             font-weight: 600;
-            color: #fff;
-            margin: 2.5rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.22em;
         }
 
-        .project-description {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            text-align: justify;
+        .site-head .brand img {
+            display: block;
+            height: 22px;
+            width: auto;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 2rem auto;
-            padding: 2rem;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.15), rgba(157, 141, 255, 0.1));
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(123, 104, 238, 0.1);
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
         }
 
-        .info-item {
-            text-align: center;
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
         }
 
-        .info-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--secondary-purple);
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-
-        .screenshots-grid {
+        .top-row,
+        .pager {
             display: flex;
             justify-content: space-between;
             gap: 1rem;
-            margin: 3rem 0;
-            flex-wrap: nowrap;
         }
 
-        .project-image {
-            flex: 1;
-            min-width: 0;
+        .top-row {
+            margin-bottom: 3.5rem;
         }
 
-        .download-section {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1rem;
+        .project h1 {
+            font-size: 2.1rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
+        }
+
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
+            width: 100%;
+            margin: 0 0 3.5rem;
+        }
+
+        figure img,
+        figure > video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
+        }
+
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             cursor: pointer;
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
+        .circle + figcaption {
+            text-align: center;
         }
 
-        .download-btn svg {
-            fill: currentColor;
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .project-container {
-                padding: 2rem 5%;
-            }
-
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .back-button {
-                top: 1rem;
-                left: 1rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .screenshots-grid {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
         }
     </style>
-    <script>
-        // Ensure GIFs loop continuously
-        document.addEventListener('DOMContentLoaded', function() {
-            const gifs = document.querySelectorAll('.project-image img[src$=".GIF"], .project-image img[src$=".gif"]');
-
-            gifs.forEach(function(gif) {
-                // Force GIF to reload and ensure it loops
-                const originalSrc = gif.src;
-                gif.src = '';
-                gif.src = originalSrc;
-
-                // Add cache-busting parameter to ensure fresh load
-                if (!gif.src.includes('?')) {
-                    gif.src = originalSrc + '?loop=' + Date.now();
-                }
-            });
-
-            // Periodic check to ensure GIFs keep animating
-            setInterval(function() {
-                gifs.forEach(function(gif) {
-                    // If GIF appears to have stopped (height becomes 0), reload it
-                    if (gif.complete && gif.naturalHeight === 0) {
-                        const src = gif.src.split('?')[0];
-                        gif.src = src + '?reload=' + Date.now();
-                    }
-                });
-            }, 10000); // Check every 10 seconds
-        });
-
-        // Additional function to restart GIFs if needed
-        function restartGifs() {
-            const gifs = document.querySelectorAll('.project-image img[src$=".GIF"], .project-image img[src$=".gif"]');
-            gifs.forEach(function(gif) {
-                const src = gif.src.split('?')[0];
-                gif.src = src + '?restart=' + Date.now();
-            });
-        }
-    </script>
 </head>
 <body>
-    <a href="../digital.html#digital" class="back-button">← Back to Digital Arts</a>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_color.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../../pages/research.html">Research</a>
+            <a href="../../pages/about.html">About</a>
+        </nav>
+    </header>
 
-    <div class="project-container">
-        <div class="project-header">
-            <h1 class="project-title">URBAN PIXEL LAB</h1>
-            <p class="project-meta">Generative Video / Code (Processing) · 2025.01</p>
-        </div>
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../projects.html">← Projects</a>
+                    <span>X +0.76 · Y −0.78</span>
+                </div>
 
-        <div class="project-content">
-            <h2 class="section-title">Description</h2>
-            <p class="project-description">
-                A computational study on order emerging from chaos. This project treats the brand identity not as a static image, but as a destination for drifting data. Through a sequence of six algorithmic 'shots,' the piece narrates the solidification of information into form, reflecting the invisible digital layers that coat our modern urban environments.
-            </p>
+                <div class="mono">Generative video · Code</div>
+                <h1>Urban Pixel Lab</h1>
+                <p class="meta">
+                    Processing (Java)<br>
+                    January 2025
+                </p>
 
-            <p class="project-description">
-                The generative system utilises custom algorithms to control over 1,800 autonomous pixel particles. These elements simulate data transmission, vertical scanning, and matrix-style convergence without the use of keyframes. The visual language draws inspiration from retro-futurism and media architecture, employing a high-contrast palette of neon green and deep charcoal to represent the pulse of a living digital city.
-            </p>
+                <p class="lede">A computational study of order emerging from chaos. The piece treats a brand identity as a destination for drifting data instead of a static image: across six algorithmic shots, more than 1,800 autonomous pixel particles rain, scan and converge into the Urban Pixel Lab mark, with no keyframes. Custom particle classes drift, pulse and align using noise functions and easing, in a neon green and charcoal palette drawn from retro-futurism and media architecture.</p>
 
-            <!-- Project Logo Video -->
-            <div class="project-video" style="margin: 2rem 0;">
-                <video controls poster="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF">
-                    <source src="../../assets/digital/Urban_Pixel_Lab/urban_logo.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+                <div class="links"></div>
 
-            <!-- Shots Gallery -->
-        <div class="screenshots-grid">
-            <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF" alt="Urban Pixel Lab - Shot 1: The 'Data Rain'">
-                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 1: The 'Data Rain'</p>
-            </div>
-            <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%204.GIF" alt="Urban Pixel Lab - Shot 4: The Snap">
-                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 4: The Snap</p>
-            </div>
-            <div class="project-image">
-                <img src="../../assets/digital/Urban_Pixel_Lab/Shot%206.GIF" alt="Urban Pixel Lab - Shot 6: The Convergence">
-                <p style="text-align: center; color: var(--text-light); margin-top: 0.5rem; font-weight: 600;">Shot 6: The Convergence</p>
-            </div>
-        </div>
+                <figure>
+                    <video src="../../assets/digital/Urban_Pixel_Lab/urban_logo.mp4" autoplay controls muted loop playsinline aria-label="Urban Pixel Lab generative logo sequence"></video>
+                    <figcaption class="mono">Fig. 01 · The full sequence</figcaption>
+                </figure>
 
-            <h2 class="section-title">Technical Stack</h2>
-            <ul style="color: var(--text-light); line-height: 1.9; margin-bottom: 2rem; padding-left: 2rem;">
-                <li><strong>Language:</strong> Processing (Java)</li>
-                <li><strong>Core Concepts:</strong> Object-Oriented Programming (OOP), Particle Systems, Noise Functions, Easing Algorithms</li>
-                <li><strong>Implementation:</strong> Custom classes for DataStreams and PixelBlocks featuring autonomous behaviours (drifting, pulsing, aligning)</li>
-            </ul>
-        </div>
+                <figure>
+                    <img src="../../assets/digital/Urban_Pixel_Lab/Shot%201.GIF" alt="Shot 1: the data rain" loading="lazy">
+                    <figcaption class="mono">Fig. 02 · Shot 1, the data rain</figcaption>
+                </figure>
 
-        
+                <figure>
+                    <img src="../../assets/digital/Urban_Pixel_Lab/Shot%204.GIF" alt="Shot 4: the snap" loading="lazy">
+                    <figcaption class="mono">Fig. 03 · Shot 4, the snap</figcaption>
+                </figure>
 
-    </div>
+                <figure>
+                    <img src="../../assets/digital/Urban_Pixel_Lab/Shot%206.GIF" alt="Shot 6: the convergence" loading="lazy">
+                    <figcaption class="mono">Fig. 04 · Shot 6, the convergence</figcaption>
+                </figure>
+
+                <div class="pager mono">
+                    <a href="../the_planet_bang/the_planet_bang.html">← The Planet Bang</a>
+                    <a href="../academic/redefine_buffer_zone/redefine_buffer_zone.html">Redefine Buffer Zone →</a>
+                </div>
+            </article>
+    </main>
 </body>
 </html>

@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Piccadilly Light - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../../logo.png">
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('active');
-            }
-        }
-    </script>
+    <title>The Piccadilly Light - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -21,506 +13,352 @@
         }
 
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #1a1a2e;
-            --sidebar-bg: rgba(26, 26, 46, 0.95);
-            --text-dark: #e0e0e0;
-            --text-light: #b0b0b0;
-            --border-color: rgba(123, 104, 238, 0.2);
-            --mint: #58f2d2;
-            --amber: #f2bd55;
-            --paper: #f2e7cf;
-            --blue: #0b2b75;
+            --ink: #1a1a2e;
+            --muted: #6c6c80;
+            --purple: #7B68EE;
+            --purple-text: #5a47d6;
+            --line: rgba(26, 26, 46, 0.12);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
-            line-height: 1.7;
+            background: #ffffff;
+            color: var(--ink);
+            line-height: 1.6;
         }
 
-        ::-webkit-scrollbar {
-            width: 4px;
+        .mono {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgba(123, 104, 238, 0.05);
+        .mono a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: rgba(123, 104, 238, 0.2);
-            border-radius: 2px;
+        .mono a:hover {
+            color: var(--purple-text);
         }
 
-        .container {
+        /* Slim header: the mark goes home, three links cover the rest */
+        .site-head {
             display: flex;
-            min-height: 100vh;
-        }
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100vh;
-            background: var(--sidebar-bg);
-            padding: 3rem 0;
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-            z-index: 1000;
-        }
-
-        .logo-section {
-            padding: 0 2rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-        }
-
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.3rem;
-        }
-
-        .brand-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .brand-tagline {
-            font-size: 0.7rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
-            margin-top: 0.5rem;
-        }
-
-        .nav-menu {
-            padding: 2rem 0;
-        }
-
-        .nav-item {
-            padding: 0.8rem 2rem;
-            color: var(--text-light);
-            text-decoration: none;
-            display: block;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--secondary-purple);
-            background: rgba(123, 104, 238, 0.1);
-            border-left-color: var(--primary-purple);
-        }
-
-        .main-content {
-            margin-left: 250px;
-            flex: 1;
-            background: #07101d;
-        }
-
-        .mobile-toggle {
-            display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 2002;
-            background: var(--primary-purple);
-            color: #fff;
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .hero {
-            min-height: 92vh;
-            display: grid;
-            grid-template-columns: minmax(320px, 0.8fr) minmax(420px, 1.2fr);
-            gap: 3.5rem;
+            justify-content: space-between;
             align-items: center;
-            padding: 4rem 6% 3rem;
-            background: linear-gradient(135deg, #061123, #0b1730 45%, #08101f);
-            border-bottom: 1px solid rgba(88, 242, 210, 0.18);
-        }
-
-        .hero-kicker {
-            color: var(--amber);
-            font-size: 0.95rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            margin-bottom: 1.2rem;
-        }
-
-        .hero-title {
-            color: var(--paper);
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: clamp(3rem, 6vw, 6.2rem);
-            line-height: 0.92;
-            letter-spacing: 0;
-            margin-bottom: 1.4rem;
-        }
-
-        .hero-subtitle {
-            color: var(--mint);
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.35rem;
-            line-height: 1.25;
-            margin-bottom: 2rem;
-        }
-
-        .hero-summary {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
-            margin-bottom: 1.6rem;
+            padding: 1.4rem 2rem;
         }
 
-        .summary-block h3 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 0.35rem;
+        .site-head .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
         }
 
-        .summary-block p {
-            color: #d9e5f5;
-            font-size: 0.95rem;
-        }
-
-        .tool-line {
-            color: var(--mint);
-            font-size: 1.05rem;
-            font-weight: 700;
-        }
-
-        .hero-media {
-            overflow: hidden;
-            border-radius: 22px;
-            border: 1px solid rgba(88, 242, 210, 0.26);
-            background: var(--blue);
-            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
-        }
-
-        .hero-media img {
-            width: 100%;
+        .site-head .brand img {
             display: block;
+            height: 22px;
+            width: auto;
         }
 
-        .section {
-            padding: 5rem 6%;
-            border-bottom: 1px solid rgba(123, 104, 238, 0.18);
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
         }
 
-        .section-label {
-            color: var(--amber);
-            font-size: 0.82rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+        /* Project page: one column, one paragraph, then figures */
+        .project {
+            max-width: 924px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
         }
 
-        .section-title {
-            color: #fff;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            line-height: 1.08;
-            letter-spacing: 0;
-            max-width: 1000px;
-            margin-bottom: 1.5rem;
+        .top-row,
+        .pager {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
         }
 
-        .section-text {
-            color: var(--text-light);
-            max-width: 980px;
+        .top-row {
+            margin-bottom: 3.5rem;
+        }
+
+        .project h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 0.6rem 0 1rem;
+        }
+
+        .meta {
+            font-family: var(--serif);
+            font-style: italic;
             font-size: 1.05rem;
-            margin-bottom: 1.1rem;
+            line-height: 1.6;
+            color: var(--muted);
         }
 
-        .two-column {
-            display: grid;
-            grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
-            gap: 3rem;
-            align-items: start;
+        .lede {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--ink);
+            margin: 2.2rem 0 1.4rem;
         }
 
-        .meta-grid {
+        .links {
+            margin-bottom: 3.5rem;
+        }
+
+        .links a {
+            color: var(--purple-text);
+        }
+
+        /* Every figure spans the text column, so text, images, video and GIFs share one edge */
+        figure {
+            width: 100%;
+            margin: 0 0 3.5rem;
+        }
+
+        figure img,
+        figure > video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            margin-top: 0.8rem;
+        }
+
+        /* Concept figure: the real site model, faded into the page, with the game drawn on top */
+        .concept-scene {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-scene::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            box-shadow: inset 0 0 70px 48px #ffffff;
+            pointer-events: none;
+        }
+
+        .concept-scene img {
+            filter: saturate(0.7);
+        }
+
+        .concept-scene svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .concept-scene .route {
+            fill: none;
+            stroke: var(--purple-text);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .concept-scene .route.dash { stroke-dasharray: 16 12; }
+        .concept-scene .route.dot { stroke-dasharray: 30 10 4 10; }
+
+        .concept-scene .trigger {
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 2.5;
+            stroke-dasharray: 6 7;
+        }
+
+        .concept-scene .node {
+            fill: #ffffff;
+            stroke: var(--purple-text);
+            stroke-width: 4;
+        }
+
+        .concept-scene .tag {
+            position: absolute;
+            z-index: 2;
+            transform: translate(-50%, -50%);
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--purple-text);
+            background: #ffffff;
+            padding: 0.15rem 0.45rem;
+        }
+
+        .concept-scene .tag.solid {
+            color: #ffffff;
+            background: var(--ink);
+        }
+
+        .concept-steps {
+            list-style: none;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.6rem;
+            margin-top: 1.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--line);
         }
 
-        .meta-item,
-        .step-card {
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.045);
-            padding: 1.1rem;
+        .concept-steps .mono {
+            color: var(--purple-text);
         }
 
-        .meta-item h3,
-        .step-card h3 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 0.45rem;
+        .concept-steps p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--ink);
+            margin-top: 0.45rem;
         }
 
-        .meta-item p,
-        .step-card p {
-            color: var(--text-light);
-            font-size: 0.94rem;
-        }
-
-        .wide-image {
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .wide-image img {
-            width: 100%;
-            display: block;
-        }
-
-        .flow-image {
-            padding: 1rem;
-            background: #f7f7f5;
-        }
-
-        .step-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .paper-link {
-            display: inline-block;
-            margin-top: 1.2rem;
-            color: var(--mint);
-            text-decoration: none;
-            border: 1px solid rgba(88, 242, 210, 0.35);
-            padding: 0.75rem 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.85rem;
-        }
-
-        .paper-link:hover {
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .back-link {
-            display: inline-block;
-            color: var(--mint);
-            text-decoration: none;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-top: 2rem;
-        }
-
-        .back-link:hover {
-            color: #fff;
-        }
-
-        @media (max-width: 1050px) {
-            .hero,
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-
-            .meta-grid,
-            .step-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .concept figcaption {
+            margin-top: 1.4rem;
         }
 
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
+            .concept-steps { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+            .concept-scene::after { box-shadow: inset 0 0 30px 18px #ffffff; }
+        }
 
-            .sidebar.active {
-                transform: translateX(0);
-                z-index: 2001;
-            }
+        .circle {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #12121f;
+        }
 
-            .main-content {
-                margin-left: 0;
-            }
+        .circle video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
 
-            .mobile-toggle {
-                display: block;
-            }
+        .circle + figcaption {
+            text-align: center;
+        }
 
-            .hero,
-            .section {
-                padding: 5rem 5% 3rem;
-            }
+        .pager {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
 
-            .hero-summary,
-            .meta-grid,
-            .step-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 1rem; }
+            .site-head .brand span { display: none; }
+            .project { padding: 2rem 1.25rem 4rem; }
+            .project h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
-    <button class="mobile-toggle" onclick="toggleSidebar()">Menu</button>
+    <header class="site-head">
+        <a class="brand" href="../../index.html" aria-label="Wu Studio, home">
+            <img src="../../assets/logo/wu_mark_color.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../../index.html">Work</a>
+            <a href="../../pages/research.html">Research</a>
+            <a href="../../pages/about.html">About</a>
+        </nav>
+    </header>
 
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo-section">
-                <div class="logo-icon">
-                    <img src="../../logo.png" alt="WUWU RAN Logo" style="width: 100%; height: auto;">
+    <main>
+            <article class="project">
+                <div class="top-row mono">
+                    <a href="../projects.html">← Projects</a>
+                    <span>X +0.62 · Y −0.20</span>
                 </div>
-                <div class="brand-name">WUWU RAN</div>
-                <div class="brand-subtitle">Design Studio</div>
-                <div class="brand-tagline">Architecture | Design | Innovation</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-item">Home</a>
-                <a href="../academic.html" class="nav-item">Academic Work</a>
-                <a href="../professional.html" class="nav-item">Professional Work</a>
-                <a href="../digital.html" class="nav-item active">Digital Arts</a>
-                <a href="../publication.html" class="nav-item">Publication</a>
-                <a href="../workshop.html" class="nav-item">Workshop</a>
-                <a href="../affiliation.html" class="nav-item">Affiliation</a>
-                <a href="../about.html" class="nav-item">About Me</a>
-                <a href="../contact.html" class="nav-item">Contact</a>
-            </nav>
-        </aside>
 
-        <main class="main-content">
-            <section class="hero">
-                <div>
-                    <div class="hero-kicker">ASCAAD 2024 · Barcelona</div>
-                    <h1 class="hero-title">The Piccadilly Light</h1>
-                    <p class="hero-subtitle">Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality</p>
-                    <div class="hero-summary">
-                        <div class="summary-block">
-                            <h3>Problem</h3>
-                            <p>Hidden audience-sensing systems turn a public square into a targeted advertising interface.</p>
-                        </div>
-                        <div class="summary-block">
-                            <h3>Design Response</h3>
-                            <p>A Unity-based VR simulation where the player's avatar triggers targeted screen content.</p>
-                        </div>
-                    </div>
-                    <p class="tool-line">Tools: Unity, VR workflow, 3D modelling, spatial scenario design, critical media-architecture research.</p>
-                </div>
-                <div class="hero-media">
-                    <img src="../../assets/digital/The_Piccadilly_Light/concept.png" alt="The Piccadilly Light VR simulation concept">
-                </div>
-            </section>
+                <div class="mono">VR simulation · Urban screens</div>
+                <h1>The Piccadilly Light</h1>
+                <p class="meta">
+                    ASCAAD 2024, Barcelona<br>
+                    Case study: Piccadilly Circus, London<br>
+                    Unity, VR, 3D modelling
+                </p>
 
-            <section class="section">
-                <div class="section-label">01 Research Context</div>
-                <h2 class="section-title">Piccadilly Circus as a case study in urban screen surveillance.</h2>
-                <p class="section-text">The Piccadilly Light examines the iconic Piccadilly Lights screen in London as a public urban interface shaped by advertising, hidden camera sensors, and data-driven audience classification. The project responds to the quiet expansion of surveillance capitalism from online platforms into physical public space.</p>
-                <p class="section-text">Rather than presenting surveillance as an abstract policy concern, the work translates it into an embodied VR experience. Players move through a simulated Piccadilly Circus, create avatars, choose travel methods, and encounter screen content that changes in response to their demographic and mobility choices.</p>
-                <div class="meta-grid">
-                    <div class="meta-item">
-                        <h3>Conference</h3>
-                        <p>ASCAAD 2024, Barcelona</p>
-                    </div>
-                    <div class="meta-item">
-                        <h3>Case Study</h3>
-                        <p>Piccadilly Circus, London</p>
-                    </div>
-                    <div class="meta-item">
-                        <h3>Medium</h3>
-                        <p>Critical VR simulation</p>
-                    </div>
-                    <div class="meta-item">
-                        <h3>Theme</h3>
-                        <p>Urban screens and data rights</p>
-                    </div>
-                </div>
-            </section>
+                <p class="lede">The Piccadilly Lights screen in London is a public urban interface shaped by advertising, hidden camera sensors and data-driven audience classification. This project turns that quiet spread of surveillance capitalism into something a person can walk through. In a Unity-based VR model of Piccadilly Circus, players build an avatar, choose how to travel, and watch the screen content change in response to their identity and route. Repeated play shifts the content from commercial targeting toward critical prompts, so the simulation becomes a tool for discussing privacy, data rights and the publicness of smart-city infrastructure.</p>
 
-            <section class="section two-column">
-                <div>
-                    <div class="section-label">02 Simulation Loop</div>
-                    <h2 class="section-title">A playable model of targeted urban media.</h2>
-                    <p class="section-text">The VR prototype turns surveillance capitalism into a spatial practice simulation. The player builds an avatar, chooses a mobility mode, moves through the site, and triggers media content on urban screens. Each route and identity profile produces a different exposure scenario, making the politics of targeted media tangible.</p>
-                    <p class="section-text">Repeated play shifts the experience from simulation to critique: screen content changes from commercial targeting toward knowledge prompts and critical reflection, helping players compare how public space, advertising, mobility, and data collection interact.</p>
+                <div class="links mono">
+                    <a href="../../assets/digital/The_Piccadilly_Light/ASCAAD2024-WuwuRan.pdf" target="_blank" rel="noopener noreferrer">Read the ASCAAD paper →</a>
                 </div>
-                <div class="wide-image">
-                    <img src="../../assets/digital/The_Piccadilly_Light/concept.png" alt="The Piccadilly Light simulation interface">
-                </div>
-            </section>
 
-            <section class="section">
-                <div class="section-label">03 Gameplay Structure</div>
-                <h2 class="section-title">The four-step flow: avatar, mobility, urban screen trigger, repeat game.</h2>
-                <p class="section-text">The game flow is designed as a compact learning sequence. Each step exposes a different layer of the surveillance system, from identity construction and mobility tracking to screen response and reflective replay.</p>
-                <div class="wide-image flow-image">
-                    <img src="../../assets/digital/The_Piccadilly_Light/four_step_flow.jpg" alt="The 4-step flow to play Piccadilly Circus game">
-                </div>
-                <div class="step-grid">
-                    <div class="step-card">
-                        <h3>1. Create Avatar</h3>
-                        <p>Players select gender, age, and mood to test how identity categories shape targeted content.</p>
+                <figure class="concept">
+                    <div class="concept-scene">
+                        <img src="../../assets/digital/The_Piccadilly_Light/site_model_crop.jpg" alt="3D model of Piccadilly Circus with the Piccadilly Lights screen outlined">
+                        <svg viewBox="0 0 1600 680" aria-hidden="true">
+                            <path class="route" d="M836 40 C 830 150, 822 250, 850 340 S 900 410, 918 440"/>
+                            <path class="route dash" d="M330 600 C 470 520, 600 450, 720 440 S 860 446, 918 440"/>
+                            <path class="route dot" d="M1290 640 C 1180 590, 1060 520, 990 480 S 940 452, 918 440"/>
+                            <path class="trigger" d="M918 440 L 800 330"/>
+                            <path class="trigger" d="M918 440 L 985 468"/>
+                            <circle class="node" cx="918" cy="440" r="9"/>
+                        </svg>
+                        <span class="tag" style="left: 52.2%; top: 5%;">Walk</span>
+                        <span class="tag" style="left: 20.6%; top: 86%;">Cycle</span>
+                        <span class="tag" style="left: 80.6%; top: 92%;">Drive</span>
+                        <span class="tag solid" style="left: 64%; top: 70%;">Trigger</span>
                     </div>
-                    <div class="step-card">
-                        <h3>2. Choose Travel</h3>
-                        <p>Walking, cycling, car, and luxury car options create different exposure routes.</p>
-                    </div>
-                    <div class="step-card">
-                        <h3>3. Move Through Site</h3>
-                        <p>The avatar traverses the digital twin of Piccadilly Circus and triggers the screen system.</p>
-                    </div>
-                    <div class="step-card">
-                        <h3>4. Repeat & Reflect</h3>
-                        <p>Replay reveals how media content changes, inviting comparison and critical awareness.</p>
-                    </div>
-                </div>
-            </section>
 
-            <section class="section two-column">
-                <div>
-                    <div class="section-label">04 Critical Design</div>
-                    <h2 class="section-title">A digital twin that reveals invisible public-space data practices.</h2>
-                    <p class="section-text">The simulation uses a 3D model of Piccadilly Circus to stage interactions that are normally hidden within the built environment. By making data collection, targeting logic, and screen response visible, the project reframes VR as a civic literacy tool.</p>
-                    <p class="section-text">The work positions gamified spatial practice as a method for discussing urban rights, privacy, commercial media systems, and the publicness of smart-city infrastructure.</p>
-                    <a href="../../assets/digital/The_Piccadilly_Light/ASCAAD2024-WuwuRan.pdf" class="paper-link" target="_blank" rel="noopener noreferrer">Read ASCAAD Paper</a>
-                </div>
-                <div class="wide-image">
-                    <img src="../../assets/digital/The_Piccadilly_Light/site_model_view.jpg" alt="Piccadilly Circus digital twin model view">
-                </div>
-            </section>
+                    <ol class="concept-steps">
+                        <li>
+                            <span class="mono">01 · Create avatar</span>
+                            <p>Gender, age and mood: the categories a sensing screen would sort a passer-by into.</p>
+                        </li>
+                        <li>
+                            <span class="mono">02 · Choose travel</span>
+                            <p>Walking, cycling, an ordinary car or a limousine. The tool then sets the route.</p>
+                        </li>
+                        <li>
+                            <span class="mono">03 · Move through the site</span>
+                            <p>Avatar and route together trigger targeted advertising on the screen.</p>
+                        </li>
+                        <li>
+                            <span class="mono">04 · Repeat</span>
+                            <p>On replay the screen plays artistic and knowledge videos about surveillance capitalism instead.</p>
+                        </li>
+                    </ol>
+                    <figcaption class="mono">Fig. 01 · The simulation, drawn over the open-source 3D model of Piccadilly Circus</figcaption>
+                </figure>
 
-            <section class="section">
-                <div class="section-label">05 Contribution</div>
-                <h2 class="section-title">From passive audience to informed participant.</h2>
-                <p class="section-text">The Piccadilly Light proposes a design method for translating complex socio-technical systems into immersive, playable experience. In doing so, it helps users understand how urban screen surveillance operates and how public spaces can be reimagined as sites of agency, critique, and informed participation.</p>
-                <a href="../digital.html" class="back-link">Back to Digital Arts</a>
-            </section>
-        </main>
-    </div>
+                <figure>
+                    <img src="../../assets/digital/The_Piccadilly_Light/four_step_flow.jpg" alt="The four-step game flow" loading="lazy">
+                    <figcaption class="mono">Fig. 02 · Avatar, travel, screen trigger, replay</figcaption>
+                </figure>
+
+                <div class="pager mono">
+                    <a href="../immersive_commons/immersive_commons.html">← Immersive Commons</a>
+                    <a href="../the_planet_bang/the_planet_bang.html">The Planet Bang →</a>
+                </div>
+            </article>
+    </main>
 </body>
 </html>

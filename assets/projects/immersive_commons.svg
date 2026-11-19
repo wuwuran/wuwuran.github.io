@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Immersive Commons: a message planet left in a room, a reply beside it, and a lifespan running out -->
+  <path d="M40 318 L150 262 L360 318" stroke="#F5F5F5" stroke-width="5"/>
+  <path d="M150 262 L150 58" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="176" cy="188" r="92" fill="#47207A"/>
+  <circle cx="146" cy="160" r="20" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="206" cy="218" r="30" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="212" cy="140" r="9" fill="#F5F5F5"/>
+  <ellipse cx="176" cy="188" rx="132" ry="34" transform="rotate(-18 176 188)" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="300" cy="112" r="40" fill="#47207A"/>
+  <circle cx="290" cy="102" r="12" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="318" cy="212" r="13" fill="#F5F5F5"/>
+  <circle cx="312" cy="252" r="9" fill="#F5F5F5"/>
+  <circle cx="296" cy="282" r="6" fill="#F5F5F5"/>
+  <circle cx="276" cy="302" r="3.5" fill="#F5F5F5"/>
+</svg>

@@ -1,19 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - WUWU RAN Design Studio</title>
-    <link rel="icon" type="image/png" href="../logo.png">
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('active');
-            }
-        }
-    </script>
+    <title>About - Wu Studio</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo/wu_avatar_navy.svg">
     <style>
         * {
             margin: 0;
@@ -21,672 +12,510 @@
             box-sizing: border-box;
         }
 
+        /* The ground takes its grey from the street behind the portrait */
         :root {
-            --primary-purple: #7B68EE;
-            --secondary-purple: #9D8DFF;
-            --dark-bg: #1a1a2e;
-            --darker-bg: #16213e;
-            --sidebar-bg: rgba(26, 26, 46, 0.95);
-            --text-dark: #e0e0e0;
-            --text-light: #b0b0b0;
-            --border-color: rgba(123, 104, 238, 0.2);
+            --bg: #d9d9d9;
+            --ink: #1a1a2e;
+            --muted: #55555f;
+            --accent: #4a38c8;
+            --line: rgba(26, 26, 46, 0.22);
+            --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+            --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-dark);
+            background: var(--bg);
+            color: var(--ink);
             line-height: 1.6;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
+        .mono,
+        h3,
+        .experience-meta,
+        .education-meta,
+        .scholar-link {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgba(123, 104, 238, 0.05);
+        a {
+            color: var(--accent);
+            text-decoration: none;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: rgba(123, 104, 238, 0.2);
-            border-radius: 2px;
+        a:hover {
+            color: var(--ink);
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(123, 104, 238, 0.3);
-        }
-
-        /* Layout Container */
-        .container {
+        .site-head {
             display: flex;
-            min-height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 2rem;
         }
 
-        /* Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100vh;
-            background: var(--sidebar-bg);
-            padding: 3rem 0;
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-            z-index: 1000;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            color: var(--ink);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
         }
 
-        .logo-section {
-            padding: 0 2rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-        }
-
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.3rem;
-        }
-
-        .brand-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .brand-tagline {
-            font-size: 0.7rem;
-            color: var(--secondary-purple);
-            letter-spacing: 0.05em;
-            margin-top: 0.5rem;
-        }
-
-        .nav-menu {
-            padding: 2rem 0;
-        }
-
-        .nav-item {
-            padding: 0.8rem 2rem;
-            color: var(--text-light);
-            text-decoration: none;
+        .brand img {
             display: block;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
+            height: 30px;
+            width: auto;
         }
 
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--secondary-purple);
-            background: rgba(123, 104, 238, 0.1);
-            border-left-color: var(--primary-purple);
+        .site-head nav {
+            display: flex;
+            gap: 1.6rem;
         }
 
-        /* Main Content Area */
-        .main-content {
-            margin-left: 250px;
-            flex: 1;
-            padding: 3rem 5%;
-            background: var(--dark-bg);
+        .site-head nav a {
+            color: var(--muted);
         }
 
-        /* Page Header */
-        .page-header {
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+        .site-head nav a:hover {
+            color: var(--ink);
         }
 
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 1rem;
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 6rem;
         }
 
-        /* CV Download Button */
-        .cv-download-section {
-            margin-top: 1rem;
-            text-align: center;
-        }
-
-        .cv-download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cv-download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.4);
-        }
-
-        .cv-download-btn svg {
-            fill: currentColor;
-        }
-
-        .linkedin-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #0077B5, #005885);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            margin-left: 1rem;
-        }
-
-        .linkedin-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
-            background: linear-gradient(135deg, #005885, #004266);
-        }
-
-        .linkedin-btn svg {
-            fill: currentColor;
-        }
-
-        .york-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: transparent;
-            color: var(--secondary-purple);
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: 1px solid var(--secondary-purple);
-            cursor: pointer;
-            margin-left: 1rem;
-        }
-
-        .york-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(123, 104, 238, 0.15);
-            color: #fff;
-            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.3);
-        }
-
-        .york-btn svg {
-            fill: currentColor;
-        }
-
-        /* About Page */
-        .about-content {
+        /* Portrait and name */
+        .intro {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
+            grid-template-columns: 220px 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            padding-bottom: 3.5rem;
         }
 
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.9;
-        }
-
-        .about-image {
+        .portrait img {
+            display: block;
             width: 100%;
-            aspect-ratio: 1;
-            border-radius: 20px;
-            overflow: hidden;
+            height: auto;
         }
 
-        .about-image img {
-            width: 90%;
-            height: 90%;
-            object-fit: cover;
-            margin: 5%;
+        .portrait figcaption {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.9rem;
         }
 
-        /* CV Content Styles */
+        .intro h1 {
+            font-size: 2.3rem;
+            font-weight: 600;
+            line-height: 1.15;
+        }
+
+        .intro .lead {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 34rem;
+            margin: 1rem 0 1.6rem;
+        }
+
+        .intro .ways {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.6rem;
+        }
+
+        .intro .ways a:first-child {
+            color: var(--ink);
+            border: 1px solid var(--ink);
+            border-radius: 2rem;
+            padding: 0.35rem 0.9rem;
+            margin: -0.4rem 0;
+        }
+
+        .intro .ways a:first-child:hover {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        /* Sections: a small label, a rule, then the entries with their dates in a left column */
         .profile-section,
-        .education-section,
         .experience-section,
+        .education-section,
         .publications-section,
         .skills-section {
-            margin-bottom: 2.5rem;
+            padding: 2.2rem 0 1rem;
+            border-top: 1px solid var(--ink);
         }
 
-        .profile-section h3,
-        .education-section h3,
-        .experience-section h3,
-        .publications-section h3,
-        .skills-section h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--secondary-purple);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+        h3 {
+            color: var(--ink);
+            margin-bottom: 1.6rem;
         }
 
-        .profile-section ul,
-        .education-item ul,
-        .experience-item ul,
-        .publication-list {
+        ul {
             list-style: none;
-            padding: 0;
         }
 
-        .profile-section li,
-        .education-item li,
-        .experience-item li,
-        .publication-list li {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 0.8rem;
-            line-height: 1.7;
+        li {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.2rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.7;
         }
 
-        .profile-section li:before,
-        .education-item li:before,
-        .experience-item li:before,
-        .publication-list li:before {
-            content: "•";
-            color: var(--primary-purple);
-            font-weight: bold;
+        li::before {
+            content: '';
             position: absolute;
             left: 0;
+            top: 0.72em;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
         }
 
-        .education-item,
+        .profile-section ul {
+            max-width: 46rem;
+            margin-left: 11rem;
+        }
+
         .experience-item,
-        .publication-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(123, 104, 238, 0.1);
+        .education-item {
+            display: grid;
+            grid-template-columns: 9.5rem 1fr;
+            column-gap: 1.5rem;
+            padding: 0 0 2rem;
         }
 
-        .education-item:last-child,
-        .experience-item:last-child,
-        .publication-item:last-child {
-            border-bottom: none;
+        .experience-item > *,
+        .education-item > * {
+            grid-column: 2;
         }
 
-        .education-item h4,
-        .experience-item h4,
-        .publication-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-meta,
         .experience-meta,
-        .publication-meta {
-            font-size: 0.9rem;
-            color: var(--secondary-purple);
-            margin-bottom: 0.3rem;
-            font-weight: 500;
+        .education-meta {
+            grid-column: 1;
+            grid-row: 1 / span 12;
+            padding-top: 0.35rem;
+            line-height: 1.7;
         }
 
-        .education-institution,
-        .experience-company {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
+        h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .experience-company,
+        .education-institution {
+            font-family: var(--serif);
             font-style: italic;
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin: 0.2rem 0 0.9rem;
         }
 
-        .education-item p,
         .experience-item p,
-        .publication-item p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-author {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 0.3rem;
-        }
-
-        .publication-link,
-        .scholar-link,
-        .company-link {
-            color: var(--secondary-purple);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .publication-link:hover,
-        .scholar-link:hover,
-        .company-link:hover {
-            color: #fff;
-            text-decoration: underline;
+        .education-item p {
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
         }
 
         .scholar-link {
             display: inline-block;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-            font-weight: 600;
+            color: var(--accent);
+            margin: -0.6rem 0 1.4rem 11rem;
         }
 
-        .skills-list {
+        .scholar-link::after {
+            content: ' →';
+        }
+
+        .publication-list {
+            max-width: 46rem;
+            margin-left: 11rem;
+        }
+
+        .publication-list li {
+            margin-bottom: 1.1rem;
+        }
+
+        /* Skills as a skyline of square pixels: each column two cells wide, like a stroke of the Wu mark.
+           Purple for design tools, green for code, as in the studio's colour system. */
+        .skills-wrap {
+            max-width: 46rem;
+            margin-left: 11rem;
+        }
+
+        .skyline {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            column-gap: 0.6rem;
+        }
+
+        .skyline li {
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-rows: 140px auto;
+            justify-items: center;
+        }
+
+        .skyline li::before {
+            content: none;
+        }
+
+        .col {
+            align-self: end;
+            display: grid;
+            grid-template-columns: repeat(2, 11px);
+            gap: 3px;
+            padding-bottom: 6px;
+        }
+
+        .col i {
+            width: 11px;
+            height: 11px;
+            background: #5a47d6;
+        }
+
+        .col i:nth-child(-n+2) { background: #9D8DFF; }
+        .c .col i { background: #00A82D; }
+        .c .col i:nth-child(-n+2) { background: #00E03C; }
+
+        .skyline li .skill-name {
+            width: 100%;
+            border-top: 1px solid var(--ink);
+            padding-top: 0.7rem;
+        }
+
+        .skill-name {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.06em;
+            line-height: 1.5;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--ink);
+        }
+
+        .skill-key {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
+            gap: 1.6rem;
+            margin-top: 1.6rem;
         }
 
-        .skill-tag {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(157, 141, 255, 0.05));
-            color: var(--secondary-purple);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            transition: all 0.3s;
+        .skill-key i {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            margin-right: 0.5rem;
+            background: #5a47d6;
         }
 
-        .skill-tag:hover {
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            color: white;
-            transform: translateY(-2px);
-        }
+        .skill-key .c i { background: #00A82D; }
 
-        /* Mobile Menu Toggle */
-        .mobile-toggle {
-            display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 2000;
-            background: var(--primary-purple);
-            color: white;
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 2rem 5%;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .cv-download-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-            }
-
-            .linkedin-btn,
-            .york-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-                margin-left: 0.5rem;
-                margin-top: 0.5rem;
-            }
-
-            .skills-list {
-                gap: 0.5rem;
-            }
-
-            .skill-tag {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
+            .site-head { padding: 1.1rem 1.25rem; }
+            .site-head nav { gap: 0.8rem; font-size: 0.58rem; }
+            .brand span { display: none; }
+            main { padding: 1.5rem 1.25rem 4rem; }
+            .intro { grid-template-columns: 1fr; gap: 1.5rem; }
+            .portrait { max-width: 180px; }
+            .intro h1 { font-size: 1.9rem; }
+            .profile-section ul, .publication-list, .skills-wrap, .scholar-link { margin-left: 0; }
+            .skyline { grid-template-columns: repeat(3, 1fr); row-gap: 1.5rem; }
+            .experience-item, .education-item { grid-template-columns: 1fr; }
+            .experience-meta, .education-meta { grid-column: 1; grid-row: auto; padding: 0 0 0.3rem; }
+            .experience-item > *, .education-item > * { grid-column: 1; }
         }
     </style>
 </head>
 <body>
-    <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+    <header class="site-head">
+        <a class="brand" href="../index.html" aria-label="Wu Studio, home">
+            <img src="../assets/logo/wu_mark_pixel_multi.svg" alt="">
+            <span>Wu Studio</span>
+        </a>
+        <nav class="mono">
+            <a href="../index.html">Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="research.html">Research</a>
+            <a href="affiliation.html">Affiliation</a>
+        </nav>
+    </header>
 
-    <div class="container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="logo-section">
-                <div class="logo-icon">
-                    <img src="../logo.png" alt="WUWU RAN Logo" style="width: 100%; height: auto;">
-                </div>
-                <div class="brand-name">WUWU RAN</div>
-                <div class="brand-subtitle">Design Studio</div>
-                <div class="brand-tagline">Architecture | Design | Innovation</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="../index.html" class="nav-item">Home</a>
-                <a href="academic.html" class="nav-item">Academic Work</a>
-                <a href="professional.html" class="nav-item">Professional Work</a>
-                <a href="digital.html" class="nav-item">Digital Arts</a>
-                <a href="publication.html" class="nav-item">Publication</a>
-                <a href="workshop.html" class="nav-item">Workshop</a>
-                <a href="affiliation.html" class="nav-item">Affiliation</a>
-                <a href="about.html" class="nav-item active">About Me</a>
-                <a href="contact.html" class="nav-item">Contact</a>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- About Me Page -->
-            <div id="about" class="page">
-                <div class="page-header">
-                    <h1 class="page-title">About Me</h1>
-                    <div class="cv-download-section">
-                        <a href="../assets/aboutme/CV-Wuwu-Ran.pdf" download="CV-Wuwu-Ran.pdf" class="cv-download-btn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
-                            </svg>
-                            Download CV
-                        </a>
-                        <a href="https://www.linkedin.com/in/wuwu-ran-99b006173/" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                            LinkedIn Profile
-                        </a>
-                        <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="york-btn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
-                            </svg>
-                            University of York Profile
-                        </a>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <div class="profile-section">
-                            <h3>Profile</h3>
-                            <ul>
-                                <li>Postdoctoral Research Associate at the Centre for Architecture, Urbanism and Global Heritage (CAUGH), <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="publication-link">University of York</a>, working on the British Academy Global Professorship project "Nubian Chronicles".</li>
-                                <li>Architectural and urban researcher and designer working across architecture, urbanism, digital heritage, digital media, and public space.</li>
-                                <li>PhD in Architecture from the University of Liverpool, with research on urban screens, augmented public spaces, and state-led urban transformation in Chinese cities.</li>
-                                <li>Experienced in mixed-methods urban research, including field observation, interviews, morphology-based spatial analysis, policy and archival research, machine learning-assisted classification, and VR-based visualisation.</li>
-                                <li>Over five years of professional experience in urban planning, ecological design, heritage-sensitive regeneration, and policy-facing spatial research.</li>
-                                <li>Current interests include digital heritage and 3D reconstruction, media architecture and urban screens, mixed reality and immersive environments, AI-assisted archival interpretation, and digitally augmented public space.</li>
-                                <li>Recipient of a 2026 research visit grant from the Society of Architectural Historians of Great Britain (SAHGB; Stevenson Trust Fund and Wakeling Bequest) for archival research on the precursors of Chinese urban screens in Shanghai and at the M+ archives, Hong Kong.</li>
-                                <li>Holds a UK Global Talent Visa (endorsed by the British Academy), permitting full-time work without restriction.</li>
-                            </ul>
-                        </div>
-
-                        <div class="experience-section">
-                            <h3>Academic Appointment</h3>
-                            <div class="experience-item">
-                                <h4>Postdoctoral Research Associate – Nubian Chronicles</h4>
-                                <p class="experience-meta">Sep 2026 – Present</p>
-                                <p class="experience-company"><a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="company-link">Centre for Architecture, Urbanism and Global Heritage (CAUGH), York School of Architecture, University of York</a> · York, UK</p>
-                                <p>"Nubian Chronicles: Amplifying Marginalised Voices and Contested Histories through Digital Heritage Reconstruction" is a British Academy Global Professorship project led by Professor Ahmed El Antably. It brings together oral histories, archival materials and immersive technologies to reconstruct the villages of Lower Nubia submerged after the construction of the Aswan High Dam.</p>
-                                <ul>
-                                    <li>Build 3D models and immersive scenes of Lower Nubian villages in Blender and Unity, integrated into a persistent multi-user online virtual environment.</li>
-                                    <li>Lead the design and development of the project's interactive digital map.</li>
-                                    <li>Develop retrieval-augmented generation (RAG) pipelines for voice-enabled AI conversational agents grounded in oral-history transcripts.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="education-section">
-                            <h3>Education</h3>
-                            <div class="education-item">
-                                <h4>PhD in Architecture</h4>
-                                <p class="education-meta">Apr 2020 – Jun 2025</p>
-                                <p class="education-institution">University of Liverpool, Centre for Architecture and Visual Arts (CAVA) · Liverpool, UK</p>
-                                <ul>
-                                    <li>Supervisors: Prof. Richard Koeck, Dr Francesca Piazzoni</li>
-                                    <li>Specialisation: Urban Screens, Media Architecture, Augmented Public Spaces, VR-Based Data Visualisation</li>
-                                    <li>Thesis: <a href="https://livrepository.liverpool.ac.uk/3193519/" target="_blank" rel="noopener noreferrer" class="publication-link">Chinese Urban Screens Evolution — A Historical and Comparative Study of Screen Clusters in Shanghai and Chongqing</a>. Examined the evolution of urban screens in Chinese cities as socio-technical urban interfaces shaped by state planning, market development and everyday public culture. Moving beyond single-case and qualitative studies, the research combined historical analysis, machine learning-assisted spatial taxonomy and the Augmented Public Space Index to analyse 104 urban screen clusters in Shanghai and Chongqing. It showed how Chinese urban screens have shifted from propaganda-oriented communication tools to clustered forms of augmented public space, reflecting China's compressed modernisation, collective viewing practices and state-market forms of urban governance.</li>
-                                    <li>Research methodologies: Mixed-methods urban research, including historical and policy analysis, interviews, fieldwork, morphology-based spatial analysis, computer vision-assisted classification, clustering analysis, and VR-based visualisation. Developed the Augmented Public Space Index (APSI) for comparative assessment of digitally enhanced public spaces.</li>
-                                </ul>
-                            </div>
-                            <div class="education-item">
-                                <h4>MA in Urban Design</h4>
-                                <p class="education-meta">September 2018 - September 2019</p>
-                                <p class="education-institution">University of Sheffield</p>
-                                <p>Conducted fieldwork in Milan under the supervision of Beatrice de Carli as part of the Inclusive Design Group, focusing on social housing for immigrant communities to promote inclusive urban design.</p>
-                                <p>Completed the thesis 'Careful Urban Regeneration' (fieldwork in Germany) under the supervision of Dr. Florian Kossak.</p>
-                            </div>
-                            <div class="education-item">
-                                <h4>BA in Landscape Architecture</h4>
-                                <p class="education-meta">September 2009 - September 2013</p>
-                                <p class="education-institution">Soochow University</p>
-                                <p>Key modules: Landscape Architecture Design, Psychology of Environment & Behaviour, Urban Landscape Ecology, Project Management, CAD, History of Chinese Landscapes.</p>
-                            </div>
-                        </div>
-
-                        <div class="experience-section">
-                            <h3>Work Experience</h3>
-                            <div class="experience-item">
-                                <h4>Urban Planner & Designer & Researcher</h4>
-                                <p class="experience-meta">Jul 2013 – Jul 2018</p>
-                                <p class="experience-company"><a href="https://www.supdri.com/" target="_blank" rel="noopener noreferrer" class="company-link">Shanghai Urban Planning and Design Research Institute (SUPDRI)</a>, Shanghai, China</p>
-                                <p>The Shanghai Urban Planning and Design Research Institute (SUPDRI) is affiliated with the Shanghai Planning and Natural Resources Bureau. Founded in 1957, it is one of China's earliest and most technically advanced Class A institutions for urban planning and design, land use planning, and engineering consulting.</p>
-                                <ul>
-                                    <li>Developed conceptual urban/architectural plans by receiving client briefings, conducting research and site visits, analysing sites, and facilitating team discussions before creating initial designs.</li>
-                                    <li>Produced sketches and presentation documents from conception through project completion, providing recommendations to management regarding contract requirements and work specifications.</li>
-                                    <li>Reviewed drawings and documentation, identifying and reporting issues to departmental managers, iterating through revisions until final approval was achieved.</li>
-                                    <li>Contributed to 20+ urban planning and design projects ranging from 5 to 180 sq km across ecological planning, urban renewal, heritage preservation, industrial transformation, and public-space strategy.</li>
-                                    <li>Coordinated interdisciplinary teams across architecture, landscape, transport, and infrastructure, and liaised with municipal authorities and review committees through project development, revision, and approval.</li>
-                                    <li>Received multiple awards for involvement in high-profile projects.</li>
-                                </ul>
-                            </div>
-                            <div class="experience-item">
-                                <h4>Planning Designer Assistant (Winter Intern)</h4>
-                                <p class="experience-meta">Jan – Feb 2013</p>
-                                <p class="experience-company">Guiyang Urban and Rural Planning & Design Institute, Guiyang, China</p>
-                                <p>Participated in landscape design for the Huaxia District Ten-Mile River Band Wetland Park and compiled the regulatory plan for the Exhibition Area of Guanshanhu District. Gained foundational experience in urban planning within a government-affiliated institute.</p>
-                            </div>
-                            <div class="experience-item">
-                                <h4>Landscape Designer Assistant (Summer Intern)</h4>
-                                <p class="experience-meta">Jul – Sep 2012</p>
-                                <p class="experience-company">Shanghai Ruyifang Engineering Design Co., Ltd, Shanghai, China</p>
-                                <p>Contributed to the Fushui River Ecological Tourism project, producing analytical graphics, site renderings, text, and layout documentation. First professional practice experience, developing efficient working methods under intensive project deadlines.</p>
-                            </div>
-                        </div>
-
-                        <div class="publications-section">
-                            <h3>Publications</h3>
-                            <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link">Google Scholar Profile</a>
-                            <ul class="publication-list">
-                                <li>Ran, W., & Al-Suwaidi, M. F. (2026). 'Immersive Commons: Designing Ephemeral Spatial Dialogue for Co-Located Mixed Reality', SIGraDi 2026 Conference Proceedings, Santiago, Chile. Accepted for publication.</li>
-                                <li>Ran, W. (2026). <a href="https://arxiv.org/abs/2610.35762" target="_blank" rel="noopener noreferrer" class="publication-link">'The Evolution and 'Chineseness' of Urban Screens in China: From Propaganda Posters to Smart City Interfaces'</a>. Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. arXiv:2610.35762. ACM publication forthcoming.</li>
-                                <li>Ran, W. (2024). <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" rel="noopener noreferrer" class="publication-link">'Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus'</a>, ASCAAD 2024 Conference Proceedings, Barcelona, pp. 553-564.</li>
-                                <li>Ran, W., Yin, L., & Yu, J. (2023). <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" rel="noopener noreferrer" class="publication-link">'Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters'</a>, ACADIA 2023 Conference Proceedings, Denver, pp. 596-605.</li>
-                                <li>He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al. (2015). <a href="https://m.thepaper.cn/newsDetail_forward_1458243" target="_blank" rel="noopener noreferrer" class="publication-link">Lujiazui: Where All Dreams Begin – Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series, Volume 2: Key Area Planning and Special Planning</a>. China Architecture & Building Press. ISBN 978-7-112-18439-2.<br>In Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华, 朱怡文, 何志华，孔艺倩（2015）. 梦缘陆家嘴（1990-2015重点区域规划和专项规划（卷二）），中国建筑工业出版社.</li>
-                                <li>Ran, W., & Wang, L. (2015). <a href="https://www.planning.org.cn/solicity/view?id=649" target="_blank" rel="noopener noreferrer" class="publication-link">'Urban Development Problems and Countermeasures in Guiyang'</a>. Proceedings of the Annual National Planning Conference (ANPC) China. ISBN 978-89475-444-8.<br>In Chinese: 冉无吾，王理. 浅谈贵阳市的城市发展问题及对策，2015 中国城市规划年会论文集.</li>
-                            </ul>
-                        </div>
-
-                        <div class="skills-section">
-                            <h3>Skills & Proficiency</h3>
-                            <div class="skills-list">
-                                <span class="skill-tag">Adobe Creative Suite</span>
-                                <span class="skill-tag">Rhino & Grasshopper</span>
-                                <span class="skill-tag">Blender</span>
-                                <span class="skill-tag">Unity</span>
-                                <span class="skill-tag">TouchDesigner</span>
-                                <span class="skill-tag">SketchUp</span>
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">AI Tools (Stable Diffusion & MidJourney)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-image">
-                        <img src="../assets/aboutme/me.png" alt="Wuwu Ran">
-                    </div>
+    <main>
+        <section class="intro">
+            <figure class="portrait">
+                <img src="../assets/aboutme/me.png" alt="Portrait of Wuwu Ran">
+                <figcaption class="mono"><span>Wuwu Ran</span><span>York, UK</span></figcaption>
+            </figure>
+            <div>
+                <h1>Wuwu Ran</h1>
+                <p class="lead">Architectural and urban researcher working across digital heritage, media architecture and digitally augmented public space.</p>
+                <div class="ways mono">
+                    <a href="../assets/aboutme/CV-Wuwu-Ran.pdf" download="CV-Wuwu-Ran.pdf">CV.pdf ↓</a>
+                    <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer">University of York</a>
+                    <a href="https://www.linkedin.com/in/wuwu-ran-99b006173/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
                 </div>
             </div>
-        </main>
-    </div>
-<!-- Visitor tracking - hidden -->
-<div style="display:none;">
-  <script type="text/javascript" id="mapmyvisitors"
-    src="//mapmyvisitors.com/map.js?d=Du_OzwQtYMZ4fEnYSpK1L99-rfiyDuI5qU5iViBPnj0&cl=ffffff&w=a">
-  </script>
-</div>
+        </section>
+
+            <div class="profile-section">
+                <h3>Profile</h3>
+                <ul>
+                    <li>Postdoctoral Research Associate at the Centre for Architecture, Urbanism and Global Heritage (CAUGH), <a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="publication-link">University of York</a>, working on the British Academy Global Professorship project "Nubian Chronicles".</li>
+                    <li>Architectural and urban researcher and designer working across architecture, urbanism, digital heritage, digital media, and public space.</li>
+                    <li>PhD in Architecture from the University of Liverpool, with research on urban screens, augmented public spaces, and state-led urban transformation in Chinese cities.</li>
+                    <li>Experienced in mixed-methods urban research, including field observation, interviews, morphology-based spatial analysis, policy and archival research, machine learning-assisted classification, and VR-based visualisation.</li>
+                    <li>Over five years of professional experience in urban planning, ecological design, heritage-sensitive regeneration, and policy-facing spatial research.</li>
+                    <li>Current interests include digital heritage and 3D reconstruction, media architecture and urban screens, mixed reality and immersive environments, AI-assisted archival interpretation, and digitally augmented public space.</li>
+                    <li>Holds a UK Global Talent Visa (endorsed by the British Academy).</li>
+                </ul>
+            </div>
+
+            <div class="experience-section">
+                <h3>Academic Appointment</h3>
+                <div class="experience-item">
+                    <h4>Postdoctoral Research Associate – Nubian Chronicles</h4>
+                    <p class="experience-meta">Sep 2026 – Present</p>
+                    <p class="experience-company"><a href="https://www.york.ac.uk/architecture/people/wuwu-ran/" target="_blank" rel="noopener noreferrer" class="company-link">Centre for Architecture, Urbanism and Global Heritage (CAUGH), York School of Architecture, University of York</a> · York, UK</p>
+                    <p>"Nubian Chronicles: Amplifying Marginalised Voices and Contested Histories through Digital Heritage Reconstruction" is a British Academy Global Professorship project led by Professor Ahmed El Antably. It brings together oral histories, archival materials and immersive technologies to reconstruct the villages of Lower Nubia submerged after the construction of the Aswan High Dam.</p>
+                    <ul>
+                        <li>Build 3D models and immersive scenes of Lower Nubian villages in Blender and Unity, integrated into a persistent multi-user online virtual environment.</li>
+                        <li>Lead the design and development of the project's interactive digital map.</li>
+                        <li>Develop retrieval-augmented generation (RAG) pipelines for voice-enabled AI conversational agents grounded in oral-history transcripts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="education-section">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>PhD in Architecture</h4>
+                    <p class="education-meta">Apr 2020 – Jun 2025</p>
+                    <p class="education-institution">University of Liverpool, Centre for Architecture and Visual Arts (CAVA) · Liverpool, UK</p>
+                    <ul>
+                        <li>Supervisors: Prof. Richard Koeck, Dr Francesca Piazzoni</li>
+                        <li>Specialisation: Urban Screens, Media Architecture, Augmented Public Spaces, VR-Based Data Visualisation</li>
+                        <li>Thesis: <a href="https://livrepository.liverpool.ac.uk/3193519/" target="_blank" rel="noopener noreferrer" class="publication-link">Chinese Urban Screens Evolution — A Historical and Comparative Study of Screen Clusters in Shanghai and Chongqing</a>. Examined the evolution of urban screens in Chinese cities as socio-technical urban interfaces shaped by state planning, market development and everyday public culture. Moving beyond single-case and qualitative studies, the research combined historical analysis, machine learning-assisted spatial taxonomy and the Augmented Public Space Index to analyse 104 urban screen clusters in Shanghai and Chongqing. It showed how Chinese urban screens have shifted from propaganda-oriented communication tools to clustered forms of augmented public space, reflecting China's compressed modernisation, collective viewing practices and state-market forms of urban governance.</li>
+                        <li>Research methodologies: Mixed-methods urban research, including historical and policy analysis, interviews, fieldwork, morphology-based spatial analysis, computer vision-assisted classification, clustering analysis, and VR-based visualisation. Developed the Augmented Public Space Index (APSI) for comparative assessment of digitally enhanced public spaces.</li>
+                    </ul>
+                </div>
+                <div class="education-item">
+                    <h4>MA in Urban Design</h4>
+                    <p class="education-meta">September 2018 - September 2019</p>
+                    <p class="education-institution">University of Sheffield</p>
+                    <p>Conducted fieldwork in Milan under the supervision of Beatrice de Carli as part of the Inclusive Design Group, focusing on social housing for immigrant communities to promote inclusive urban design.</p>
+                    <p>Completed the thesis 'Careful Urban Regeneration' (fieldwork in Germany) under the supervision of Dr. Florian Kossak.</p>
+                </div>
+                <div class="education-item">
+                    <h4>BA in Landscape Architecture</h4>
+                    <p class="education-meta">September 2009 - September 2013</p>
+                    <p class="education-institution">Soochow University</p>
+                    <p>Key modules: Landscape Architecture Design, Psychology of Environment & Behaviour, Urban Landscape Ecology, Project Management, CAD, History of Chinese Landscapes.</p>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Work Experience</h3>
+                <div class="experience-item">
+                    <h4>Urban Planner & Designer & Researcher</h4>
+                    <p class="experience-meta">Jul 2013 – Jul 2018</p>
+                    <p class="experience-company"><a href="https://www.supdri.com/" target="_blank" rel="noopener noreferrer" class="company-link">Shanghai Urban Planning and Design Research Institute (SUPDRI)</a>, Shanghai, China</p>
+                    <p>The Shanghai Urban Planning and Design Research Institute (SUPDRI) is affiliated with the Shanghai Planning and Natural Resources Bureau. Founded in 1957, it is one of China's earliest and most technically advanced Class A institutions for urban planning and design, land use planning, and engineering consulting.</p>
+                    <ul>
+                        <li>Developed conceptual urban/architectural plans by receiving client briefings, conducting research and site visits, analysing sites, and facilitating team discussions before creating initial designs.</li>
+                        <li>Produced sketches and presentation documents from conception through project completion, providing recommendations to management regarding contract requirements and work specifications.</li>
+                        <li>Reviewed drawings and documentation, identifying and reporting issues to departmental managers, iterating through revisions until final approval was achieved.</li>
+                        <li>Contributed to 20+ urban planning and design projects ranging from 5 to 180 sq km across ecological planning, urban renewal, heritage preservation, industrial transformation, and public-space strategy.</li>
+                        <li>Coordinated interdisciplinary teams across architecture, landscape, transport, and infrastructure, and liaised with municipal authorities and review committees through project development, revision, and approval.</li>
+                        <li>Received multiple awards for involvement in high-profile projects.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h4>Planning Designer Assistant (Winter Intern)</h4>
+                    <p class="experience-meta">Jan – Feb 2013</p>
+                    <p class="experience-company">Guiyang Urban and Rural Planning & Design Institute, Guiyang, China</p>
+                    <p>Participated in landscape design for the Huaxia District Ten-Mile River Band Wetland Park and compiled the regulatory plan for the Exhibition Area of Guanshanhu District. Gained foundational experience in urban planning within a government-affiliated institute.</p>
+                </div>
+                <div class="experience-item">
+                    <h4>Landscape Designer Assistant (Summer Intern)</h4>
+                    <p class="experience-meta">Jul – Sep 2012</p>
+                    <p class="experience-company">Shanghai Ruyifang Engineering Design Co., Ltd, Shanghai, China</p>
+                    <p>Contributed to the Fushui River Ecological Tourism project, producing analytical graphics, site renderings, text, and layout documentation. First professional practice experience, developing efficient working methods under intensive project deadlines.</p>
+                </div>
+            </div>
+
+            <div class="publications-section">
+                <h3>Publications</h3>
+                <a href="https://scholar.google.com/citations?user=rYTQmaUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link">Google Scholar Profile</a>
+                <ul class="publication-list">
+                    <li>Ran, W., & Al-Suwaidi, M. F. (2026). <a href="https://arxiv.org/abs/2610.36014" target="_blank" rel="noopener noreferrer" class="publication-link">'Immersive Commons: Designing Ephemeral Spatial Dialogue for Co-Located Mixed Reality'</a>, SIGraDi 2026 Conference Proceedings, Santiago, Chile. arXiv:2610.36014. Accepted for publication.</li>
+                    <li>Ran, W. (2026). <a href="https://arxiv.org/abs/2610.35762" target="_blank" rel="noopener noreferrer" class="publication-link">'The Evolution and 'Chineseness' of Urban Screens in China: From Propaganda Posters to Smart City Interfaces'</a>. Media Architecture Biennale 2025 (MAB25), Bangkok, Thailand. arXiv:2610.35762. ACM publication forthcoming.</li>
+                    <li>Ran, W. (2024). <a href="https://papers.cumincad.org/cgi-bin/works/paper/ascaad2024_028" target="_blank" rel="noopener noreferrer" class="publication-link">'Challenging Surveillance Capitalism in Urban Public Spaces Through Gamified Spatial Practice Simulation with Virtual Reality: A Case Study of Piccadilly Circus'</a>, ASCAAD 2024 Conference Proceedings, Barcelona, pp. 553-564.</li>
+                    <li>Ran, W., Yin, L., & Yu, J. (2023). <a href="https://papers.cumincad.org/cgi-bin/works/paper/acadia23_v2_596?bypass_token=5f52014a8cf941c6f5780395533ae78c" target="_blank" rel="noopener noreferrer" class="publication-link">'Machine Learning-driven Comparative Study: Morphological Taxonomy in Screen-Based Building Clusters'</a>, ACADIA 2023 Conference Proceedings, Denver, pp. 596-605.</li>
+                    <li>He, H., Gao, Q., Shen, X., Wang, M., Ran, W., et al. (2015). <a href="https://m.thepaper.cn/newsDetail_forward_1458243" target="_blank" rel="noopener noreferrer" class="publication-link">Lujiazui: Where All Dreams Begin – Collection of Shanghai Lujiazui Finance and Trade Zone Planning and Construction Series, Volume 2: Key Area Planning and Special Planning</a>. China Architecture & Building Press. ISBN 978-7-112-18439-2.<br>In Chinese: 何虹，高琦，沈文新，王梦亚，冉无吾，张华, 朱怡文, 何志华，孔艺倩（2015）. 梦缘陆家嘴（1990-2015重点区域规划和专项规划（卷二）），中国建筑工业出版社.</li>
+                    <li>Ran, W., & Wang, L. (2015). <a href="https://www.planning.org.cn/solicity/view?id=649" target="_blank" rel="noopener noreferrer" class="publication-link">'Urban Development Problems and Countermeasures in Guiyang'</a>. Proceedings of the Annual National Planning Conference (ANPC) China. ISBN 978-89475-444-8.<br>In Chinese: 冉无吾，王理. 浅谈贵阳市的城市发展问题及对策，2015 中国城市规划年会论文集.</li>
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3>Skills & Proficiency</h3>
+                <div class="skills-wrap">
+            <ul class="skyline">
+                <li class="d" aria-label="Adobe Creative Suite: 9 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">Adobe Creative Suite</span>
+                </li>
+                <li class="d" aria-label="SketchUp: 9 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">SketchUp</span>
+                </li>
+                <li class="d" aria-label="Blender: 8 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">Blender</span>
+                </li>
+                <li class="d" aria-label="Rhino &amp; Grasshopper: 6 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">Rhino &amp; Grasshopper</span>
+                </li>
+                <li class="c" aria-label="Unity: 8 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">Unity</span>
+                </li>
+                <li class="c" aria-label="GIS: 7 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">GIS</span>
+                </li>
+                <li class="c" aria-label="Python: 6 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">Python</span>
+                </li>
+                <li class="c" aria-label="ML (CNNs, OpenCV): 5 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">ML (CNNs, OpenCV)</span>
+                </li>
+                <li class="c" aria-label="TouchDesigner: 5 of 10">
+                    <span class="col" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <span class="skill-name">TouchDesigner</span>
+                </li>
+            </ul>
+            <p class="skill-key mono"><span class="d"><i></i>Design and modelling</span><span class="c"><i></i>Code and computation</span></p>
+            </div>
+            </div>
+    </main>
 </body>
 </html>

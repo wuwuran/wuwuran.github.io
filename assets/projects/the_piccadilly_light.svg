@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- The Piccadilly Light: the curved screen, and a walker it has picked out -->
+  <path d="M52 96 Q200 58 348 84 L348 226 Q200 204 52 244 Z" fill="#47207A"/>
+  <path d="M52 96 Q200 58 348 84 L348 226 Q200 204 52 244 Z" stroke="#F5F5F5" stroke-width="5"/>
+  <path d="M126 79 L126 227" stroke="#F5F5F5" stroke-width="5"/>
+  <path d="M200 71 L200 215" stroke="#F5F5F5" stroke-width="5"/>
+  <path d="M274 74 L274 217" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="237" cy="144" r="22" stroke="#F5F5F5" stroke-width="5"/>
+  <circle cx="237" cy="144" r="7" fill="#F5F5F5"/>
+  <path d="M224 164 L176 318 M250 164 L232 318" stroke="#F5F5F5" stroke-width="3" stroke-dasharray="3 11"/>
+  <path d="M46 338 Q130 300 204 322 T356 318" stroke="#F5F5F5" stroke-width="5" stroke-dasharray="16 13"/>
+  <circle cx="204" cy="322" r="15" fill="#47207A" stroke="#F5F5F5" stroke-width="5"/>
+</svg>
